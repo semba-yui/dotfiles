@@ -1,0 +1,70 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+
+# プラグインの非同期読み込み
+# https://github.com/romkatv/zsh-defer
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
+# `source` の代わりに `zsh-defer source` を呼び出す
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
+
+[plugins.base16]
+github = "chriskempson/base16-shell"
+apply = ["defer"]
+
+# ターミナルで256色使用可能にする
+# 補完部分の色の視認性が向上する
+# https://github.com/chrissicool/zsh-256color
+[plugins.zsh-256color]
+github = "chrissicool/zsh-256color"
+apply = ["defer"]
+
+# シンタックスハイライトを dracula theme にする
+# zsh-syntax-highlighting よりも先に読み込む必要あり
+# https://github.com/dracula/zsh-syntax-highlighting
+[plugins.zsh-syntax-highlighting-dracula-theme]
+github = "dracula/zsh-syntax-highlighting"
+apply = ['source']
+
+# シンタックスハイライトを有効にする
+# https://github.com/zsh-users/zsh-syntax-highlighting
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+apply = ['defer']
+
+# 過去の入力からコマンド候補を表示
+# → キーで入力補完
+# https://github.com/zsh-users/zsh-autosuggestions
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+apply = ["defer"]
+use = ['{{ name }}.zsh']
+
+# tabキーで入力補完
+# https://github.com/zsh-users/zsh-completions
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+apply = ['defer']
+
+# コマンド履歴の検索時、部分文字列で検索できるようにする
+# https://github.com/zsh-users/zsh-history-substring-search
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+apply = ['defer']
+
+# 保管機能を有効にする
+[plugins.compinit]
+inline = 'autoload -Uz compinit && zsh-defer compinit'

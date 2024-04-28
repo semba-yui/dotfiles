@@ -1,0 +1,6 @@
+[tools]
+java = "21.0.2"
+dotnet = "8.0.204"
+gradle = "8.7"
+go = "1.22.2"
+python = "3.12.3"

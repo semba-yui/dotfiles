@@ -1,0 +1,40 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = "bold #ffb86c"
+disabled = true
+
+[aws.region_aliases]
+ap-northeast-1 = "jp"
+
+[character]
+error_symbol = "[\\$](bold #ff5555)"
+success_symbol = "[\\$](bold #50fa7b)"
+
+[cmd_duration]
+style = "bold #f1fa8c"
+
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+truncation_symbol = "…/"
+style = "bold #50fa7b"
+
+[git_branch]
+symbol = " "
+style = "bold #ff79c6"
+
+[git_status]
+style = "bold #ff5555"
+
+[hostname]
+style = "bold #bd93f9"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"
