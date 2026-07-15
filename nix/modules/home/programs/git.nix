@@ -67,12 +67,18 @@ in
 
   programs.git = {
     enable = true;
+    includes = [
+      {
+        # remote URL に対応する identity だけを適用し、global fallback による誤帰属を防ぐ。
+        condition = "hasconfig:remote.*.url:https://semba-yui@github.com/**";
+        contents.user = {
+          email = "65758369+semba-yui@users.noreply.github.com";
+          name = "仙波 琉一朗 / Ryuichiro Semba";
+        };
+        contentSuffix = "git-identity-semba-yui.gitconfig";
+      }
+    ];
     settings = {
-      user = {
-        name = "仙波 琉一朗 / Ryuichiro Semba";
-        email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
-      };
-
       init.defaultBranch = "main";
 
       color.ui = "auto";
