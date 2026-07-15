@@ -1,6 +1,5 @@
 {
   imports = [
-    ./firewall.nix
     ./fish.nix
     ./homebrew.nix
     ./macos
