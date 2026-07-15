@@ -24,6 +24,7 @@
     enable = true;
 
     casks = [
+      "cleanshot"
       "google-japanese-ime"
     ];
 
