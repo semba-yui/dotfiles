@@ -15,6 +15,7 @@
     ./programs/fish.nix
     ./programs/fzf.nix
     ./programs/gh.nix
+    ./programs/git-credential-manager.nix
     ./programs/git.nix
     ./programs/jq.nix
     ./programs/mise.nix

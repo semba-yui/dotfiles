@@ -119,11 +119,6 @@ in
         hooksPath = "~/.config/git/hooks";
       };
 
-      url."https://github.com/".insteadOf = [
-        "git@github.com:"
-        "ssh://git@github.com/"
-      ];
-
       ghq.root = "~/ghq";
 
       gtr.ai.default = "claude";
