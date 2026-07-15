@@ -6,4 +6,7 @@
     # sudo の認証を省略せず、Touch ID で管理操作を承認できるようにする。
     touchIdAuth = true;
   };
+
+  # ダウンロードしたアプリを Gatekeeper の検証対象として維持する。
+  system.defaults.LaunchServices.LSQuarantine = true;
 }
