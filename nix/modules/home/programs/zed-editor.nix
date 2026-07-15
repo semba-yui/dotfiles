@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  home.sessionVariables = {
+    # ターミナルから起動した処理が、編集終了まで正しく待機できるようにする。
+    EDITOR = "zeditor --wait";
+    VISUAL = "zeditor --wait";
+  };
+
   programs.zed-editor = {
     enable = true;
     package = pkgs.zed-editor;

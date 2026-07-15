@@ -17,6 +17,7 @@
     ./programs/git.nix
     ./programs/jq.nix
     ./programs/mise.nix
+    ./programs/neovim.nix
     ./programs/ripgrep.nix
     ./programs/zed-editor.nix
   ];
