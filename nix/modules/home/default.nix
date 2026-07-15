@@ -24,6 +24,7 @@
   home.packages = with pkgs; [
     acli
     ast-grep
+    bun
     chatgpt
     cmux
     curl
@@ -34,8 +35,8 @@
     ghq
     git-fork
     google-chrome
-    gopls
     hyperfine
+    jdk25
     jetbrains-mono
     jetbrains-toolbox
     mermaid-cli
@@ -43,11 +44,12 @@
     nixd
     nixfmt
     nix-output-monitor
+    nodejs
     orbstack
     pcre2
+    python3
     pyright
     raycast
-    rust-analyzer
     sd
     slack
     statix
@@ -57,6 +59,7 @@
     typescript
     typescript-language-server
     unzip
+    uv
     wget
     yq
     zoom-us
