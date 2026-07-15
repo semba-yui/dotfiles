@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of semba macOS";
+  description = "Nix configuration for macOS";
 
   # Why:
   # - flake-parts は便利だが、今は抽象度を上げすぎないため採用しない。
@@ -39,16 +39,16 @@
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
-      home-manager,
       treefmt-nix,
       ...
     }:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
+      darwinConfigurations = import ./hosts { inherit inputs; };
 
       # nix fmt 用の treefmt 設定。programs.nixfmt は RFC 準拠の nixfmt を使う。
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
@@ -57,13 +57,16 @@
       };
     in
     {
-      homeConfigurations."semba" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./hosts/LCDEV0215/home.nix ];
-      };
+      inherit darwinConfigurations;
 
       formatter.${system} = treefmtEval.config.build.wrapper;
 
-      checks.${system}.formatting = treefmtEval.config.build.check self;
+      checks.${system} =
+        nixpkgs.lib.mapAttrs' (
+          hostname: configuration: nixpkgs.lib.nameValuePair "darwin-${hostname}" configuration.system
+        ) darwinConfigurations
+        // {
+          formatting = treefmtEval.config.build.check self;
+        };
     };
 }
