@@ -5,5 +5,6 @@
     ./macos
     ./nix.nix
     ./nixpkgs.nix
+    ./security.nix
   ];
 }
