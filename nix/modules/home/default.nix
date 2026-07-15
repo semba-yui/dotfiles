@@ -3,6 +3,7 @@
 {
   imports = [
     ./programs/bat.nix
+    ./programs/betterleaks.nix
     ./programs/bottom.nix
     ./programs/claude-code.nix
     ./programs/codex.nix
