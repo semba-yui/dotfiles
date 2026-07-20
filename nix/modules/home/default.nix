@@ -17,6 +17,7 @@
     ./programs/gh.nix
     ./programs/git-credential-manager.nix
     ./programs/git.nix
+    ./programs/herdr.nix
     ./programs/jq.nix
     ./programs/mise.nix
     ./programs/neovim.nix
@@ -38,6 +39,7 @@
     ghq
     git-fork
     google-chrome
+    hunk
     hyperfine
     jdk25
     jetbrains-mono
