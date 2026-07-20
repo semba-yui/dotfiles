@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./programs/ai-dotfiles.nix
     ./programs/bat.nix
     ./programs/betterleaks.nix
     ./programs/bottom.nix
