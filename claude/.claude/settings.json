@@ -1,5 +1,91 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "ANTHROPIC_MODEL": "opusplan",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_ZOXIDE": "1",
+    "ENABLE_LSP_TOOL": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(yarn install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(echo:*)",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(brew install:*)",
+      "Bash(chmod 777:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(git commit --no-verify:*)",
+      "Bash(git config:*)",
+      "Bash(git rebase:*)",
+      "Bash(npm publish:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(sudo:*)",
+      "Read(.env*)",
+      "Read(id_ed25519)",
+      "Read(id_rsa)",
+      "Read(.env.*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(psql:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push origin --force:*)",
+      "Bash(git push origin -f:*)",
+      "Write(.env*)",
+      "Write(**/secrets/**)"
+    ],
+    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Submarine.aiff"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Ping.aiff"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
+          }
+        ]
+      }
+    ]
+  },
   "theme": "dark",
   "tui": "fullscreen"
 }
