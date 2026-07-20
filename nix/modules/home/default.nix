@@ -10,7 +10,7 @@
     ./programs/delta.nix
     ./programs/direnv.nix
     ./programs/discord.nix
-    ./programs/dotfiles-update.nix
+    ./programs/dotfiles.nix
     ./programs/eza.nix
     ./programs/fd.nix
     ./programs/fish.nix
@@ -46,6 +46,7 @@
     jdk25
     jetbrains-mono
     jetbrains-toolbox
+    just
     mermaid-cli
     nil
     nixd

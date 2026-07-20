@@ -1,0 +1,28 @@
+set default-list
+
+current-host := `hostname -s`
+
+# Nix、Justfile、シェルスクリプトを整形する
+[group('整形・検証')]
+fmt:
+    nix fmt
+
+# Flake全体を評価し、フォーマットを検証する
+[group('整形・検証')]
+check:
+    nix flake check
+
+# 指定したホストの構成を、反映せずにビルドする
+[group('整形・検証')]
+build host=current-host:
+    nix build ".#darwinConfigurations.{{ host }}.system" --no-link
+
+# 指定したホストの構成を、確認後に反映する
+[group('反映・更新')]
+switch host=current-host:
+    nh darwin switch . --hostname "{{ host }}" --ask --no-update-lock-file --show-activation-logs
+
+# Flake入力を更新し、検証、反映、commitまで順番に実行する
+[group('反映・更新')]
+update:
+    ./scripts/update.sh

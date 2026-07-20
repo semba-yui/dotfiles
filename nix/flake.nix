@@ -55,7 +55,10 @@
       # nix fmt 用の treefmt 設定。programs.nixfmt は RFC 準拠の nixfmt を使う。
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
         projectRootFile = "flake.nix";
+        programs.just.enable = true;
         programs.nixfmt.enable = true;
+        programs.shellcheck.enable = true;
+        programs.shfmt.enable = true;
       };
     in
     {
