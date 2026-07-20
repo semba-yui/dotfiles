@@ -10,6 +10,7 @@
     ./programs/delta.nix
     ./programs/direnv.nix
     ./programs/discord.nix
+    ./programs/dotfiles-update.nix
     ./programs/eza.nix
     ./programs/fd.nix
     ./programs/fish.nix
@@ -21,6 +22,7 @@
     ./programs/jq.nix
     ./programs/mise.nix
     ./programs/neovim.nix
+    ./programs/nh.nix
     ./programs/ripgrep.nix
     ./programs/zed-editor.nix
   ];
