@@ -4,7 +4,8 @@
 # =============================================================================
 #
 # [What] Claude Code のステータスバーに以下を3行で表示するスクリプト:
-#   1行目: コンテキスト使用率 / モデル名 / セッションコスト(USD+JPY) / トークン数 / ブランチ
+#   1行目: コンテキスト使用率 / モデル名(effortレベル) / セッションコスト(USD+JPY) /
+#          トークン数 / 作業ディレクトリ(worktree内なら[wt]タグ付き) / ブランチ
 #   2行目: 5時間ローリングウィンドウのレート制限使用率 + リセット時刻
 #   3行目: 7日間（週次）レート制限使用率 + リセット時刻
 #
@@ -15,9 +16,11 @@
 #   固定レート（USD_TO_JPY）で近似値を表示する。
 #
 # [表示例]
-#   Context: ▓▓░░░░░░░░  12%  Sonnet 5  s:$0.45(約¥71)  ↓10.1k ↑2.2k  ⎇ feature/xxx
+#   Context: ▓▓░░░░░░░░  12%  Sonnet 5(xhigh)  s:$0.45(約¥71)  ↓10.1k ↑2.2k  dotfiles ⎇ feature/xxx
 #   Rate 5h: ▓▓▓░░░░░░░░  30%  ↻2時間15分 (14:30)
 #   Rate 7d: ▓▓▓▓░░░░░░░░  42%  ↻3日5時間 (4/11 17:00)
+#
+#   worktree内では末尾が [wt]dotfiles-feature-xyz ⎇ feature/xyz のように強調表示される
 #
 # [依存] jq, awk, date, git (macOS 標準。`date -r <epoch>` は BSD date の仕様。
 #   Linux の GNU date では意味が異なるため、macOS 以外への移植時は要修正)
@@ -46,13 +49,20 @@ input=$(cat)
 # モデル表示名（例: "Sonnet 5"）
 MODEL=$(printf '%s' "$input" | jq -r '.model.display_name // "?"')
 
+# 現在の reasoning effort（low/medium/high/xhigh/max）
+# [Why] xhigh をデフォルト設定しているため、/effort で一時的に下げたことに
+#   気づかず高コストな作業を続けてしまうのを防ぐ
+# [Why not] // empty の理由: effort パラメータ非対応モデルではフィールド自体が
+#   存在しないため、rate_limits と同様に空文字で「非表示」を表現する
+EFFORT=$(printf '%s' "$input" | jq -r '.effort.level // empty')
+
 # コンテキストウィンドウ使用率（0-100の整数。セッション序盤は null になりうるため // 0 でガード）
 PCT=$(printf '%s' "$input" | jq -r '.context_window.used_percentage // 0 | floor | tostring')
 
 # セッション累計コスト（USD）
 SESSION_COST=$(printf '%s' "$input" | jq -r '.cost.total_cost_usd // 0')
 
-# 作業ディレクトリ（git ブランチ取得のフォールバック用）
+# 作業ディレクトリ（ディレクトリ名表示 + git ブランチ取得のフォールバック用）
 CWD=$(printf '%s' "$input" | jq -r '.workspace.current_dir // .cwd // ""')
 
 # 現在のコンテキストウィンドウに含まれる入力/出力トークン数
@@ -73,6 +83,16 @@ RATE_5H=$(printf '%s' "$input" | jq -r '.rate_limits.five_hour.used_percentage /
 RATE_5H_RESET=$(printf '%s' "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 RATE_7D=$(printf '%s' "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 RATE_7D_RESET=$(printf '%s' "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+
+# 現在の作業ディレクトリ名（worktree を行き来する時に「今どこにいるか」を把握するため）
+DIRNAME=""
+[ -n "$CWD" ] && DIRNAME="${CWD##*/}"
+
+# git worktree 内かどうかの判定
+# [Why] workspace.git_worktree はリンクされた worktree 内でのみ値が入り、
+#   メインの作業ツリーでは存在しない。Claude Code 独自の `--worktree` セッション
+#   （worktree.*）に限らず、手動の `git worktree add` にも反応するため汎用的
+GIT_WORKTREE=$(printf '%s' "$input" | jq -r '.workspace.git_worktree // empty')
 
 # Git ブランチ
 # [Why] worktree.branch を優先する理由: Agent tool の isolation: "worktree" 使用時、
@@ -96,6 +116,7 @@ YELLOW=$'\033[33m' # 50-74%: 注意
 RED=$'\033[31m'    # 75%+: 危険
 
 CYAN=$'\033[36m'   # ラベル・モデル名用
+MAGENTA=$'\033[35m' # worktree内にいることを示す強調色
 
 # =============================================================================
 # 共通関数
@@ -207,6 +228,21 @@ COST_FMT=$(fmt_cost "$SESSION_COST")
 IN_FMT=$(fmt_tokens "$INPUT_TOKENS")
 OUT_FMT=$(fmt_tokens "$OUTPUT_TOKENS")
 
+# モデル名の横に effort レベルを括弧書きで併記（非対応モデルでは付与しない）
+MODEL_STR="$MODEL"
+[ -n "$EFFORT" ] && MODEL_STR="${MODEL}(${EFFORT})"
+
+# [wt] タグの理由: ▓/░ と同様に等幅フォント依存の絵文字を避けるため。
+#   worktree内では強調色(MAGENTA)にして「メインツリーではない」ことを目立たせる
+LOCATION_STR=""
+if [ -n "$DIRNAME" ]; then
+  if [ -n "$GIT_WORKTREE" ]; then
+    LOCATION_STR="  ${MAGENTA}[wt]${DIRNAME}${R}"
+  else
+    LOCATION_STR="  ${DIM}${DIRNAME}${R}"
+  fi
+fi
+
 BRANCH_STR=""
 [ -n "$BRANCH" ] && BRANCH_STR="  ${DIM}⎇ ${BRANCH}${R}"
 
@@ -219,8 +255,8 @@ BRANCH_STR=""
 #   モデル名が長い場合にラベル幅が崩れ、バーの縦位置がずれるため。バーの後に配置する。
 
 # 1行目: コンテキスト + セッション情報
-printf "${BOLD}${CYAN}Context${R}: ${CTX_COLOR}%s  %d%%${R}  ${BOLD}${CYAN}%s${R}  ${DIM}s:%s${R}  ${DIM}↓%s ↑%s${R}%s\n" \
-  "$CTX_BAR" "$PCT" "$MODEL" "$COST_FMT" "$IN_FMT" "$OUT_FMT" "$BRANCH_STR"
+printf "${BOLD}${CYAN}Context${R}: ${CTX_COLOR}%s  %d%%${R}  ${BOLD}${CYAN}%s${R}  ${DIM}s:%s${R}  ${DIM}↓%s ↑%s${R}%s%s\n" \
+  "$CTX_BAR" "$PCT" "$MODEL_STR" "$COST_FMT" "$IN_FMT" "$OUT_FMT" "$LOCATION_STR" "$BRANCH_STR"
 
 # 2行目: 5時間ローリングウィンドウのレート制限
 # [Why] if [ -n ] でガードする理由: セッション開始直後（最初の API 応答前）や
