@@ -65,6 +65,9 @@
       inherit darwinConfigurations;
 
       formatter.${system} = treefmtEval.config.build.wrapper;
+      packages.${system} = {
+        inherit (pkgs) just oxfmt;
+      };
 
       checks.${system} =
         nixpkgs.lib.mapAttrs' (

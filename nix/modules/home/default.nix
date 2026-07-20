@@ -55,6 +55,7 @@
     nix-output-monitor
     nodejs
     orbstack
+    oxfmt
     pcre2
     python3
     pyright

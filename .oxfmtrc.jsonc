@@ -1,0 +1,4 @@
+{
+  // 外部ツールが管理するlockや生成物は、内容だけでなく生成手順まで含めて再現性を保つ。
+  "ignorePatterns": ["apm/apm.lock.yaml", "nix/flake.lock"],
+}

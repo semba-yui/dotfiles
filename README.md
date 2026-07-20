@@ -68,8 +68,8 @@ dotfiles
 主な操作は次のとおりです。
 
 ```sh
-dotfiles fmt       # 設定ファイルを整形する
-dotfiles check     # Flake全体を検証する
+dotfiles fmt       # NixとOxfmt対応形式を整形する
+dotfiles check     # Flake全体と設定ファイルの整形を検証する
 dotfiles doctor    # 現在のセットアップ状態を診断する
 dotfiles build     # 現在のホストを反映せずにビルドする
 dotfiles switch    # 現在のホストへ確認後に反映する

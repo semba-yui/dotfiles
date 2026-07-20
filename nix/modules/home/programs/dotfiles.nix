@@ -7,6 +7,7 @@
 
 let
   flakeDirectory = config.programs.nh.darwinFlake;
+  repositoryDirectory = "${flakeDirectory}/..";
 
   dotfiles = pkgs.writeShellApplication {
     name = "dotfiles";
@@ -16,10 +17,11 @@ let
       pkgs.just
       pkgs.nh
       pkgs.nix
+      pkgs.oxfmt
     ];
 
     text = ''
-      exec just --justfile ${lib.escapeShellArg "${flakeDirectory}/justfile"} "$@"
+      exec just --justfile ${lib.escapeShellArg "${repositoryDirectory}/justfile"} "$@"
     '';
   };
 in

@@ -33,7 +33,7 @@ check_command() {
 
 printf 'dotfiles のセットアップ状態を診断します。\n\n'
 
-for command_name in darwin-rebuild fish gh git git-credential-manager just nh nix; do
+for command_name in darwin-rebuild fish gh git git-credential-manager just nh nix oxfmt; do
   check_command "$command_name"
 done
 

@@ -24,6 +24,12 @@ jobs:
         working-directory: nix
         run: nix flake check
 
+      - name: Check Oxfmt formatting
+        run: nix run ./nix#oxfmt -- --check .
+
+      - name: Check Justfile formatting
+        run: nix run ./nix#just -- --justfile justfile --fmt --check
+
       - name: Build LCDEV0215
         working-directory: nix
         run: nix build .#darwinConfigurations.LCDEV0215.system --no-link
