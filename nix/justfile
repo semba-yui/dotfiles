@@ -12,6 +12,11 @@ fmt:
 check:
     nix flake check
 
+# 端末が宣言した構成どおりにセットアップされているか診断する
+[group('整形・検証')]
+doctor:
+    ./scripts/doctor.sh
+
 # 指定したホストの構成を、反映せずにビルドする
 [group('整形・検証')]
 build host=current-host:

@@ -1,0 +1,29 @@
+name: Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  nix:
+    name: Nix configuration
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Check flake
+        working-directory: nix
+        run: nix flake check
+
+      - name: Build LCDEV0215
+        working-directory: nix
+        run: nix build .#darwinConfigurations.LCDEV0215.system --no-link
