@@ -1,5 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/scripts/statusline.sh\""
+  },
   "env": {
     "ANTHROPIC_MODEL": "opusplan",
     "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
@@ -49,12 +53,7 @@
       "Bash(git push origin --force:*)",
       "Bash(git push origin -f:*)"
     ],
-    "ask": [
-      "Bash(curl:*)",
-      "Bash(git reset:*)",
-      "Bash(git push:*)",
-      "Bash(rm:*)"
-    ],
+    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
     "defaultMode": "auto"
   },
   "hooks": {
