@@ -1,0 +1,7 @@
+# 共通Agent設定
+
+複数のAIツールで同じ内容を使う設定を管理します。単一ツールだけで使うものは、対象ツールのトップレベルディレクトリへ置きます。
+
+- `.agents/skills/<name>/SKILL.md`: Claude Code、Codex、GitHub Copilot CLIで共通利用するskill
+
+CodexとGitHub Copilot CLIは `~/.agents/skills/` を直接読みます。Claude CodeにはHome Managerで同じskillを `~/.claude/skills/` に配置します。

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./programs/ai-dotfiles.nix
     ./programs/bat.nix
     ./programs/betterleaks.nix
     ./programs/bottom.nix
@@ -29,6 +30,7 @@
 
   home.packages = with pkgs; [
     acli
+    apm-cli
     ast-grep
     bun
     chatgpt

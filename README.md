@@ -74,7 +74,22 @@ dotfiles doctor    # 現在のセットアップ状態を診断する
 dotfiles build     # 現在のホストを反映せずにビルドする
 dotfiles switch    # 現在のホストへ確認後に反映する
 dotfiles update    # Flake入力を更新し、検証、反映、commitまで行う
+dotfiles ai-check   # AI依存のlockと生成物を検証する
+dotfiles ai-install # lock済みのAI依存を再現する
+dotfiles ai-update  # AI依存の更新内容を確認して更新する
 ```
+
+## AIツールの設定
+
+Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトップレベルディレクトリで管理します。各ディレクトリは `claude/.claude/` のようにホームディレクトリ上の構造を再現しています。
+
+- `agents/`: 複数ツールで共通利用するskill
+- `claude/`: Claude Code専用の設定、agents、skills、hooks
+- `codex/`: Codex専用の設定、agents、hooks、plugins
+- `copilot/`: GitHub Copilot CLI専用の設定、agents、skills、hooks
+- `apm/`: 外部配布されたAI向け資産のmanifest、lock、生成物
+
+編集対象の設定はHome Managerからリポジトリへ直接リンクします。一方、認証、履歴、信頼状態、セッション、キャッシュなど、各ツールが生成する内部状態はGitで管理しません。
 
 ## 管理範囲
 

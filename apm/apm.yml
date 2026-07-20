@@ -1,0 +1,11 @@
+name: semba-dotfiles
+version: 0.1.0
+
+targets:
+  - agent-skills
+  - claude
+  - codex
+  - copilot
+
+dependencies:
+  apm: []
