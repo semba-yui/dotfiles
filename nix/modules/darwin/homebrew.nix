@@ -24,8 +24,20 @@
     enable = true;
 
     casks = [
+      "chatgpt"
+      "claude"
       "cleanshot"
+      "discord"
+      "drawio"
+      "fork"
+      "google-chrome"
       "google-japanese-ime"
+      "jetbrains-toolbox"
+      "microsoft-teams"
+      "orbstack"
+      "raycast"
+      "slack"
+      "zoom"
     ];
 
     onActivation = {

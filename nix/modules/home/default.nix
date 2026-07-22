@@ -10,7 +10,6 @@
     ./programs/codex.nix
     ./programs/delta.nix
     ./programs/direnv.nix
-    ./programs/discord.nix
     ./programs/dotfiles.nix
     ./programs/eza.nix
     ./programs/fd.nix
@@ -33,20 +32,15 @@
     acli
     ast-grep
     bun
-    chatgpt
     cmux
     curl
     deadnix
-    drawio
     dust
     ffmpeg
     ghq
-    git-fork
-    google-chrome
     hunk
     hyperfine
     jdk25
-    jetbrains-toolbox
     just
     mermaid-cli
     nerd-fonts.jetbrains-mono
@@ -55,16 +49,12 @@
     nixfmt
     nix-output-monitor
     nodejs
-    orbstack
     oxfmt
     pcre2
     python3
     pyright
-    raycast
     sd
-    slack
     statix
-    teams
     tokei
     tree
     typescript
@@ -73,7 +63,6 @@
     uv
     wget
     yq
-    zoom-us
   ];
 
   programs.home-manager.enable = true;
