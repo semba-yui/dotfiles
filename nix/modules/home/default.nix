@@ -18,6 +18,7 @@
     ./programs/gh.nix
     ./programs/ghostty.nix
     ./programs/git-credential-manager.nix
+    ./programs/git-worktree-runner.nix
     ./programs/git.nix
     ./programs/herdr.nix
     ./programs/jq.nix
@@ -27,6 +28,7 @@
     ./programs/ripgrep.nix
     ./programs/xcodes.nix
     ./programs/zed-editor.nix
+    ./programs/zoxide.nix
   ];
 
   home.packages = with pkgs; [
@@ -64,7 +66,6 @@
     uv
     wget
     yq
-    zoxide
   ];
 
   programs.home-manager.enable = true;

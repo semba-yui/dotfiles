@@ -14,14 +14,22 @@
     user = username;
 
     extraEnv = {
-      # Homebrew は macOS アプリ用に限定し、CLI や依存ライブラリは Nix で管理する。
+      # Homebrew はmacOSアプリと、上流がTapを公式配布するCLIに限定する。
       HOMEBREW_FORBIDDEN_TAPS = "homebrew/core";
       HOMEBREW_NO_ANALYTICS = "1";
     };
+
+    taps = {
+      "k1LoW/homebrew-tap" = inputs.homebrew-k1low-tap;
+    };
+
+    trust.formulae = [ "k1LoW/tap/mo" ];
   };
 
   homebrew = {
     enable = true;
+
+    brews = [ "k1LoW/tap/mo" ];
 
     masApps = {
       Bitwarden = 1352778147;
@@ -44,6 +52,7 @@
       "orbstack"
       "raycast"
       "slack"
+      "typora"
       "zoom"
     ];
 

@@ -19,9 +19,21 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    homebrew-k1low-tap = {
+      url = "github:k1LoW/homebrew-tap";
+      flake = false;
+    };
+
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # git gtr (worktree管理CLI)。nixpkgs 未収載のためソースを直接取り込み、
+    # home モジュール側で derivation 化する。
+    git-worktree-runner = {
+      url = "github:coderabbitai/git-worktree-runner";
+      flake = false;
     };
   };
 

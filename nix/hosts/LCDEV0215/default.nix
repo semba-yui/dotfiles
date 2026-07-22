@@ -16,7 +16,7 @@ inputs.nix-darwin.lib.darwinSystem {
     {
       home-manager = {
         extraSpecialArgs = {
-          inherit homeDirectory username;
+          inherit homeDirectory inputs username;
         };
         useGlobalPkgs = true;
         useUserPackages = true;

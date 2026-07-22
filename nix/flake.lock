@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "git-worktree-runner": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781287530,
+        "narHash": "sha256-QJcpDq9guLgVjWhF2HwpMxK5ONQZtbDxFZnQrQjCRtI=",
+        "owner": "coderabbitai",
+        "repo": "git-worktree-runner",
+        "rev": "ad7a3c534fc36e6adfee44c480b03c2f7f959502",
+        "type": "github"
+      },
+      "original": {
+        "owner": "coderabbitai",
+        "repo": "git-worktree-runner",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -35,6 +51,22 @@
         "owner": "nix-community",
         "ref": "master",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "homebrew-k1low-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784658507,
+        "narHash": "sha256-ry/gdVJZDXgdzEfdX4xROm4vQLuVlXSedi8909cDguw=",
+        "owner": "k1LoW",
+        "repo": "homebrew-tap",
+        "rev": "3937f1a86aa1eca86e9981efeb63dc2d3e27a815",
+        "type": "github"
+      },
+      "original": {
+        "owner": "k1LoW",
+        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -95,7 +127,9 @@
     },
     "root": {
       "inputs": {
+        "git-worktree-runner": "git-worktree-runner",
         "home-manager": "home-manager",
+        "homebrew-k1low-tap": "homebrew-k1low-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
