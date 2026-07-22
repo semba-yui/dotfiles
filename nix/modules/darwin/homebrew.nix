@@ -23,6 +23,13 @@
   homebrew = {
     enable = true;
 
+    masApps = {
+      Bitwarden = 1352778147;
+      Keynote = 409183694;
+      Numbers = 409203825;
+      Pages = 409201541;
+    };
+
     casks = [
       "chatgpt"
       "claude"

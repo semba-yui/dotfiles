@@ -25,6 +25,7 @@
     ./programs/neovim.nix
     ./programs/nh.nix
     ./programs/ripgrep.nix
+    ./programs/xcodes.nix
     ./programs/zed-editor.nix
   ];
 
@@ -63,6 +64,7 @@
     uv
     wget
     yq
+    zoxide
   ];
 
   programs.home-manager.enable = true;

@@ -98,6 +98,11 @@ in
       }
     ];
     settings = {
+      user = {
+        name = "仙波 琉一朗 / Ryuichiro Semba";
+        email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
+      };
+
       init.defaultBranch = "main";
 
       color.ui = "auto";
@@ -138,6 +143,7 @@ in
 
       fetch = {
         prune = true;
+        pruneTags = true;
         writeCommitGraph = true;
       };
 
@@ -155,6 +161,10 @@ in
 
       gtr.ai.default = "claude";
       gtr.editor.default = "zed";
+
+      alias = {
+        co = "checkout";
+      };
     };
   };
 }

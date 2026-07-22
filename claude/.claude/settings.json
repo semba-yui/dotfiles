@@ -1,10 +1,105 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "agentPushNotifEnabled": true,
-  "askUserQuestionTimeout": "10m",
-  "autoCompactEnabled": true,
-  "editorMode": "normal",
-  "effortLevel": "xhigh",
+  "env": {
+    "ANTHROPIC_MODEL": "opusplan",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1",
+    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK": "1",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_ZOXIDE": "1",
+    "ENABLE_LSP_TOOL": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(yarn install:*)",
+      "Bash(pnpm install:*)",
+      "Bash(git checkout:*)",
+      "Bash(git push:*)",
+      "Bash(echo:*)",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(brew install:*)",
+      "Bash(chmod 777:*)",
+      "Bash(gh repo delete:*)",
+      "Bash(git commit --no-verify:*)",
+      "Bash(git config:*)",
+      "Bash(git rebase:*)",
+      "Bash(npm publish:*)",
+      "Bash(pnpm publish:*)",
+      "Bash(sudo:*)",
+      "Read(.env*)",
+      "Read(id_ed25519)",
+      "Read(id_rsa)",
+      "Read(.env.*)",
+      "Bash(wget:*)",
+      "Bash(nc:*)",
+      "Bash(psql:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git push origin --force:*)",
+      "Bash(git push origin -f:*)"
+    ],
+    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Submarine.aiff"
+          }
+        ]
+      },
+      {
+        "matcher": "permission_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Ping.aiff"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/semba/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/scripts/statusline.sh\""
+  },
   "enabledPlugins": {
     "agent-browser@agent-browser": false,
     "atlassian@claude-plugins-official": false,
@@ -42,181 +137,87 @@
     "typescript-lsp@claude-plugins-official": false,
     "vercel@claude-plugins-official": false
   },
-  "env": {
-    "ANTHROPIC_MODEL": "opusplan",
-    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
-    "CLAUDE_CODE_AUTO_CONNECT_IDE": "false",
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL": "1",
-    "CLAUDE_CODE_IDE_SKIP_VALID_CHECK": "1",
-    "CLAUDE_CODE_NO_FLICKER": "1",
-    "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_ZOXIDE": "1",
-    "ENABLE_LSP_TOOL": "1"
-  },
   "extraKnownMarketplaces": {
     "agent-browser": {
       "source": {
-        "repo": "vercel-labs/agent-browser",
-        "source": "github"
+        "source": "github",
+        "repo": "vercel-labs/agent-browser"
       }
     },
     "anthropic-agent-skills": {
       "source": {
-        "repo": "anthropics/skills",
-        "source": "github"
+        "source": "github",
+        "repo": "anthropics/skills"
       }
     },
     "ast-grep-marketplace": {
       "source": {
-        "repo": "ast-grep/agent-skill",
-        "source": "github"
+        "source": "github",
+        "repo": "ast-grep/agent-skill"
       }
     },
     "chrome-devtools-mcp": {
       "source": {
-        "repo": "ChromeDevTools/chrome-devtools-mcp",
-        "source": "github"
+        "source": "github",
+        "repo": "ChromeDevTools/chrome-devtools-mcp"
       }
     },
     "knowledge-work-plugins": {
       "source": {
-        "repo": "anthropics/knowledge-work-plugins",
-        "source": "github"
+        "source": "github",
+        "repo": "anthropics/knowledge-work-plugins"
       }
     },
     "mattpocock": {
       "source": {
-        "repo": "mattpocock/skills",
-        "source": "github"
+        "source": "github",
+        "repo": "mattpocock/skills"
       }
     },
     "openai-codex": {
       "source": {
-        "repo": "openai/codex-plugin-cc",
-        "source": "github"
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
       }
     },
     "storybook": {
       "source": {
-        "repo": "storybookjs/mcp",
-        "source": "github"
+        "source": "github",
+        "repo": "storybookjs/mcp"
       }
     },
     "tsumiki": {
       "source": {
-        "repo": "classmethod/tsumiki",
-        "source": "github"
+        "source": "github",
+        "repo": "classmethod/tsumiki"
       }
     },
     "vercel-plugin": {
       "source": {
-        "repo": "vercel/vercel-plugin",
-        "source": "github"
+        "source": "github",
+        "repo": "vercel/vercel-plugin"
       }
     },
     "webwright": {
       "source": {
-        "repo": "microsoft/Webwright",
-        "source": "github"
+        "source": "github",
+        "repo": "microsoft/Webwright"
       }
     }
   },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "afplay /System/Library/Sounds/Submarine.aiff",
-            "type": "command"
-          }
-        ],
-        "matcher": "idle_prompt"
-      },
-      {
-        "hooks": [
-          {
-            "command": "afplay /System/Library/Sounds/Ping.aiff",
-            "type": "command"
-          }
-        ],
-        "matcher": "permission_prompt"
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '/Users/semba/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "afplay /System/Library/Sounds/Funk.aiff",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "inputNeededNotifEnabled": true,
   "language": "英語で考えて、日本語で回答する。",
-  "permissions": {
-    "allow": [
-      "Bash(ls:*)",
-      "Bash(find:*)",
-      "Bash(cat:*)",
-      "Bash(mkdir:*)",
-      "Bash(npm init:*)",
-      "Bash(npm install:*)",
-      "Bash(yarn install:*)",
-      "Bash(pnpm install:*)",
-      "Bash(git checkout:*)",
-      "Bash(git push:*)",
-      "Bash(echo:*)",
-      "WebSearch"
-    ],
-    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
-    "defaultMode": "auto",
-    "deny": [
-      "Bash(brew install:*)",
-      "Bash(chmod 777:*)",
-      "Bash(gh repo delete:*)",
-      "Bash(git commit --no-verify:*)",
-      "Bash(git config:*)",
-      "Bash(git rebase:*)",
-      "Bash(npm publish:*)",
-      "Bash(pnpm publish:*)",
-      "Bash(sudo:*)",
-      "Read(.env*)",
-      "Read(id_ed25519)",
-      "Read(id_rsa)",
-      "Read(.env.*)",
-      "Bash(wget:*)",
-      "Bash(nc:*)",
-      "Bash(psql:*)",
-      "Bash(git push --force:*)",
-      "Bash(git push -f:*)",
-      "Bash(git push origin --force:*)",
-      "Bash(git push origin -f:*)"
-    ]
-  },
-  "preferredNotifChannel": "ghostty",
-  "remoteControlAtStartup": true,
-  "skipAutoPermissionPrompt": true,
+  "effortLevel": "xhigh",
+  "askUserQuestionTimeout": "10m",
+  "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
-  "statusLine": {
-    "command": "bash \"$HOME/.claude/scripts/statusline.sh\"",
-    "type": "command"
-  },
   "theme": "dark",
-  "tui": "fullscreen"
+  "editorMode": "normal",
+  "preferredNotifChannel": "ghostty",
+  "autoCompactEnabled": true,
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "model": "claude-fable-5[1m]"
 }

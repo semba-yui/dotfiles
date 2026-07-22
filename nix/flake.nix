@@ -23,16 +23,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    git-worktree-runner = {
-      url = "github:coderabbitai/git-worktree-runner";
-      flake = false;
-    };
-
-    mo = {
-      url = "github:k1LoW/mo";
-      flake = false;
-    };
   };
 
   outputs =
