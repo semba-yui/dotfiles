@@ -1,4 +1,198 @@
 lockfile_version: '1'
-generated_at: '2026-07-20T08:46:35.777342+00:00'
+generated_at: '2026-07-21T06:35:53.346765+00:00'
 apm_version: 0.21.0
-dependencies: []
+dependencies:
+- repo_url: iKora128/stop-ai-slop-jp
+  host: github.com
+  resolved_commit: e09d32796f253a62693885757cea484c275d06f2
+  resolved_ref: e09d32796f253a62693885757cea484c275d06f2
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/stop-ai-slop-jp
+  - .agents/skills/stop-ai-slop-jp/.gitignore
+  - .agents/skills/stop-ai-slop-jp/CHANGELOG.md
+  - .agents/skills/stop-ai-slop-jp/LICENSE
+  - .agents/skills/stop-ai-slop-jp/README.en.md
+  - .agents/skills/stop-ai-slop-jp/README.md
+  - .agents/skills/stop-ai-slop-jp/SKILL.md
+  - .agents/skills/stop-ai-slop-jp/references/examples.md
+  - .agents/skills/stop-ai-slop-jp/references/phrases.md
+  - .agents/skills/stop-ai-slop-jp/references/structures.md
+  - .claude/skills/stop-ai-slop-jp
+  - .claude/skills/stop-ai-slop-jp/.gitignore
+  - .claude/skills/stop-ai-slop-jp/CHANGELOG.md
+  - .claude/skills/stop-ai-slop-jp/LICENSE
+  - .claude/skills/stop-ai-slop-jp/README.en.md
+  - .claude/skills/stop-ai-slop-jp/README.md
+  - .claude/skills/stop-ai-slop-jp/SKILL.md
+  - .claude/skills/stop-ai-slop-jp/references/examples.md
+  - .claude/skills/stop-ai-slop-jp/references/phrases.md
+  - .claude/skills/stop-ai-slop-jp/references/structures.md
+  deployed_file_hashes:
+    .agents/skills/stop-ai-slop-jp/.gitignore: sha256:cf237c7aff44efbe6e502e645c3e06da03a69d7bdeb43392108ef3348143417e
+    .agents/skills/stop-ai-slop-jp/CHANGELOG.md: sha256:13b54e7ba2750b34f62c04ee47a29495777348e7ff90847078e3029dd1c742bd
+    .agents/skills/stop-ai-slop-jp/LICENSE: sha256:f9145903368bf0483fec06d7f2ed12d2e20667190783a7ffea161e92ff39f301
+    .agents/skills/stop-ai-slop-jp/README.en.md: sha256:37874550afb353707d5ef3f2706c776c4f97e3fe904dcf1057fc4c3ab66d3d40
+    .agents/skills/stop-ai-slop-jp/README.md: sha256:555c1fcabb809420cb5b8de240ab0be49e88a915bac872ce12a0b35b7916f4d8
+    .agents/skills/stop-ai-slop-jp/SKILL.md: sha256:4da89e5f9c69ce69a8d6c04e8f3d238686cd3a3ba3946c5cfadad805116c50f3
+    .agents/skills/stop-ai-slop-jp/references/examples.md: sha256:a971dfc0f69e914365d29b7566cf1dbcf4cbaf3abf3c331b384e8d29beb9b5f5
+    .agents/skills/stop-ai-slop-jp/references/phrases.md: sha256:0e23388b43146d7f560cdc04a1f8ebe3518b57889404e39fa258b025ab4d2003
+    .agents/skills/stop-ai-slop-jp/references/structures.md: sha256:af7447458633e522394a153295ac2a5ef8c14c6e82befae212a0650058e52969
+    .claude/skills/stop-ai-slop-jp/.gitignore: sha256:cf237c7aff44efbe6e502e645c3e06da03a69d7bdeb43392108ef3348143417e
+    .claude/skills/stop-ai-slop-jp/CHANGELOG.md: sha256:13b54e7ba2750b34f62c04ee47a29495777348e7ff90847078e3029dd1c742bd
+    .claude/skills/stop-ai-slop-jp/LICENSE: sha256:f9145903368bf0483fec06d7f2ed12d2e20667190783a7ffea161e92ff39f301
+    .claude/skills/stop-ai-slop-jp/README.en.md: sha256:37874550afb353707d5ef3f2706c776c4f97e3fe904dcf1057fc4c3ab66d3d40
+    .claude/skills/stop-ai-slop-jp/README.md: sha256:555c1fcabb809420cb5b8de240ab0be49e88a915bac872ce12a0b35b7916f4d8
+    .claude/skills/stop-ai-slop-jp/SKILL.md: sha256:4da89e5f9c69ce69a8d6c04e8f3d238686cd3a3ba3946c5cfadad805116c50f3
+    .claude/skills/stop-ai-slop-jp/references/examples.md: sha256:a971dfc0f69e914365d29b7566cf1dbcf4cbaf3abf3c331b384e8d29beb9b5f5
+    .claude/skills/stop-ai-slop-jp/references/phrases.md: sha256:0e23388b43146d7f560cdc04a1f8ebe3518b57889404e39fa258b025ab4d2003
+    .claude/skills/stop-ai-slop-jp/references/structures.md: sha256:af7447458633e522394a153295ac2a5ef8c14c6e82befae212a0650058e52969
+  content_hash: sha256:2e81e3a96cd7e5eaaf6fae3a597a76c8538c027a3ec86b8643cb454dc231f8ff
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: meta/empirical-prompt-tuning
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/empirical-prompt-tuning
+  - .agents/skills/empirical-prompt-tuning/README.md
+  - .agents/skills/empirical-prompt-tuning/SKILL-ja.md
+  - .agents/skills/empirical-prompt-tuning/SKILL.md
+  - .claude/skills/empirical-prompt-tuning
+  - .claude/skills/empirical-prompt-tuning/README.md
+  - .claude/skills/empirical-prompt-tuning/SKILL-ja.md
+  - .claude/skills/empirical-prompt-tuning/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/empirical-prompt-tuning/README.md: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
+    .agents/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+    .agents/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+    .claude/skills/empirical-prompt-tuning/README.md: sha256:c7db7d27122bcffe416e5607700a7cd1778cad260d3e104c5bb6da7b7f976b3d
+    .claude/skills/empirical-prompt-tuning/SKILL-ja.md: sha256:0a38d830802c2e08a7faca13928fedf6911e00b896946b4b03910d662de6dea5
+    .claude/skills/empirical-prompt-tuning/SKILL.md: sha256:252418e7ef022981d2dda2e3ec57fa1c786d30af68c50b7e062edf1d7361b0cb
+  content_hash: sha256:20e7fba93c7267ba6e3a7b27787ca49191b762dffcfb804b01da9183b1b0c891
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: meta/extract-glossary
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/extract-glossary
+  - .agents/skills/extract-glossary/README.md
+  - .agents/skills/extract-glossary/SKILL.md
+  - .claude/skills/extract-glossary
+  - .claude/skills/extract-glossary/README.md
+  - .claude/skills/extract-glossary/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/extract-glossary/README.md: sha256:3d1143b0665b3b59a3d9e8a60c331e89e43a2b9a1a775a80db2e5585fded98fd
+    .agents/skills/extract-glossary/SKILL.md: sha256:4fc93b67c0ade44bc194b7522de29c7ede6608d8de96f3dbd435b5578e7e7a0a
+    .claude/skills/extract-glossary/README.md: sha256:3d1143b0665b3b59a3d9e8a60c331e89e43a2b9a1a775a80db2e5585fded98fd
+    .claude/skills/extract-glossary/SKILL.md: sha256:4fc93b67c0ade44bc194b7522de29c7ede6608d8de96f3dbd435b5578e7e7a0a
+  content_hash: sha256:43e850db3f9bbbc05625b571569378e329ee9ca16623895188bacd934f5224dd
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: meta/optimizing-descriptions
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/optimizing-descriptions
+  - .agents/skills/optimizing-descriptions/README.md
+  - .agents/skills/optimizing-descriptions/SKILL.md
+  - .claude/skills/optimizing-descriptions
+  - .claude/skills/optimizing-descriptions/README.md
+  - .claude/skills/optimizing-descriptions/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/optimizing-descriptions/README.md: sha256:78607bff6a385d12bc8f88291fa244ff1eb18c5803f1c3f2f6d09de4c5b7a1c7
+    .agents/skills/optimizing-descriptions/SKILL.md: sha256:45b154658d931ebd1b5ac24aa17de30775c4f76aebdd1451e51f10b5a49ae63c
+    .claude/skills/optimizing-descriptions/README.md: sha256:78607bff6a385d12bc8f88291fa244ff1eb18c5803f1c3f2f6d09de4c5b7a1c7
+    .claude/skills/optimizing-descriptions/SKILL.md: sha256:45b154658d931ebd1b5ac24aa17de30775c4f76aebdd1451e51f10b5a49ae63c
+  content_hash: sha256:ec0cfe8330099f1ac06e446e0dd98c7d61f5fb31662fe77a3678b0cbe36c9097
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: testing/playwright-cli
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/playwright-cli
+  - .agents/skills/playwright-cli/README.md
+  - .agents/skills/playwright-cli/SKILL.md
+  - .claude/skills/playwright-cli
+  - .claude/skills/playwright-cli/README.md
+  - .claude/skills/playwright-cli/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/playwright-cli/README.md: sha256:0b6236838eaeac59ee64828cb86b485e7318a8162da65f31e9064e14b39b7b38
+    .agents/skills/playwright-cli/SKILL.md: sha256:dc6f7e100b20369010393b116f3d748cfa7d3b298046638e854b5a02d4e0e7f7
+    .claude/skills/playwright-cli/README.md: sha256:0b6236838eaeac59ee64828cb86b485e7318a8162da65f31e9064e14b39b7b38
+    .claude/skills/playwright-cli/SKILL.md: sha256:dc6f7e100b20369010393b116f3d748cfa7d3b298046638e854b5a02d4e0e7f7
+  content_hash: sha256:91b5ce28a1c5080740817a5977279c60d9467aeeb1aa992ea4363c8d148dca43
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: testing/playwright-test
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/playwright-test
+  - .agents/skills/playwright-test/README.md
+  - .agents/skills/playwright-test/SKILL-ja.md
+  - .agents/skills/playwright-test/SKILL.md
+  - .claude/skills/playwright-test
+  - .claude/skills/playwright-test/README.md
+  - .claude/skills/playwright-test/SKILL-ja.md
+  - .claude/skills/playwright-test/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/playwright-test/README.md: sha256:71567cf469a618744f63e72578d189a4dda5ef81c6e60169348579af3f0112fb
+    .agents/skills/playwright-test/SKILL-ja.md: sha256:63d2cd55468c576e986fe4eb7b799d9203f38540688a8988588c551d8b19548e
+    .agents/skills/playwright-test/SKILL.md: sha256:b66dbd57a461cfd40c7a2b91af156b6923b3bba39a4ae712528b5c0ce3dba3fd
+    .claude/skills/playwright-test/README.md: sha256:71567cf469a618744f63e72578d189a4dda5ef81c6e60169348579af3f0112fb
+    .claude/skills/playwright-test/SKILL-ja.md: sha256:63d2cd55468c576e986fe4eb7b799d9203f38540688a8988588c551d8b19548e
+    .claude/skills/playwright-test/SKILL.md: sha256:b66dbd57a461cfd40c7a2b91af156b6923b3bba39a4ae712528b5c0ce3dba3fd
+  content_hash: sha256:7f85a2a1a1b2c96604c97676239c2df91558fb6c1fa5a89c78683bb68375026a
+- repo_url: mizchi/skills
+  host: github.com
+  resolved_commit: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  resolved_ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+  virtual_path: tooling/ast-grep-practice
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/ast-grep-practice
+  - .agents/skills/ast-grep-practice/README.md
+  - .agents/skills/ast-grep-practice/SKILL-ja.md
+  - .agents/skills/ast-grep-practice/SKILL.md
+  - .agents/skills/ast-grep-practice/references/cli.md
+  - .agents/skills/ast-grep-practice/references/kind-catalog.md
+  - .agents/skills/ast-grep-practice/references/rule-yaml.md
+  - .agents/skills/ast-grep-practice/references/testing.md
+  - .claude/skills/ast-grep-practice
+  - .claude/skills/ast-grep-practice/README.md
+  - .claude/skills/ast-grep-practice/SKILL-ja.md
+  - .claude/skills/ast-grep-practice/SKILL.md
+  - .claude/skills/ast-grep-practice/references/cli.md
+  - .claude/skills/ast-grep-practice/references/kind-catalog.md
+  - .claude/skills/ast-grep-practice/references/rule-yaml.md
+  - .claude/skills/ast-grep-practice/references/testing.md
+  deployed_file_hashes:
+    .agents/skills/ast-grep-practice/README.md: sha256:117059807d964371b7006bcc5ec24512bb992ecd643c128281be3ba760cf9a47
+    .agents/skills/ast-grep-practice/SKILL-ja.md: sha256:dbe683eb03d6c32f5bb1c254adf77a20c20625de0bb4b40f43a890d617709e60
+    .agents/skills/ast-grep-practice/SKILL.md: sha256:9183634a2e375f826fede62515b8d1414200cdc3643d93393ed1c3b36e45beeb
+    .agents/skills/ast-grep-practice/references/cli.md: sha256:20f47f7693019f6e392cf59a2bb0f938c3763ff177f7eb5f6ed1360bc9b78938
+    .agents/skills/ast-grep-practice/references/kind-catalog.md: sha256:0a616ac78efa38aeeee5b8afc939bee0489c5d1d92b82475480e429d03a14ec4
+    .agents/skills/ast-grep-practice/references/rule-yaml.md: sha256:1b801dd897252f442384980235eaf06354bb6dc0ac8378f196e4e20746e1c7c0
+    .agents/skills/ast-grep-practice/references/testing.md: sha256:d7e2282b5b6ef954891af059adbe9b8ae23edcc385ba00f6a9e80e42ac6607d7
+    .claude/skills/ast-grep-practice/README.md: sha256:117059807d964371b7006bcc5ec24512bb992ecd643c128281be3ba760cf9a47
+    .claude/skills/ast-grep-practice/SKILL-ja.md: sha256:dbe683eb03d6c32f5bb1c254adf77a20c20625de0bb4b40f43a890d617709e60
+    .claude/skills/ast-grep-practice/SKILL.md: sha256:9183634a2e375f826fede62515b8d1414200cdc3643d93393ed1c3b36e45beeb
+    .claude/skills/ast-grep-practice/references/cli.md: sha256:20f47f7693019f6e392cf59a2bb0f938c3763ff177f7eb5f6ed1360bc9b78938
+    .claude/skills/ast-grep-practice/references/kind-catalog.md: sha256:0a616ac78efa38aeeee5b8afc939bee0489c5d1d92b82475480e429d03a14ec4
+    .claude/skills/ast-grep-practice/references/rule-yaml.md: sha256:1b801dd897252f442384980235eaf06354bb6dc0ac8378f196e4e20746e1c7c0
+    .claude/skills/ast-grep-practice/references/testing.md: sha256:d7e2282b5b6ef954891af059adbe9b8ae23edcc385ba00f6a9e80e42ac6607d7
+  content_hash: sha256:2c39f6e925845efc15cff26d3aecf5dd5f1acc8f62dd06524bf98b7ac0bde7a6

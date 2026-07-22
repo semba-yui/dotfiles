@@ -1,8 +1,46 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"$HOME/.claude/scripts/statusline.sh\""
+  "agentPushNotifEnabled": true,
+  "askUserQuestionTimeout": "10m",
+  "autoCompactEnabled": true,
+  "editorMode": "normal",
+  "effortLevel": "xhigh",
+  "enabledPlugins": {
+    "agent-browser@agent-browser": false,
+    "atlassian@claude-plugins-official": false,
+    "atomic-agents@claude-plugins-official": false,
+    "canva@knowledge-work-plugins": false,
+    "chrome-devtools-mcp@chrome-devtools-plugins": false,
+    "chrome-devtools-mcp@claude-plugins-official": false,
+    "claude-code-setup@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": false,
+    "code-review@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
+    "codex@openai-codex": false,
+    "context7@claude-plugins-official": false,
+    "document-skills@anthropic-agent-skills": false,
+    "feature-dev@claude-plugins-official": false,
+    "figma@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": false,
+    "mattpocock-skills@mattpocock": false,
+    "microsoft-docs@claude-plugins-official": false,
+    "miro@claude-plugins-official": false,
+    "miro@knowledge-work-plugins": false,
+    "playwright@claude-plugins-official": false,
+    "plugin-dev@claude-plugins-official": false,
+    "pr-review-toolkit@claude-plugins-official": false,
+    "ralph-loop@claude-plugins-official": false,
+    "redis-development@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": false,
+    "semgrep@claude-plugins-official": false,
+    "skill-creator@claude-plugins-official": false,
+    "slack@claude-plugins-official": false,
+    "storybook@storybook": false,
+    "superpowers@claude-plugins-official": false,
+    "terraform@claude-plugins-official": false,
+    "tsumiki@tsumiki": false,
+    "typescript-lsp@claude-plugins-official": false,
+    "vercel@claude-plugins-official": false
   },
   "env": {
     "ANTHROPIC_MODEL": "opusplan",
@@ -16,6 +54,120 @@
     "DISABLE_ZOXIDE": "1",
     "ENABLE_LSP_TOOL": "1"
   },
+  "extraKnownMarketplaces": {
+    "agent-browser": {
+      "source": {
+        "repo": "vercel-labs/agent-browser",
+        "source": "github"
+      }
+    },
+    "anthropic-agent-skills": {
+      "source": {
+        "repo": "anthropics/skills",
+        "source": "github"
+      }
+    },
+    "ast-grep-marketplace": {
+      "source": {
+        "repo": "ast-grep/agent-skill",
+        "source": "github"
+      }
+    },
+    "chrome-devtools-mcp": {
+      "source": {
+        "repo": "ChromeDevTools/chrome-devtools-mcp",
+        "source": "github"
+      }
+    },
+    "knowledge-work-plugins": {
+      "source": {
+        "repo": "anthropics/knowledge-work-plugins",
+        "source": "github"
+      }
+    },
+    "mattpocock": {
+      "source": {
+        "repo": "mattpocock/skills",
+        "source": "github"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "repo": "openai/codex-plugin-cc",
+        "source": "github"
+      }
+    },
+    "storybook": {
+      "source": {
+        "repo": "storybookjs/mcp",
+        "source": "github"
+      }
+    },
+    "tsumiki": {
+      "source": {
+        "repo": "classmethod/tsumiki",
+        "source": "github"
+      }
+    },
+    "vercel-plugin": {
+      "source": {
+        "repo": "vercel/vercel-plugin",
+        "source": "github"
+      }
+    },
+    "webwright": {
+      "source": {
+        "repo": "microsoft/Webwright",
+        "source": "github"
+      }
+    }
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "afplay /System/Library/Sounds/Submarine.aiff",
+            "type": "command"
+          }
+        ],
+        "matcher": "idle_prompt"
+      },
+      {
+        "hooks": [
+          {
+            "command": "afplay /System/Library/Sounds/Ping.aiff",
+            "type": "command"
+          }
+        ],
+        "matcher": "permission_prompt"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash '/Users/semba/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10,
+            "type": "command"
+          }
+        ],
+        "matcher": "*"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "afplay /System/Library/Sounds/Funk.aiff",
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "inputNeededNotifEnabled": true,
+  "language": "英語で考えて、日本語で回答する。",
   "permissions": {
     "allow": [
       "Bash(ls:*)",
@@ -31,6 +183,8 @@
       "Bash(echo:*)",
       "WebSearch"
     ],
+    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
+    "defaultMode": "auto",
     "deny": [
       "Bash(brew install:*)",
       "Bash(chmod 777:*)",
@@ -52,122 +206,17 @@
       "Bash(git push -f:*)",
       "Bash(git push origin --force:*)",
       "Bash(git push origin -f:*)"
-    ],
-    "ask": ["Bash(curl:*)", "Bash(git reset:*)", "Bash(git push:*)", "Bash(rm:*)"],
-    "defaultMode": "auto"
-  },
-  "hooks": {
-    "Notification": [
-      {
-        "matcher": "idle_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Submarine.aiff"
-          }
-        ]
-      },
-      {
-        "matcher": "permission_prompt",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Ping.aiff"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Funk.aiff"
-          }
-        ]
-      }
     ]
   },
-  "extraKnownMarketplaces": {
-    "agent-browser": {
-      "source": {
-        "source": "github",
-        "repo": "vercel-labs/agent-browser"
-      }
-    },
-    "anthropic-agent-skills": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/skills"
-      }
-    },
-    "ast-grep-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "ast-grep/agent-skill"
-      }
-    },
-    "chrome-devtools-mcp": {
-      "source": {
-        "source": "github",
-        "repo": "ChromeDevTools/chrome-devtools-mcp"
-      }
-    },
-    "knowledge-work-plugins": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/knowledge-work-plugins"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    },
-    "playwright-cli": {
-      "source": {
-        "source": "github",
-        "repo": "microsoft/playwright-cli"
-      }
-    },
-    "storybook": {
-      "source": {
-        "source": "github",
-        "repo": "storybookjs/mcp"
-      }
-    },
-    "tsumiki": {
-      "source": {
-        "source": "github",
-        "repo": "classmethod/tsumiki"
-      }
-    },
-    "vercel-plugin": {
-      "source": {
-        "source": "github",
-        "repo": "vercel/vercel-plugin"
-      }
-    },
-    "webwright": {
-      "source": {
-        "source": "github",
-        "repo": "microsoft/Webwright"
-      }
-    }
-  },
-  "language": "英語で考えて、日本語で回答する。",
-  "effortLevel": "xhigh",
-  "askUserQuestionTimeout": "10m",
-  "tui": "fullscreen",
+  "preferredNotifChannel": "ghostty",
+  "remoteControlAtStartup": true,
+  "skipAutoPermissionPrompt": true,
   "skipDangerousModePermissionPrompt": true,
   "skipWorkflowUsageWarning": true,
+  "statusLine": {
+    "command": "bash \"$HOME/.claude/scripts/statusline.sh\"",
+    "type": "command"
+  },
   "theme": "dark",
-  "editorMode": "normal",
-  "preferredNotifChannel": "ghostty",
-  "autoCompactEnabled": true,
-  "remoteControlAtStartup": true,
-  "inputNeededNotifEnabled": true,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "tui": "fullscreen"
 }

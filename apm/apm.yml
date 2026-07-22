@@ -4,8 +4,26 @@ version: 0.1.0
 targets:
   - agent-skills
   - claude
-  - codex
-  - copilot
 
 dependencies:
-  apm: []
+  apm:
+    - git: https://github.com/iKora128/stop-ai-slop-jp.git
+      ref: e09d32796f253a62693885757cea484c275d06f2
+    - git: https://github.com/mizchi/skills.git
+      path: meta/empirical-prompt-tuning
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    - git: https://github.com/mizchi/skills.git
+      path: meta/extract-glossary
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    - git: https://github.com/mizchi/skills.git
+      path: meta/optimizing-descriptions
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    - git: https://github.com/mizchi/skills.git
+      path: testing/playwright-cli
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    - git: https://github.com/mizchi/skills.git
+      path: testing/playwright-test
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    - git: https://github.com/mizchi/skills.git
+      path: tooling/ast-grep-practice
+      ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4

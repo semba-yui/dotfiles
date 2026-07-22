@@ -29,11 +29,6 @@
       flake = false;
     };
 
-    catppuccin-ghostty = {
-      url = "github:catppuccin/ghostty";
-      flake = false;
-    };
-
     mo = {
       url = "github:k1LoW/mo";
       flake = false;

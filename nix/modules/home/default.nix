@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./programs/apm.nix
     ./programs/bat.nix
     ./programs/betterleaks.nix
     ./programs/bottom.nix
@@ -16,6 +17,7 @@
     ./programs/fish.nix
     ./programs/fzf.nix
     ./programs/gh.nix
+    ./programs/ghostty.nix
     ./programs/git-credential-manager.nix
     ./programs/git.nix
     ./programs/herdr.nix
@@ -29,7 +31,6 @@
 
   home.packages = with pkgs; [
     acli
-    apm-cli
     ast-grep
     bun
     chatgpt
@@ -45,10 +46,10 @@
     hunk
     hyperfine
     jdk25
-    jetbrains-mono
     jetbrains-toolbox
     just
     mermaid-cli
+    nerd-fonts.jetbrains-mono
     nil
     nixd
     nixfmt
