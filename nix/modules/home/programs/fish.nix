@@ -14,6 +14,7 @@ let
   # ディレクトリごとではなくファイル単位でリンクして共存させる。
   fishSourceFiles = [
     "conf.d/fzf-widgets.fish"
+    "functions/fzf_command_palette.fish"
     "functions/fzf_ghq_repos.fish"
     "functions/fzf_git_branches.fish"
     "functions/fzf_zoxide_jump.fish"

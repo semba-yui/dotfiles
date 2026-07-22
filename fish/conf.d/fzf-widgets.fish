@@ -5,5 +5,6 @@
 status is-interactive; or exit
 
 bind ctrl-\] fzf_ghq_repos # ghq リポジトリ + gtr worktree へ cd
+bind alt-x fzf_command_palette # カスタム DX 操作のパレット（チートシート兼実行器）
 bind ctrl-o fzf_git_branches # ブランチ切替
 bind alt-z fzf_zoxide_jump # zoxide の frecent ディレクトリへジャンプ
