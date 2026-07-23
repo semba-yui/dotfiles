@@ -20,6 +20,7 @@ let
     "functions/fzf_zoxide_jump.fish"
     "functions/gwn.fish"
     "functions/gwd.fish"
+    "functions/gwo.fish"
     "functions/fkill.fish"
   ];
 in

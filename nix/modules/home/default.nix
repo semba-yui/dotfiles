@@ -36,7 +36,6 @@
     acli
     ast-grep
     bun
-    cmux
     curl
     deadnix
     dust

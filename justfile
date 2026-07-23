@@ -28,6 +28,13 @@ ai-check:
 doctor:
     ./nix/scripts/doctor.sh
 
+# herdr の設定とエージェント連携フック（imperative 管理）が陳腐化していないか検査する
+[group('整形・検証')]
+herdr-doctor:
+    herdr config check
+    herdr integration status --outdated-only
+    herdr plugin list
+
 # 指定したホストの構成を、反映せずにビルドする
 [group('整形・検証')]
 build host=current-host:
@@ -52,3 +59,10 @@ ai-update:
 [group('反映・更新')]
 update:
     ./nix/scripts/update.sh
+
+# herdr プラグインを宣言済みバージョンへ揃える（Nix 化できないため just で再現手順を固定する）
+[group('反映・更新')]
+herdr-plugins:
+    herdr plugin install persiyanov/herdr-reviewr --ref v0.22.1 --yes
+    herdr plugin install andrewchng/herdr-sessionizer --ref v0.6.1 --yes
+    herdr plugin list
