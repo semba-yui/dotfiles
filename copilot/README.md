@@ -1,6 +1,6 @@
 # GitHub Copilot CLI
 
-`~/.copilot/` へ配置する、GitHub Copilot CLI専用の設定を管理します。
+`~/.copilot/` へ配置する、GitHub Copilot CLI専用の設定を管理します。現時点で設定ファイルは未コミットで、必要になった時点で以下の構成に従って追加します。
 
 - `.copilot/settings.json`: 端末間で共有するユーザー設定
 - `.copilot/copilot-instructions.md`: Copilotだけに適用する共通指示
