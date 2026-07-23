@@ -22,6 +22,7 @@
     ./programs/git.nix
     ./programs/herdr.nix
     ./programs/jq.nix
+    ./programs/lazygit.nix
     ./programs/mise.nix
     ./programs/neovim.nix
     ./programs/nh.nix
