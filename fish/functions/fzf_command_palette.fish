@@ -8,6 +8,7 @@ function fzf_command_palette --description "カスタム DX 操作の一覧か�
         printf '%-18s│ %-7s│ %s\t%s\n' fzf_git_branches Ctrl-O 'ブランチを切り替える' fzf_git_branches
         printf '%-18s│ %-7s│ %s\t%s\n' fzf_zoxide_jump Alt-Z 'よく行くディレクトリへジャンプ (zoxide)' fzf_zoxide_jump
         printf '%-18s│ %-7s│ %s\t%s\n' 'gtr cd' - 'worktree 一覧から移動 (Ctrl-E:エディタ / Ctrl-A:AI / Ctrl-D:削除)' 'gtr cd'
+        printf '%-18s│ %-7s│ %s\t%s\n' fzf_create_worktree_from_base_branch Alt-N 'base branch から新規 branch + worktree を作成' fzf_create_worktree_from_base_branch
         printf '%-18s│ %-7s│ %s\t%s\n' gwn - 'ブランチを選んで worktree を作成し移動' gwn
         printf '%-18s│ %-7s│ %s\t%s\n' gwd - 'worktree を選んで削除（複数可）' gwd
         printf '%-18s│ %-7s│ %s\t%s\n' fkill - 'プロセスを選んで kill' fkill

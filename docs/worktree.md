@@ -10,12 +10,13 @@ worktree の作成は必ず gtr（[git-worktree-runner](../nix/packages/git-work
 
 ## 日常操作
 
-| 操作             | 入口                                                                        | 説明                                                                                    |
-| ---------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| 作成             | [`gwn`](../fish/functions/gwn.fish)                                         | ブランチを fzf で選んで worktree を作成。herdr 内では cd せず子ワークスペースとして開く |
-| 移動             | `gtr cd` / [`fzf_ghq_repos`](../fish/functions/fzf_ghq_repos.fish) (Ctrl-]) | worktree 一覧・ghq リポジトリから cd する                                               |
-| ワークスペース化 | [`gwo`](../fish/functions/gwo.fish) / `prefix+shift+g`                      | 既存の worktree を herdr の子ワークスペースとして開く（作成はしない）                   |
-| 削除             | [`gwd`](../fish/functions/gwd.fish)                                         | worktree を fzf で選んで削除（複数可）                                                  |
+| 操作                         | 入口                                                                                                            | 説明                                                                                       |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 新規 branch と worktree 作成 | [`fzf_create_worktree_from_base_branch`](../fish/functions/fzf_create_worktree_from_base_branch.fish) (`Alt-N`) | base branch を選んで新規 branch と worktree を作成。herdr 内では子ワークスペースとして開く |
+| 既存 branch の worktree 作成 | [`gwn`](../fish/functions/gwn.fish)                                                                             | 既存 branch を fzf で選んで worktree を作成。herdr 内では子ワークスペースとして開く        |
+| 移動                         | `gtr cd` / [`fzf_ghq_repos`](../fish/functions/fzf_ghq_repos.fish) (`Ctrl-]`)                                   | worktree 一覧・ghq リポジトリから cd する                                                  |
+| ワークスペース化             | [`gwo`](../fish/functions/gwo.fish) / `prefix+shift+g`                                                          | 既存の worktree を herdr の子ワークスペースとして開く（作成はしない）                      |
+| 削除                         | [`gwd`](../fish/functions/gwd.fish)                                                                             | worktree を fzf で選んで削除（複数可）                                                     |
 
 いずれも Alt-X のコマンドパレットから呼べます。
 
@@ -26,4 +27,5 @@ worktree の作成は必ず gtr（[git-worktree-runner](../nix/packages/git-work
 ## 設計判断の記録
 
 - **herdr と gtr の責務分担**（2026-07 の herdr 導入時に決定）: 「作成・削除 = gtr、ワークスペース化・閲覧 = herdr」。gtr は `git worktree add` を素直に使うため、gtr が作った checkout は herdr の `worktree open` がそのまま採用できます。逆方向（herdr が作って gtr のフックを走らせる）は成立しません。
+- **base branch からの新規作成**: `fzf_create_worktree_from_base_branch` は default remote を fetch してから base を選び、`gtr new <new> --from <base> --track none` を実行します。`--track none` は、同名の remote branch を追跡する挙動に変わらず、選択した base から必ず新規 branch を作るための制約です。
 - **sessionizer が gtr の worktree も一覧に載せる仕掛け**: gtr は `<repo>-worktrees/<branch>`（ghq root から深さ4）に checkout を置くため、sessionizer の探索設定を `depth = 4` にしています（[herdr.nix](../nix/modules/home/programs/herdr.nix) の sessionizer 設定コメントを参照）。

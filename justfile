@@ -13,8 +13,15 @@ fmt:
 [group('整形・検証')]
 check:
     cd nix && nix flake check
+    just worktree-fish-test
     just --justfile justfile --fmt --check
     oxfmt --check .
+
+# worktree 作成 UI の振る舞いと、リポジトリ管理下の Fish 構文を検証する
+[group('整形・検証')]
+worktree-fish-test:
+    fish -n fish/conf.d/*.fish fish/functions/*.fish fish/tests/*.fish
+    fish fish/tests/fzf_create_worktree_from_base_branch_test.fish
 
 # グローバルAPMのmanifestとlockが一致し、再現可能かを変更せず検証する
 # APM 0.21.0のauditはグローバル配置先をproject相対として検査するため、対応するまで使用しない
