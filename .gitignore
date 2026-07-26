@@ -18,3 +18,7 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 result
+
+### Claude Code
+# ユーザー設定には、ローカルで有効化したプラグインやMarketplaceの識別子が混在する。
+claude/.claude/settings.json
