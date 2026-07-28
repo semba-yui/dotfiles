@@ -1,0 +1,19 @@
+# 秘密検出をこのリポジトリだけに閉じるための設定。
+# 以前は home-manager がグローバルな core.hooksPath を張って全リポジトリへ効かせていたが、
+# core.hooksPath が設定されると Git は各リポジトリの .git/hooks を一切見なくなり、
+# リポジトリ側の hook 運用を丸ごと奪う。lefthook install は .git/hooks へ書くだけで
+# core.hooksPath を触らないため、この経路は再発しない。
+#
+# 検査範囲を push 差分へ絞る最適化は入れない。このリポジトリは全履歴を走査しても一瞬で終わり、
+# 範囲計算のロジックを抱えるほうが保守負債になる。
+#
+# --redact: 検出値そのものを端末やログへ出さない。
+pre-commit:
+  jobs:
+    - name: betterleaks
+      run: betterleaks git . --no-banner --pre-commit --redact --staged
+
+pre-push:
+  jobs:
+    - name: betterleaks
+      run: betterleaks git . --no-banner --redact

@@ -33,7 +33,7 @@ check_command() {
 
 printf 'dotfiles のセットアップ状態を診断します。\n\n'
 
-for command_name in darwin-rebuild fish gh git git-credential-manager just nh nix oxfmt; do
+for command_name in betterleaks darwin-rebuild fish gh git git-credential-manager just lefthook nh nix oxfmt; do
   check_command "$command_name"
 done
 
@@ -66,6 +66,13 @@ https://?*@github.com/*)
   fail "GitHubのremote URLにアカウント名がありません: ${remote_url:-未設定}"
   ;;
 esac
+
+# lefthookはリポジトリ内で実行して初めて導入状態を判定できるため、subshellで移動する。
+if (cd "$repository_root" && lefthook check-install >/dev/null 2>&1); then
+  pass "秘密検出のgit hooksが導入されています"
+else
+  fail "秘密検出のgit hooksが未導入です: dotfiles hooks-install を実行してください"
+fi
 
 if [[ -d "/Library/Input Methods/GoogleJapaneseInput.app" ]]; then
   pass "Google日本語入力がインストールされています"

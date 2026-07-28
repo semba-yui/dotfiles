@@ -29,6 +29,8 @@ sudo darwin-rebuild switch --flake .#LCDEV0215
 
 構成を適用せず検証する場合は `build` を使います。`switch` は現在のユーザー環境を変更するため、ビルド結果を確認してから実行してください。依存関係は `nix flake update` で更新し、`flake.lock` の差分を確認します。
 
+このリポジトリの秘密検出 hook は `lefthook.yml` が定義し、clone 直後に `dotfiles hooks-install` で `.git/hooks` へ導入します。端末全体の `core.hooksPath` は使いません（各リポジトリの `.git/hooks` を無効化してしまうため）。導入状態は `dotfiles doctor` が検査します。
+
 ## コーディング規約と命名
 
 インデントはスペース 2 個とし、最終的なレイアウトは `nix fmt` に従います。モジュールは宣言的かつ単一の用途に保ち、シェルフックやファイル生成より nix-darwin と Home Manager の標準オプションを優先してください。インポート、パッケージ一覧、許可リストはアルファベット順に並べます。

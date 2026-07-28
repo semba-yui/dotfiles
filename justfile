@@ -14,6 +14,7 @@ fmt:
 check:
     cd nix && nix flake check
     just worktree-fish-test
+    lefthook validate
     just --justfile justfile --fmt --check
     oxfmt --check .
 
@@ -51,6 +52,11 @@ build host=current-host:
 [group('反映・更新')]
 switch host=current-host:
     cd nix && nh darwin switch . --hostname "{{ host }}" --ask --no-update-lock-file --show-activation-logs
+
+# lefthook.ymlのhookを.git/hooksへ導入する（clone直後の一度だけ。hook種別を増やしたら再実行）
+[group('反映・更新')]
+hooks-install:
+    lefthook install
 
 # lock済みの公開AI依存をグローバル環境へ再現する
 [group('反映・更新')]

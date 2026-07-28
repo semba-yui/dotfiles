@@ -4,6 +4,7 @@
   imports = [
     ./programs/apm.nix
     ./programs/bat.nix
+    ./programs/betterleaks.nix
     ./programs/bottom.nix
     ./programs/claude-code.nix
     ./programs/codex.nix
@@ -23,6 +24,7 @@
     ./programs/jq.nix
     ./programs/jujutsu.nix
     ./programs/lazygit.nix
+    ./programs/lefthook.nix
     ./programs/mise.nix
     ./programs/neovim.nix
     ./programs/nh.nix

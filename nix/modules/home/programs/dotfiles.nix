@@ -15,6 +15,7 @@ let
     runtimeInputs = [
       pkgs.git
       pkgs.just
+      pkgs.lefthook
       pkgs.nh
       pkgs.nix
       pkgs.oxfmt
