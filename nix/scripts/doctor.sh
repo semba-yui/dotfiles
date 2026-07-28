@@ -79,7 +79,7 @@ else
   fail "CleanShot Xがインストールされていません"
 fi
 
-if [[ -e "$HOME/Applications/Home Manager Apps/Raycast.app" ]]; then
+if [[ -d "/Applications/Raycast.app" ]]; then
   pass "Raycastがインストールされています"
 else
   fail "Raycastがインストールされていません"
