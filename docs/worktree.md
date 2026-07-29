@@ -16,13 +16,14 @@ worktree の作成は必ず gtr（[git-worktree-runner](../nix/packages/git-work
 | 既存 branch の worktree 作成 | [`gwn`](../fish/functions/gwn.fish)                                                                             | 既存 branch を fzf で選んで worktree を作成。herdr 内では子ワークスペースとして開く        |
 | 移動                         | `gtr cd` / [`fzf_ghq_repos`](../fish/functions/fzf_ghq_repos.fish) (`Ctrl-]`)                                   | worktree 一覧・ghq リポジトリから cd する                                                  |
 | ワークスペース化             | [`gwo`](../fish/functions/gwo.fish) / `prefix+shift+g`                                                          | 既存の worktree を herdr の子ワークスペースとして開く（作成はしない）                      |
-| 削除                         | [`gwd`](../fish/functions/gwd.fish)                                                                             | worktree を fzf で選んで削除（複数可）                                                     |
+| 削除                         | [`gwd`](../fish/functions/gwd.fish)                                                                             | worktree を fzf で選んで削除（複数可）。`--force` 付きで削除する                           |
 
 いずれも Alt-X のコマンドパレットから呼べます。
 
 ## 運用ルール
 
 - **`gwd` の前に、対応する herdr ワークスペースを閉じる（`prefix+shift+d`）。** 開いたまま削除すると、消えたディレクトリを指すワークスペースが残ります。ツールをまたぐ制約のためコードで強制できず、このルールが唯一の防止策です。
+- **`gwd` は未コミット変更ごと消す。** サブモジュールを含む worktree は git が `--force` なしでは削除を拒む（`fatal: working trees containing submodules cannot be moved or removed`）ため、`gwd` は常に `--force` を渡します。その副作用で「未コミット・未追跡ファイルがある」ときの拒否も効きません。enter を押す前に fzf の preview（`git status --short`）で確認してください。
 
 ## 設計判断の記録
 

@@ -10,7 +10,10 @@ function gwd --description "gtr worktree を fzf で選んで削除する（複�
         --header='TAB で複数選択 / enter で削除' \
         --preview 'git -C {1} log --oneline --color=always -10; echo ---; git -C {1} status --short')
 
+    # サブモジュールを含む worktree は --force なしでは git が削除を拒む。
+    # 未コミット変更の保護も同時に外れるが、削除対象は fzf の preview で
+    # git status を確認したうえで選んでいるため、常に --force で削除する。
     for line in $selections
-        git gtr rm (string split \t -- $line)[2]
+        git gtr rm (string split \t -- $line)[2] --force
     end
 end
