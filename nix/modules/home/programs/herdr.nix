@@ -2,7 +2,7 @@
 {
   # 複数のコーディングエージェントを、ターミナル内の一貫した操作で管理できるようにする。
   # プラグイン本体は Nix 化できない（git clone + ビルドの imperative 管理）ため、
-  # `dotfiles herdr-plugins` で宣言済みバージョンへ揃える。justfile を参照。
+  # `dotfiles herdr-plugins` で最新へ揃える。版を固定しない理由は justfile を参照。
   programs.herdr = {
     enable = true;
 
@@ -37,6 +37,10 @@
           "claude"
           "codex"
         ];
+
+        # herdr-browser がペインへ Chromium のフレームを送るのに必要。Ghostty は
+        # Kitty graphics protocol を解釈できるため、有効にしても通常のペインは変わらない。
+        kitty_graphics = true;
       };
 
       keys = {
@@ -68,6 +72,26 @@
             key = "prefix+alt+s";
             type = "plugin_action";
             command = "sessionizer.open";
+          }
+          # herdr-browser のブラウザペイン。plugin が公開する action は status と
+          # open-localhost だけで「空のブラウザを開く」入口がないため、他の3つと違い
+          # plugin_action ではなく shell で pane open を叩く。
+          # ${HERDR_BIN_PATH} は herdr が渡す環境変数で Nix の補間ではないため、'' で退避する。
+          # description は shell だけに付ける。他の type はコマンド文字列がそのまま名前として
+          # 読めるのに対し、shell は pane open の長い引数列が prefix+? のヘルプに出て判別できない。
+          {
+            key = "prefix+alt+b";
+            type = "shell";
+            command = ''"''${HERDR_BIN_PATH}" plugin pane open --plugin official.browser --entrypoint browser --placement split --direction right --focus'';
+            description = "ブラウザを右スプリットで開く";
+          }
+          # 一時的なプレビューはレイアウトを崩さないオーバーレイで開く。herdr の popup 配置は
+          # ペイン ID を持たず graphics stream を張れないため、このプラグインでは使えない。
+          {
+            key = "prefix+shift+b";
+            type = "shell";
+            command = ''"''${HERDR_BIN_PATH}" plugin pane open --plugin official.browser --entrypoint browser --placement overlay --focus'';
+            description = "ブラウザをオーバーレイで開く";
           }
         ];
       };

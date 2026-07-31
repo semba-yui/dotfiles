@@ -27,3 +27,8 @@ dependencies:
     - git: https://github.com/mizchi/skills.git
       path: tooling/ast-grep-practice
       ref: 7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4
+    # herdr-browser プラグインが同梱する skill。CDP ゲートウェイの起動手順は上流の
+    # src/cli.ts と一体なので、自作せず本体リポジトリからそのまま取り込む。
+    - git: https://github.com/ogulcancelik/herdr-browser.git
+      path: skills/herdr-browser
+      ref: be6888b71cf4eb5939ee79a746bd1a1c22ade046

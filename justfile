@@ -73,9 +73,13 @@ ai-update:
 update:
     ./nix/scripts/update.sh
 
-# herdr プラグインを宣言済みバージョンへ揃える（Nix 化できないため just で再現手順を固定する）
+# herdr プラグインを最新へ揃える（Nix 化できないため just で導入対象を固定する）
+# 版は固定しない。herdr 本体もプラグインも更新が速く、herdr-browser のように tag を
+# 一度も打たないプラグインもあるため、tag ピン留めは前提が成立しない。壊れたときは
+# `herdr plugin list --json` の resolved_commit を --ref に渡して個別に戻す。
 [group('反映・更新')]
 herdr-plugins:
-    herdr plugin install persiyanov/herdr-reviewr --ref v0.22.1 --yes
-    herdr plugin install andrewchng/herdr-sessionizer --ref v0.6.1 --yes
+    herdr plugin install ogulcancelik/herdr-browser --yes
+    herdr plugin install persiyanov/herdr-reviewr --yes
+    herdr plugin install andrewchng/herdr-sessionizer --yes
     herdr plugin list

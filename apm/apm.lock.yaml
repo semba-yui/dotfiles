@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-07-21T06:35:53.346765+00:00'
+generated_at: '2026-07-30T07:32:12.953348+00:00'
 apm_version: 0.21.0
 dependencies:
 - repo_url: iKora128/stop-ai-slop-jp
@@ -196,3 +196,19 @@ dependencies:
     .claude/skills/ast-grep-practice/references/rule-yaml.md: sha256:1b801dd897252f442384980235eaf06354bb6dc0ac8378f196e4e20746e1c7c0
     .claude/skills/ast-grep-practice/references/testing.md: sha256:d7e2282b5b6ef954891af059adbe9b8ae23edcc385ba00f6a9e80e42ac6607d7
   content_hash: sha256:2c39f6e925845efc15cff26d3aecf5dd5f1acc8f62dd06524bf98b7ac0bde7a6
+- repo_url: ogulcancelik/herdr-browser
+  host: github.com
+  resolved_commit: be6888b71cf4eb5939ee79a746bd1a1c22ade046
+  resolved_ref: be6888b71cf4eb5939ee79a746bd1a1c22ade046
+  virtual_path: skills/herdr-browser
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/herdr-browser
+  - .agents/skills/herdr-browser/SKILL.md
+  - .claude/skills/herdr-browser
+  - .claude/skills/herdr-browser/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/herdr-browser/SKILL.md: sha256:4521264b7468b47f4ffa892005decf6bffd5bfd0c0dee524b9f378a77cab5fac
+    .claude/skills/herdr-browser/SKILL.md: sha256:4521264b7468b47f4ffa892005decf6bffd5bfd0c0dee524b9f378a77cab5fac
+  content_hash: sha256:6ecb683ac29617eb7150bf79b380a00043e80146469c6b45503120a9179059ca
