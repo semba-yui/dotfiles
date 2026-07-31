@@ -1,7 +1,23 @@
 lockfile_version: '1'
-generated_at: '2026-07-30T07:32:12.953348+00:00'
+generated_at: '2026-07-31T04:35:44.081283+00:00'
 apm_version: 0.21.0
 dependencies:
+- repo_url: github/gh-stack
+  host: github.com
+  resolved_commit: a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9
+  resolved_ref: a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9
+  virtual_path: skills/gh-stack
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/gh-stack
+  - .agents/skills/gh-stack/SKILL.md
+  - .claude/skills/gh-stack
+  - .claude/skills/gh-stack/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/gh-stack/SKILL.md: sha256:0fe9beb1f46e022036be7c7d825b1eb2b1d96bbbf816259e0411218ae28c24e0
+    .claude/skills/gh-stack/SKILL.md: sha256:0fe9beb1f46e022036be7c7d825b1eb2b1d96bbbf816259e0411218ae28c24e0
+  content_hash: sha256:10a4da93d82f822cbcd2eec43ec8ccf02d70bc98662b86531c6fb00de9856c65
 - repo_url: iKora128/stop-ai-slop-jp
   host: github.com
   resolved_commit: e09d32796f253a62693885757cea484c275d06f2

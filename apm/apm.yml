@@ -7,6 +7,11 @@ targets:
 
 dependencies:
   apm:
+    # skill が指示するサブコマンドは gh-stack の版で変わる。gh.nix の pkgs.gh-stack を
+    # 上げたら、この ref も対応する release へ合わせる。
+    - git: https://github.com/github/gh-stack.git
+      path: skills/gh-stack
+      ref: a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9
     - git: https://github.com/iKora128/stop-ai-slop-jp.git
       ref: e09d32796f253a62693885757cea484c275d06f2
     - git: https://github.com/mizchi/skills.git
