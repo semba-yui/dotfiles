@@ -17,7 +17,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew = {
+      url = "github:zhaofengli/nix-homebrew";
+      inputs.brew-src.follows = "brew-src";
+    };
+
+    # nix-homebrew は brew 本体を自身の flake.lock でタグ固定しており、現在は 6.0.12。
+    # 一方 cask の JSON API は 6.0.13 で追加された command_wrapper artifact を使う定義を
+    # 配り始めていて（drawio など）、6.0.12 では定義を読めず activation が Homebrew bundle で
+    # 失敗する。cask 側は選べないため brew を先に上げる。nix-homebrew が追いついたら
+    # この入力と follows ごと削除する。
+    # なお nix-homebrew は derivation 名を自身の lock から作るため、上書きしても
+    # 名前は brew-6.0.12 のまま出る。実体はここで指定したバージョン。
+    brew-src = {
+      url = "github:Homebrew/brew/6.0.13";
+      flake = false;
+    };
 
     homebrew-k1low-tap = {
       url = "github:k1LoW/homebrew-tap";
