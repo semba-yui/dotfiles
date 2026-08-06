@@ -66,5 +66,16 @@ in
     ];
 
     preferAbbrs = true;
+
+    # ls/ll/la/lt/lla は Home Manager の eza モジュールが mkDefault で生成する。
+    # 同名キーを再定義して上書きする(alias を足しても abbr が先に展開して効かない)。
+    # --icons は値省略時に直後の位置引数を WHEN として食うため =auto を明示する。
+    shellAbbrs = {
+      la = "eza -a --icons=auto --group-directories-first";
+      ll = "eza -la --icons=auto --group-directories-first --git";
+      lla = "eza -la --icons=auto --group-directories-first";
+      ls = "eza --icons=auto --group-directories-first";
+      lt = "eza --tree --level=2 --icons=auto";
+    };
   };
 }
