@@ -37,6 +37,7 @@
     };
 
     casks = [
+      "adobe-acrobat-pro"
       "chatgpt"
       "claude"
       "cleanshot"
@@ -47,7 +48,10 @@
       "google-chrome"
       "google-japanese-ime"
       "jetbrains-toolbox"
+      "microsoft-excel"
+      "microsoft-powerpoint"
       "microsoft-teams"
+      "microsoft-word"
       "orbstack"
       "raycast"
       "slack"
