@@ -48,6 +48,7 @@
       "google-chrome"
       "google-japanese-ime"
       "jetbrains-toolbox"
+      "logi-options+"
       "microsoft-excel"
       "microsoft-powerpoint"
       "microsoft-teams"
