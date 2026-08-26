@@ -33,9 +33,22 @@ check_command() {
 
 printf 'dotfiles のセットアップ状態を診断します。\n\n'
 
-for command_name in betterleaks darwin-rebuild fish gh git git-credential-manager just lefthook nh nix oxfmt; do
+for command_name in betterleaks darwin-rebuild fish gh git git-credential-manager just lefthook nh nix oxfmt twg; do
   check_command "$command_name"
 done
+
+if [[ ! -e "$HOME/.local/bin/twg" && ! -L "$HOME/.local/bin/twg" ]]; then
+  pass "Nix 管理外の twg が ~/.local/bin にありません"
+else
+  fail "Nix 管理外の twg が ~/.local/bin にあります"
+fi
+
+twg_upkeep_launch_agent="$HOME/Library/LaunchAgents/com.atlassian.twg.upkeep.plist"
+if [[ ! -e $twg_upkeep_launch_agent && ! -L $twg_upkeep_launch_agent ]]; then
+  pass "TWG upkeep の LaunchAgent は無効です"
+else
+  fail "TWG upkeep の LaunchAgent が有効です: $twg_upkeep_launch_agent"
+fi
 
 if [[ $repository_root == "$expected_repository" ]]; then
   pass "dotfiles は想定した場所にあります"

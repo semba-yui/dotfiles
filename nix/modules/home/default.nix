@@ -29,6 +29,7 @@
     ./programs/neovim.nix
     ./programs/nh.nix
     ./programs/ripgrep.nix
+    ./programs/teamwork-graph-cli.nix
     ./programs/xcodes.nix
     ./programs/zed-editor.nix
     ./programs/zoxide.nix

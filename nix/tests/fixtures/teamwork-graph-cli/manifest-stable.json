@@ -1,0 +1,10 @@
+{
+  "channel": "stable",
+  "version": "1.2.5",
+  "checksumsUrl": "https://teamwork-graph.atlassian.com/cli/SHA256SUMS-v1.2.5",
+  "assets": {
+    "darwin-arm64": {
+      "url": "https://teamwork-graph.atlassian.com/cli/twg-darwin-arm64-v1.2.5"
+    }
+  }
+}

@@ -12,11 +12,23 @@ fmt:
 # Flake全体を評価し、リポジトリ全体のフォーマットを検証する
 [group('整形・検証')]
 check:
+    just teamwork-graph-cli-launcher-test
+    just teamwork-graph-cli-release-test
     cd nix && nix flake check
     just worktree-fish-test
     lefthook validate
     just --justfile justfile --fmt --check
     oxfmt --check .
+
+# TWG launcher が公式の認証情報保存方式を上書きしないことを検証する
+[group('整形・検証')]
+teamwork-graph-cli-launcher-test:
+    ./nix/tests/teamwork-graph-cli-launcher-test.sh
+
+# TWGの公開manifestからNixのrelease lockへ変換する境界を、ネットワークなしで検証する
+[group('整形・検証')]
+teamwork-graph-cli-release-test:
+    ./nix/tests/teamwork-graph-cli-release-test.sh
 
 # worktree 作成 UI の振る舞いと、リポジトリ管理下の Fish 構文を検証する
 [group('整形・検証')]
@@ -72,6 +84,11 @@ ai-update:
 [group('反映・更新')]
 update:
     ./nix/scripts/update.sh
+
+# 公式manifest・checksum・署名を検証してTWGのNix release lockだけを更新する
+[group('反映・更新')]
+teamwork-graph-cli-update:
+    ./nix/scripts/update-teamwork-graph-cli.sh
 
 # herdr プラグインを最新へ揃える（Nix 化できないため just で導入対象を固定する）
 # 版は固定しない。herdr 本体もプラグインも更新が速く、herdr-browser のように tag を

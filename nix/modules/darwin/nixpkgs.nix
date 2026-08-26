@@ -7,6 +7,7 @@
     builtins.elem (pkgs.lib.getName pkg) [
       "acli"
       "claude-code"
+      "teamwork-graph-cli"
     ]
   );
 }

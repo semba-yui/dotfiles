@@ -7,6 +7,40 @@ targets:
 
 dependencies:
   apm:
+    # root skill が参照する sibling skills を同じ CLI 版と互換な commit へ揃える。
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-agentic-search
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-bench-lite
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-confluence
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-context-discovery
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-engineering-work
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-jira
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-jira-resolve-merged-work
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-operational-health
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-responsibility-routing
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+    - git: https://github.com/atlassian/twg-cli.git
+      path: skills/twg-status-rollups
+      ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
     # skill が指示するサブコマンドは gh-stack の版で変わる。gh.nix の pkgs.gh-stack を
     # 上げたら、この ref も対応する release へ合わせる。
     - git: https://github.com/github/gh-stack.git

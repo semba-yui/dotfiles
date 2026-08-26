@@ -61,8 +61,12 @@
     }:
     let
       system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = package: nixpkgs.lib.getName package == "teamwork-graph-cli";
+      };
       darwinConfigurations = import ./hosts { inherit inputs; };
+      teamworkGraphCli = pkgs.callPackage ./packages/teamwork-graph-cli.nix { };
 
       # nix fmt 用の treefmt 設定。programs.nixfmt は RFC 準拠の nixfmt を使う。
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
@@ -79,6 +83,7 @@
       formatter.${system} = treefmtEval.config.build.wrapper;
       packages.${system} = {
         inherit (pkgs) just oxfmt;
+        teamwork-graph-cli = teamworkGraphCli;
       };
 
       checks.${system} =
@@ -87,6 +92,7 @@
         ) darwinConfigurations
         // {
           formatting = treefmtEval.config.build.check self;
+          teamwork-graph-cli = teamworkGraphCli;
         };
     };
 }
