@@ -45,6 +45,7 @@
       "drawio"
       "figma"
       "fork"
+      "github-copilot-app"
       "google-chrome"
       "google-japanese-ime"
       "jetbrains-toolbox"
