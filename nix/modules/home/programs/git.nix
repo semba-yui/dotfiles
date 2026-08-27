@@ -1,4 +1,35 @@
 { ... }:
+let
+  fullName = "仙波 琉一朗 / Ryuichiro Semba";
+
+  identities = {
+    semba-yui = {
+      name = fullName;
+      email = "65758369+semba-yui@users.noreply.github.com";
+    };
+    lc-semba-ryuichiro = {
+      name = fullName;
+      email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
+    };
+  };
+
+  # 1 つの org につき経路を 2 本張る。片方だけでは取りこぼす clone があるため。
+  #   gitdir   … transport 非依存。ただし ~/ghq の外に置いた clone には効かない
+  #   hasconfig… 置き場所に依存しない。ただし SSH 形式で保存された URL には効かない
+  # 両方が発火しても同じ値を二重に書くだけなので害はない。
+  identityByOwner = owner: identity: [
+    {
+      condition = "gitdir:~/ghq/github.com/${owner}/";
+      contents.user = identity;
+      contentSuffix = "git-identity-${owner}-gitdir.gitconfig";
+    }
+    {
+      condition = "hasconfig:remote.*.url:https://*github.com/${owner}/**";
+      contents.user = identity;
+      contentSuffix = "git-identity-${owner}-remote.gitconfig";
+    }
+  ];
+in
 {
   programs.git = {
     enable = true;
@@ -22,17 +53,21 @@
       # JavaScript の依存物は再生成可能であり、リポジトリをまたいで追跡しない。
       "node_modules/"
     ];
-    includes = [
-      {
-        # remote URL に対応する identity だけを適用し、global fallback による誤帰属を防ぐ。
-        condition = "hasconfig:remote.*.url:https://semba-yui@github.com/**";
-        contents.user = {
-          email = "65758369+semba-yui@users.noreply.github.com";
-          name = "仙波 琉一朗 / Ryuichiro Semba";
-        };
-        contentSuffix = "git-identity-semba-yui.gitconfig";
-      }
-    ];
+    # 順序に意味がある。git は後に読んだ include を優先するため、先に「clone 時に選んだ
+    # identity」を、後に「repo が実際に属する org」を置き、org を勝たせている。
+    includes =
+      # 他人の repo をどの名義で触るかは owner からは決まらないので、clone 時に付けた
+      # userinfo を指定として扱う。
+      [
+        {
+          condition = "hasconfig:remote.*.url:https://semba-yui@github.com/**";
+          contents.user = identities.semba-yui;
+          contentSuffix = "git-identity-semba-yui.gitconfig";
+        }
+      ]
+      ++ identityByOwner "semba-yui" identities.semba-yui
+      # 既定と同値だが明示する。userinfo 由来の誤マッチをこちらで上書きするため。
+      ++ identityByOwner "lc-semba-ryuichiro" identities.lc-semba-ryuichiro;
     settings = {
       user = {
         name = "仙波 琉一朗 / Ryuichiro Semba";
