@@ -6,10 +6,12 @@ let
     semba-yui = {
       name = fullName;
       email = "65758369+semba-yui@users.noreply.github.com";
+      signingKey = "~/.ssh/github-commit-signing-semba-yui-lcdev0215-ed25519.pub";
     };
     lc-semba-ryuichiro = {
       name = fullName;
       email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
+      signingKey = "~/.ssh/github-commit-signing-lc-semba-ryuichiro-lcdev0215-ed25519.pub";
     };
   };
 
@@ -69,10 +71,7 @@ in
       # 既定と同値だが明示する。userinfo 由来の誤マッチをこちらで上書きするため。
       ++ identityByOwner "lc-semba-ryuichiro" identities.lc-semba-ryuichiro;
     settings = {
-      user = {
-        name = "仙波 琉一朗 / Ryuichiro Semba";
-        email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
-      };
+      user = identities.lc-semba-ryuichiro;
 
       init.defaultBranch = "main";
 
@@ -80,8 +79,10 @@ in
 
       commit = {
         verbose = true;
-        gpgsign = false;
+        gpgsign = true;
       };
+
+      gpg.format = "ssh";
 
       pull.rebase = true;
 
