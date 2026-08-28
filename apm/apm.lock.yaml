@@ -1,11 +1,11 @@
 lockfile_version: '1'
-generated_at: '2026-08-25T04:46:02.236835+00:00'
+generated_at: '2026-08-28T14:18:02.963769+00:00'
 apm_version: 0.21.0
 dependencies:
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg
   is_virtual: true
   package_type: claude_skill
@@ -28,24 +28,24 @@ dependencies:
   - .claude/skills/twg/references/inferred-teams.md
   deployed_file_hashes:
     .agents/skills/twg/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
-    .agents/skills/twg/SKILL.md: sha256:3f82a766e9dfb550a16d75b23d1fb1aefd7d866b67cfe073d6469003420da646
+    .agents/skills/twg/SKILL.md: sha256:b12bc9ce8aeb88d753c5c6285bda56a97b1794d0e5c0d822aa04708d1dfcc748
     .agents/skills/twg/references/ASSETS_GRAPH.md: sha256:a5804fb31644c51e2ce777ac0cf59cae0a174a6faa9fb55fea19122d509dd9cd
     .agents/skills/twg/references/HELP.md: sha256:9aa3a69f0583cd3941f37e084a7962288eae2162a3891b3c75341ff7e6c95033
     .agents/skills/twg/references/OUTPUT.md: sha256:91a4eb0de67acbac89258cad5be45a7dbb9f79942f259685908392934fdbd948
     .agents/skills/twg/references/ROUTING.md: sha256:d0941a171bcc9482bbbef89680a1c91d2546bc52e826cacb9fd392e4157fb294
     .agents/skills/twg/references/inferred-teams.md: sha256:309aedd206310748990ddbc8e774d17bcf878bccf59be55d1db116fa9a4af624
     .claude/skills/twg/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
-    .claude/skills/twg/SKILL.md: sha256:3f82a766e9dfb550a16d75b23d1fb1aefd7d866b67cfe073d6469003420da646
+    .claude/skills/twg/SKILL.md: sha256:b12bc9ce8aeb88d753c5c6285bda56a97b1794d0e5c0d822aa04708d1dfcc748
     .claude/skills/twg/references/ASSETS_GRAPH.md: sha256:a5804fb31644c51e2ce777ac0cf59cae0a174a6faa9fb55fea19122d509dd9cd
     .claude/skills/twg/references/HELP.md: sha256:9aa3a69f0583cd3941f37e084a7962288eae2162a3891b3c75341ff7e6c95033
     .claude/skills/twg/references/OUTPUT.md: sha256:91a4eb0de67acbac89258cad5be45a7dbb9f79942f259685908392934fdbd948
     .claude/skills/twg/references/ROUTING.md: sha256:d0941a171bcc9482bbbef89680a1c91d2546bc52e826cacb9fd392e4157fb294
     .claude/skills/twg/references/inferred-teams.md: sha256:309aedd206310748990ddbc8e774d17bcf878bccf59be55d1db116fa9a4af624
-  content_hash: sha256:12e71dfd90bb5a9552d3c7c441dc7a0c64cb1c642843ebd9b9a3dddbacd36b9c
+  content_hash: sha256:e4907b4dc7c6aedcf480de704410819c11c808058dc4c31b199089ab3ba57b40
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-agentic-search
   is_virtual: true
   package_type: claude_skill
@@ -64,8 +64,8 @@ dependencies:
   content_hash: sha256:09d2ba0a3862cb4a68c4ccd205f2ded57edf1a74d59e9b604f2496d1e4496903
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-bench-lite
   is_virtual: true
   package_type: claude_skill
@@ -100,8 +100,8 @@ dependencies:
   content_hash: sha256:7e0e008699540465801d9452ac1c6be177f431e44f02806904007e09238b55e9
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-confluence
   is_virtual: true
   package_type: claude_skill
@@ -126,22 +126,22 @@ dependencies:
     .agents/skills/twg-confluence/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
     .agents/skills/twg-confluence/SKILL.md: sha256:4e2859aa5bd4d4a6e147dcbd1892b1db758408e8d1373ac243712fc59c38af80
     .agents/skills/twg-confluence/references/body-formats.md: sha256:0c8c2f15a4a244697fa4d810e30c032d32e9170fc1b8a5d6d9b1a5f5039df843
-    .agents/skills/twg-confluence/references/content.md: sha256:57bd66462191f9a995218e38069668f218096e390ff928dd36a076f154ff33d3
+    .agents/skills/twg-confluence/references/content.md: sha256:07e4d55948f74b03b97185c69a0e321716934f8a93e137af0ae43a96e83b2b3a
     .agents/skills/twg-confluence/references/editing.md: sha256:a45f0bd84731e8fd08d6ae96825dc95635b7bc23809b8c6f57695062b0f9577d
     .agents/skills/twg-confluence/references/querying.md: sha256:ec06c61699fe5156bcea75cfc0a3d6e12634a4412e139667ae0c5e98a28b4efe
     .agents/skills/twg-confluence/references/spaces.md: sha256:e33e2af8f9acb476781f2e8c96575c720470868641adee19ae751c060fa6d6bd
     .claude/skills/twg-confluence/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
     .claude/skills/twg-confluence/SKILL.md: sha256:4e2859aa5bd4d4a6e147dcbd1892b1db758408e8d1373ac243712fc59c38af80
     .claude/skills/twg-confluence/references/body-formats.md: sha256:0c8c2f15a4a244697fa4d810e30c032d32e9170fc1b8a5d6d9b1a5f5039df843
-    .claude/skills/twg-confluence/references/content.md: sha256:57bd66462191f9a995218e38069668f218096e390ff928dd36a076f154ff33d3
+    .claude/skills/twg-confluence/references/content.md: sha256:07e4d55948f74b03b97185c69a0e321716934f8a93e137af0ae43a96e83b2b3a
     .claude/skills/twg-confluence/references/editing.md: sha256:a45f0bd84731e8fd08d6ae96825dc95635b7bc23809b8c6f57695062b0f9577d
     .claude/skills/twg-confluence/references/querying.md: sha256:ec06c61699fe5156bcea75cfc0a3d6e12634a4412e139667ae0c5e98a28b4efe
     .claude/skills/twg-confluence/references/spaces.md: sha256:e33e2af8f9acb476781f2e8c96575c720470868641adee19ae751c060fa6d6bd
-  content_hash: sha256:55a1b1490cf21262535785dfd243c408f24ac9803a109cd4c8d40add2bf99f0d
+  content_hash: sha256:1f3a5c1220b26432903acaa4b2815fa41aa5ee21f0335cab7d92efa6b9bcd27c
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-context-discovery
   is_virtual: true
   package_type: claude_skill
@@ -160,8 +160,8 @@ dependencies:
   content_hash: sha256:9c3cdf01faf483b6418f824438c43f4bfa4c6264441c2a38ce2fa64ab0123e22
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-engineering-work
   is_virtual: true
   package_type: claude_skill
@@ -188,8 +188,8 @@ dependencies:
   content_hash: sha256:72f0d02ce126d4227822287c0199cfbc6f2ca345f5ad14d9633fb665a702502e
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-jira
   is_virtual: true
   package_type: claude_skill
@@ -214,26 +214,26 @@ dependencies:
   - .claude/skills/twg-jira/references/workitems.md
   deployed_file_hashes:
     .agents/skills/twg-jira/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
-    .agents/skills/twg-jira/SKILL.md: sha256:e3a7a9565ebb5f501c56459b4efecee27e6e94ede2dd2d52ebbc766fbcb67e64
+    .agents/skills/twg-jira/SKILL.md: sha256:8d9ba4967ca0e422ac26a669f7989f2edff284ba43b256aad8bba9b6783994fd
     .agents/skills/twg-jira/references/administration.md: sha256:037cabbe15767d3c42305103b26bcca870cde2c69bc7494bd372bcffe0e9a843
     .agents/skills/twg-jira/references/duplicates.md: sha256:9028f1f670a7a4a0d8173c224523b6b3e358d2990033460ea8ad971d87bdba1e
     .agents/skills/twg-jira/references/fields-and-transitions.md: sha256:4979fef3e8aaed72a3f7d5091b584400add5de224a0d2a390deedb80b971afd3
     .agents/skills/twg-jira/references/querying.md: sha256:fb7ca7f87dd20a6b85a0907f84be996d2032362af33a793ab16b2e345dd4e39d
     .agents/skills/twg-jira/references/rich-content.md: sha256:d26553406504f29ee509d029fd3db7922157c7b6c04631e908bceb2423f06524
-    .agents/skills/twg-jira/references/workitems.md: sha256:83bbf16cee464a6518f868f1cd8c1ee07ad8f815e9c99ff3becb853a487546ab
+    .agents/skills/twg-jira/references/workitems.md: sha256:0b04a44dc4f3c62b2286a249f477fbbbf7f0607f05317b3ba5585c449126eb06
     .claude/skills/twg-jira/LICENSE.txt: sha256:1f01b4407ade11b471ba75b3dd5e3f99d03a25b553545dec777a78bf135a059b
-    .claude/skills/twg-jira/SKILL.md: sha256:e3a7a9565ebb5f501c56459b4efecee27e6e94ede2dd2d52ebbc766fbcb67e64
+    .claude/skills/twg-jira/SKILL.md: sha256:8d9ba4967ca0e422ac26a669f7989f2edff284ba43b256aad8bba9b6783994fd
     .claude/skills/twg-jira/references/administration.md: sha256:037cabbe15767d3c42305103b26bcca870cde2c69bc7494bd372bcffe0e9a843
     .claude/skills/twg-jira/references/duplicates.md: sha256:9028f1f670a7a4a0d8173c224523b6b3e358d2990033460ea8ad971d87bdba1e
     .claude/skills/twg-jira/references/fields-and-transitions.md: sha256:4979fef3e8aaed72a3f7d5091b584400add5de224a0d2a390deedb80b971afd3
     .claude/skills/twg-jira/references/querying.md: sha256:fb7ca7f87dd20a6b85a0907f84be996d2032362af33a793ab16b2e345dd4e39d
     .claude/skills/twg-jira/references/rich-content.md: sha256:d26553406504f29ee509d029fd3db7922157c7b6c04631e908bceb2423f06524
-    .claude/skills/twg-jira/references/workitems.md: sha256:83bbf16cee464a6518f868f1cd8c1ee07ad8f815e9c99ff3becb853a487546ab
-  content_hash: sha256:9dc6edaedd997573d242feb8e8ebee59bac8e7b55887f7be90f2712b822f7fe5
+    .claude/skills/twg-jira/references/workitems.md: sha256:0b04a44dc4f3c62b2286a249f477fbbbf7f0607f05317b3ba5585c449126eb06
+  content_hash: sha256:1479e37982a663c782e145d5debbffa2f30d64dbe34b1876023b398b92295073
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-jira-resolve-merged-work
   is_virtual: true
   package_type: claude_skill
@@ -252,8 +252,8 @@ dependencies:
   content_hash: sha256:b3536db56ce1706eb9b706fed72ffb9857659f2aacf829a7d897090d0ef6d886
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-operational-health
   is_virtual: true
   package_type: claude_skill
@@ -288,8 +288,8 @@ dependencies:
   content_hash: sha256:115071b3fa527541adffc31d7706326c45d322f3d2f09613948f038ee82c6aa9
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-responsibility-routing
   is_virtual: true
   package_type: claude_skill
@@ -312,8 +312,8 @@ dependencies:
   content_hash: sha256:c20f986f23a36de80e6e183157986b4f1a46fca5e6cd0b933cce3e7e0ab71433
 - repo_url: atlassian/twg-cli
   host: github.com
-  resolved_commit: 7eaf87f3247c637a0de9a95b64ab76d63def6064
-  resolved_ref: 7eaf87f3247c637a0de9a95b64ab76d63def6064
+  resolved_commit: 81890e73d1169d28f400702a76f79fbbacc62414
+  resolved_ref: 81890e73d1169d28f400702a76f79fbbacc62414
   virtual_path: skills/twg-status-rollups
   is_virtual: true
   package_type: claude_skill

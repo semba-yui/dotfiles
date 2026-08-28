@@ -1,9 +1,9 @@
 {
-  "version": "1.2.5",
+  "version": "1.2.6",
   "artifacts": {
     "aarch64-darwin": {
-      "url": "https://teamwork-graph.atlassian.com/cli/twg-darwin-arm64-v1.2.5",
-      "hash": "sha256-vBe5wFjaGa5XJa5diqmybdU5tpgr34ZN/1Qk0RKptvY="
+      "url": "https://teamwork-graph.atlassian.com/cli/twg-darwin-arm64-v1.2.6",
+      "hash": "sha256-Cyji2Stgg+za32Wgq5sRJTbjoh4wQ04trgEesfpnii0="
     }
   }
 }
