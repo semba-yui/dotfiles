@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./programs/alloy.nix
     ./programs/apm.nix
     ./programs/bat.nix
     ./programs/betterleaks.nix
