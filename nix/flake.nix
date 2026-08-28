@@ -65,6 +65,7 @@
         inherit system;
         config.allowUnfreePredicate = package: nixpkgs.lib.getName package == "teamwork-graph-cli";
       };
+      apmCliWithWebsocketsRuntimeDependency = pkgs.callPackage ./packages/apm-cli.nix { };
       darwinConfigurations = import ./hosts { inherit inputs; };
       teamworkGraphCli = pkgs.callPackage ./packages/teamwork-graph-cli.nix { };
 
@@ -91,6 +92,7 @@
           hostname: configuration: nixpkgs.lib.nameValuePair "darwin-${hostname}" configuration.system
         ) darwinConfigurations
         // {
+          apm-cli = apmCliWithWebsocketsRuntimeDependency;
           formatting = treefmtEval.config.build.check self;
           teamwork-graph-cli = teamworkGraphCli;
         };
