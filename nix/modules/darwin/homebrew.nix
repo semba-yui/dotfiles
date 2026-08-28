@@ -38,6 +38,7 @@
 
     casks = [
       "adobe-acrobat-pro"
+      "adobe-creative-cloud"
       "chatgpt"
       "claude"
       "cleanshot"
