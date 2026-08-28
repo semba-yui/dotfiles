@@ -75,10 +75,14 @@ hooks-install:
 ai-install:
     apm install --global --frozen
 
-# manifestで変更したrefを解決し、確認後にグローバル環境のlockと生成物を更新する
+# apm.ymlで書き換えたrefを、グローバル環境のlockと生成物へ反映する
+# apm updateは使わない。SHA固定の依存に対して上流のannotated tagを要求するが、依存先の
+# 上流はannotated tagを打っておらず、twg-cliとgh-stackのSHA固定はCLI版との結合として
+# 意図的に残すため、この検査を通過できる構成にはならない。
+# --frozenを外しても書き換えていない依存はlockのcommitへ固定されたままになる。
 [group('反映・更新')]
 ai-update:
-    apm update --global
+    apm install --global
 
 # Flake入力を更新し、検証、反映、commitまで順番に実行する
 [group('反映・更新')]
