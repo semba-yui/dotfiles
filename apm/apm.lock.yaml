@@ -1,5 +1,5 @@
 lockfile_version: '1'
-generated_at: '2026-08-28T14:18:02.963769+00:00'
+generated_at: '2026-08-31T06:18:51.490570+00:00'
 apm_version: 0.21.0
 dependencies:
 - repo_url: atlassian/twg-cli
@@ -564,3 +564,99 @@ dependencies:
     .agents/skills/herdr-browser/SKILL.md: sha256:4521264b7468b47f4ffa892005decf6bffd5bfd0c0dee524b9f378a77cab5fac
     .claude/skills/herdr-browser/SKILL.md: sha256:4521264b7468b47f4ffa892005decf6bffd5bfd0c0dee524b9f378a77cab5fac
   content_hash: sha256:6ecb683ac29617eb7150bf79b380a00043e80146469c6b45503120a9179059ca
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/computer-use
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/computer-use
+  - .agents/skills/computer-use/SKILL.md
+  - .claude/skills/computer-use
+  - .claude/skills/computer-use/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/computer-use/SKILL.md: sha256:c4a11596b7c0338f4c991b24ba7ba453d93fb8dc045c642c517e7ae6d3c88467
+    .claude/skills/computer-use/SKILL.md: sha256:c4a11596b7c0338f4c991b24ba7ba453d93fb8dc045c642c517e7ae6d3c88467
+  content_hash: sha256:afe48be623c1f6190ade7dacc4c1d334d4150b503ed00b28dda23a499e5bdc30
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/orca-cli
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/orca-cli
+  - .agents/skills/orca-cli/SKILL.md
+  - .claude/skills/orca-cli
+  - .claude/skills/orca-cli/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/orca-cli/SKILL.md: sha256:cdd5d9c8a95837a6cc24d68b150a117684afe9bbb2d763de2cc7fba1da1ed163
+    .claude/skills/orca-cli/SKILL.md: sha256:cdd5d9c8a95837a6cc24d68b150a117684afe9bbb2d763de2cc7fba1da1ed163
+  content_hash: sha256:cca6a9098e0dff08ce6fef999da77d98e94255e826b8b9f8132749b5da66dad2
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/orca-emulator
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/orca-emulator
+  - .agents/skills/orca-emulator/SKILL.md
+  - .claude/skills/orca-emulator
+  - .claude/skills/orca-emulator/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/orca-emulator/SKILL.md: sha256:796f2135824e0ecdfe4f6e8f8bd4690788c1816933df4104b2f9846ffe9a41e0
+    .claude/skills/orca-emulator/SKILL.md: sha256:796f2135824e0ecdfe4f6e8f8bd4690788c1816933df4104b2f9846ffe9a41e0
+  content_hash: sha256:711db912faee9c8463896d77da45b8c7f067d69f7e2a723ba337c255f74e8339
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/orca-emulator-android
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/orca-emulator-android
+  - .agents/skills/orca-emulator-android/SKILL.md
+  - .claude/skills/orca-emulator-android
+  - .claude/skills/orca-emulator-android/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/orca-emulator-android/SKILL.md: sha256:41d9cae07abd03a39236733884332058316bcf816e4b5b2d411c01b3a16ac8a6
+    .claude/skills/orca-emulator-android/SKILL.md: sha256:41d9cae07abd03a39236733884332058316bcf816e4b5b2d411c01b3a16ac8a6
+  content_hash: sha256:4aa62668dea3ab16809620dfeb49bf0a6c9fd85015df4076a3607f48eb496d1b
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/orca-per-workspace-env
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/orca-per-workspace-env
+  - .agents/skills/orca-per-workspace-env/SKILL.md
+  - .claude/skills/orca-per-workspace-env
+  - .claude/skills/orca-per-workspace-env/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/orca-per-workspace-env/SKILL.md: sha256:a7ae9a0d22b8bc14a6cb3bdb6fc6ebf1f11cc25ab489d1cc63928bd025d7dddc
+    .claude/skills/orca-per-workspace-env/SKILL.md: sha256:a7ae9a0d22b8bc14a6cb3bdb6fc6ebf1f11cc25ab489d1cc63928bd025d7dddc
+  content_hash: sha256:0c4642c02480ed6219e3427475b5654fc6c06a84f2ce33fb8d7223baf2bdb17f
+- repo_url: stablyai/orca
+  host: github.com
+  resolved_commit: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  resolved_ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+  virtual_path: skills/orchestration
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/orchestration
+  - .agents/skills/orchestration/SKILL.md
+  - .claude/skills/orchestration
+  - .claude/skills/orchestration/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/orchestration/SKILL.md: sha256:9ca228137b9a442b98c761aa07adecc2265708132ab175ad7e22b163fdc0bd7f
+    .claude/skills/orchestration/SKILL.md: sha256:9ca228137b9a442b98c761aa07adecc2265708132ab175ad7e22b163fdc0bd7f
+  content_hash: sha256:b5c364878fb07d21a369f091f2e96b823da94308b15b39636f2585d8b5621b51

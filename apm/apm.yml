@@ -71,3 +71,22 @@ dependencies:
     - git: https://github.com/ogulcancelik/herdr-browser.git
       path: skills/herdr-browser
       ref: be6888b71cf4eb5939ee79a746bd1a1c22ade046
+    # Orcaの各skillは独立したdiscovery stubなので、リポジトリ全体ではなく個別pathを固定する。
+    - git: https://github.com/stablyai/orca.git
+      path: skills/computer-use
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+    - git: https://github.com/stablyai/orca.git
+      path: skills/orca-cli
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+    - git: https://github.com/stablyai/orca.git
+      path: skills/orca-emulator
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+    - git: https://github.com/stablyai/orca.git
+      path: skills/orca-emulator-android
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+    - git: https://github.com/stablyai/orca.git
+      path: skills/orca-per-workspace-env
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
+    - git: https://github.com/stablyai/orca.git
+      path: skills/orchestration
+      ref: 6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e
