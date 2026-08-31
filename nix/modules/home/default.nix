@@ -21,6 +21,7 @@
     ./programs/git-credential-manager.nix
     ./programs/git-worktree-runner.nix
     ./programs/git.nix
+    ./programs/github-copilot-cli.nix
     ./programs/herdr.nix
     ./programs/jq.nix
     ./programs/jujutsu.nix
