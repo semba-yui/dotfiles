@@ -21,6 +21,7 @@
 
     taps = {
       "k1LoW/homebrew-tap" = inputs.homebrew-k1low-tap;
+      "stablyai/orca" = inputs.homebrew-stablyai-orca-tap;
     };
 
     trust.formulae = [ "k1LoW/tap/mo" ];
@@ -58,6 +59,7 @@
       "orbstack"
       "raycast"
       "slack"
+      "stablyai/orca/orca"
       "typora"
       "zoom"
     ];

@@ -70,6 +70,22 @@
         "type": "github"
       }
     },
+    "homebrew-stablyai-orca-tap": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787991553,
+        "narHash": "sha256-HOMEJkDKqfmrxYE98KZuKRHDRe/6XCXabCiXg+9UaqI=",
+        "owner": "stablyai",
+        "repo": "homebrew-orca",
+        "rev": "e3c194e9b88824da7ea4986870bad0a26e60580e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stablyai",
+        "repo": "homebrew-orca",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -133,6 +149,7 @@
         "git-worktree-runner": "git-worktree-runner",
         "home-manager": "home-manager",
         "homebrew-k1low-tap": "homebrew-k1low-tap",
+        "homebrew-stablyai-orca-tap": "homebrew-stablyai-orca-tap",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
