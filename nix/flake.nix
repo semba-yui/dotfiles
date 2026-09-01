@@ -68,9 +68,16 @@
       system = "aarch64-darwin";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfreePredicate = package: nixpkgs.lib.getName package == "teamwork-graph-cli";
+        config.allowUnfreePredicate =
+          package:
+          builtins.elem (nixpkgs.lib.getName package) [
+            "claude-code"
+            "teamwork-graph-cli"
+          ];
       };
       apmCliWithWebsocketsRuntimeDependency = pkgs.callPackage ./packages/apm-cli.nix { };
+      claudeCodePinnedToUpstreamRelease = pkgs.callPackage ./packages/claude-code.nix { };
+      codexPinnedToUpstreamRelease = pkgs.callPackage ./packages/codex.nix { };
       darwinConfigurations = import ./hosts { inherit inputs; };
       teamworkGraphCli = pkgs.callPackage ./packages/teamwork-graph-cli.nix { };
 
@@ -89,6 +96,8 @@
       formatter.${system} = treefmtEval.config.build.wrapper;
       packages.${system} = {
         inherit (pkgs) just oxfmt;
+        claude-code = claudeCodePinnedToUpstreamRelease;
+        codex = codexPinnedToUpstreamRelease;
         teamwork-graph-cli = teamworkGraphCli;
       };
 
@@ -98,6 +107,8 @@
         ) darwinConfigurations
         // {
           apm-cli = apmCliWithWebsocketsRuntimeDependency;
+          claude-code = claudeCodePinnedToUpstreamRelease;
+          codex = codexPinnedToUpstreamRelease;
           formatting = treefmtEval.config.build.check self;
           teamwork-graph-cli = teamworkGraphCli;
         };

@@ -88,6 +88,8 @@ dotfiles hooks-install # このリポジトリの秘密検出hookを.git/hooks�
 dotfiles ai-check   # AI依存のlockと生成物を検証する
 dotfiles ai-install # lock済みのAI依存を再現する
 dotfiles ai-update  # AI依存の更新内容を確認して更新する
+dotfiles claude-code-update # Claude Codeを上流の最新リリースへ更新する
+dotfiles codex-update       # Codexを上流の最新stableリリースへ更新する
 ```
 
 シェルと herdr のショートカットは `Alt-X`（コマンドパレット）または [docs/cheatsheet.md](docs/cheatsheet.md) を参照してください。
@@ -109,6 +111,7 @@ Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトッ�
 ## ドキュメント
 
 - [AGENTS.md](AGENTS.md): リポジトリの規約。モジュール構成、検証コマンド、コーディング規約、コミット規約
+- [docs/ai-cli-release-pinning.md](docs/ai-cli-release-pinning.md): Claude Code と Codex を上流リリースへ固定する方針と更新手順
 - [docs/cheatsheet.md](docs/cheatsheet.md): ターミナル操作のショートカット一覧（層横断・ユースケース起点）
 - [docs/herdr.md](docs/herdr.md): herdr の運用ガイドと設計判断、第2陣プラグイン候補
 - [docs/worktree.md](docs/worktree.md): gtr を主軸とした worktree ワークフローと運用ルール

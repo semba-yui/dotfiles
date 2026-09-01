@@ -89,6 +89,16 @@ ai-update:
 update:
     ./nix/scripts/update.sh
 
+# 公式manifest・checksum・署名を検証してClaude CodeのNix release lockだけを更新する
+[group('反映・更新')]
+claude-code-update:
+    ./nix/scripts/update-claude-code.sh
+
+# 公式stableリリース・checksum・署名を検証してCodexのNix release lockだけを更新する
+[group('反映・更新')]
+codex-update:
+    ./nix/scripts/update-codex.sh
+
 # 公式manifest・checksum・署名を検証してTWGのNix release lockだけを更新する
 [group('反映・更新')]
 teamwork-graph-cli-update:
