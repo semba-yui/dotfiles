@@ -25,14 +25,16 @@ Codex は nixpkgs では Rust ソースからのビルドで、リリース当�
 
 ## トレードオフ
 
-この2つのバイナリは `dotfiles update`（Flake 入力の更新）では上がりません。
 `flake.lock` の nixpkgs が固定した版より新しくなっても、release lock が優先されます。
-更新経路は `dotfiles claude-code-update` と `dotfiles codex-update` だけです。
+更新経路は release lock の更新だけで、`dotfiles update` はこれを Flake 入力と同時に行います。
 
 nixpkgs 側の derivation が上流の変更に追随できなくなった場合（Claude Code の起動オプション変更など）は、
 `nix flake update` で nixpkgs を進めたうえで release lock を更新します。
 
 ## 更新
+
+`dotfiles update` は Flake 入力の更新に続けて次の2タスクを実行し、検証・反映・commit までまとめて行います。
+バイナリだけを更新する場合は個別に実行します。
 
 ```sh
 dotfiles claude-code-update

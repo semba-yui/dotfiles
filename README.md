@@ -83,7 +83,7 @@ dotfiles check     # Flake全体と設定ファイルの整形を検証する
 dotfiles doctor    # 現在のセットアップ状態を診断する
 dotfiles build     # 現在のホストを反映せずにビルドする
 dotfiles switch    # 現在のホストへ確認後に反映する
-dotfiles update    # Flake入力を更新し、検証、反映、commitまで行う
+dotfiles update    # Flake入力とAI CLIのrelease lockを更新し、検証、反映、commitまで行う
 dotfiles hooks-install # このリポジトリの秘密検出hookを.git/hooksへ導入する
 dotfiles ai-check   # AI依存のlockと生成物を検証する
 dotfiles ai-install # lock済みのAI依存を再現する

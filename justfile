@@ -84,7 +84,7 @@ ai-install:
 ai-update:
     apm install --global
 
-# Flake入力を更新し、検証、反映、commitまで順番に実行する
+# Flake入力とClaude Code・Codexのrelease lockを更新し、検証、反映、commitまで順番に実行する
 [group('反映・更新')]
 update:
     ./nix/scripts/update.sh
