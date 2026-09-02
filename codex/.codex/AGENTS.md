@@ -49,6 +49,10 @@ docs / README も同様に、issue 参照・経緯・マイグレーション履
   - このテストでは何を検証するのか（What）
   - Given / When / Then のどのフェーズか
 
+## Jira と Confluence の情報取得
+
+Jira または Confluence から情報を取得するときは、Atlassian CLI や MCP を使わず、`twg` skill を呼び出して TWG CLI を使用すること。
+
 ## ブラウザ自動化
 
 - herdr のペイン内（`HERDR_ENV=1`）でブラウザを操作するときは、headless や独立した Chrome ウィンドウではなく、herdr-browser の CDP ゲートウェイへ接続すること。操作の様子がペインに表示され、こちらが途中で介入しても接続は切れない。手順は `herdr-browser` skill を参照
