@@ -38,7 +38,6 @@
   ];
 
   home.packages = with pkgs; [
-    acli
     ast-grep
     bun
     curl

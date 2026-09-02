@@ -5,7 +5,6 @@
   nixpkgs.config.allowUnfreePredicate = (
     pkg:
     builtins.elem (pkgs.lib.getName pkg) [
-      "acli"
       "claude-code"
       "github-copilot-cli"
       "teamwork-graph-cli"
