@@ -73,11 +73,11 @@
     "homebrew-stablyai-orca-tap": {
       "flake": false,
       "locked": {
-        "lastModified": 1788321105,
-        "narHash": "sha256-D6Z5m2Rzx+7YFNl4g+qxP2yQNhBqJD4vxN7wTllTixc=",
+        "lastModified": 1788400287,
+        "narHash": "sha256-0bPDwr8J9YENCD4No7oIVSEIlT/j9lV4OWTzPTAIRmc=",
         "owner": "stablyai",
         "repo": "homebrew-orca",
-        "rev": "2457be0cc03da68a464a53a7a69cf8cb8ad39ac5",
+        "rev": "80cac3ff15ab8f8e0667f4347916a48fb0548fc1",
         "type": "github"
       },
       "original": {
