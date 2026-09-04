@@ -1,9 +1,9 @@
 {
-  "version": "0.153.0",
+  "version": "0.153.2",
   "artifacts": {
     "aarch64-darwin": {
-      "url": "https://github.com/openai/codex/releases/download/rust-v0.153.0/codex-package-aarch64-apple-darwin.tar.gz",
-      "hash": "sha256-E23LZA58zbAYo1S5we8mn4izE3pchLFBajt9PWuQQpk="
+      "url": "https://github.com/openai/codex/releases/download/rust-v0.153.2/codex-package-aarch64-apple-darwin.tar.gz",
+      "hash": "sha256-KH4t0Km7+1hYGwqRUDmUWLTwlOpCyvAoYPHoy1ogKgs="
     }
   }
 }
