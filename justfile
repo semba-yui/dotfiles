@@ -12,6 +12,7 @@ fmt:
 # Flake全体を評価し、リポジトリ全体のフォーマットを検証する
 [group('整形・検証')]
 check:
+    just ai-cli-test
     just teamwork-graph-cli-launcher-test
     just teamwork-graph-cli-release-test
     cd nix && nix flake check
@@ -84,20 +85,25 @@ ai-install:
 ai-update:
     apm install --global
 
-# Flake入力とClaude Code・Codexのrelease lockを更新し、検証、反映、commitまで順番に実行する
+# Flake入力を更新し、検証、反映、commitまで順番に実行する
 [group('反映・更新')]
 update:
     ./nix/scripts/update.sh
 
-# 公式manifest・checksum・署名を検証してClaude CodeのNix release lockだけを更新する
+# Claude CodeとCodexを公式インストーラーで導入する（導入済みなら起動確認だけ行う）
 [group('反映・更新')]
-claude-code-update:
-    ./nix/scripts/update-claude-code.sh
+ai-cli-install:
+    bash ./nix/scripts/ai-cli.sh install
 
-# 公式stableリリース・checksum・署名を検証してCodexのNix release lockだけを更新する
+# Claude CodeとCodexの公式更新コマンドを実行する
 [group('反映・更新')]
-codex-update:
-    ./nix/scripts/update-codex.sh
+ai-cli-update:
+    bash ./nix/scripts/ai-cli.sh update
+
+# 公式インストーラーとの境界を、ネットワークとホームディレクトリを変更せず検証する
+[group('整形・検証')]
+ai-cli-test:
+    bash ./nix/tests/ai-cli-installation-test.sh
 
 # 公式manifest・checksum・署名を検証してTWGのNix release lockだけを更新する
 [group('反映・更新')]

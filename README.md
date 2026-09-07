@@ -43,7 +43,18 @@ dotfiles hooks-install
 
 hookは`lefthook.yml`が定義し、Betterleaksでcommitとpush対象を検査します。端末全体には効かせないため、他のリポジトリのhook運用には干渉しません。`lefthook.yml`の内容を変えるだけなら再実行は不要で、hookの種別を増やしたときだけ再実行します。
 
-### 4. 手動セットアップ
+### 4. AI CLIの導入
+
+新しいシェルを開き、Claude CodeとCodexを公式インストーラーで導入します。
+本体は最新版へ自動更新し、指示ファイルとPATHはHome Managerで管理します。
+
+```sh
+dotfiles ai-cli-install
+```
+
+導入済みのツールは再インストールせず、起動だけ確認します。認証は各ツールで行ってください。
+
+### 5. 手動セットアップ
 
 nix-darwinの反映後、macOSが保護する内部状態や秘密情報を手動で設定します。
 
@@ -53,7 +64,7 @@ nix-darwinの反映後、macOSが保護する内部状態や秘密情報を手�
 - CleanShot Xへ画面収録など必要な権限を許可する
 - 利用するGitHubアカウントをGit Credential Managerで認証する
 
-### 5. 動作確認
+### 6. 動作確認
 
 新しいシェルを開き、セットアップ状態を診断します。
 
@@ -83,13 +94,13 @@ dotfiles check     # Flake全体と設定ファイルの整形を検証する
 dotfiles doctor    # 現在のセットアップ状態を診断する
 dotfiles build     # 現在のホストを反映せずにビルドする
 dotfiles switch    # 現在のホストへ確認後に反映する
-dotfiles update    # Flake入力とAI CLIのrelease lockを更新し、検証、反映、commitまで行う
+dotfiles update    # Flake入力を更新し、検証、反映、commitまで行う
 dotfiles hooks-install # このリポジトリの秘密検出hookを.git/hooksへ導入する
 dotfiles ai-check   # AI依存のlockと生成物を検証する
 dotfiles ai-install # lock済みのAI依存を再現する
 dotfiles ai-update  # AI依存の更新内容を確認して更新する
-dotfiles claude-code-update # Claude Codeを上流の最新リリースへ更新する
-dotfiles codex-update       # Codexを上流の最新stableリリースへ更新する
+dotfiles ai-cli-install # Claude CodeとCodexを公式インストーラーで導入する
+dotfiles ai-cli-update  # Claude CodeとCodexの公式更新コマンドを実行する
 ```
 
 シェルと herdr のショートカットは `Alt-X`（コマンドパレット）または [docs/cheatsheet.md](docs/cheatsheet.md) を参照してください。
@@ -111,7 +122,7 @@ Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトッ�
 ## ドキュメント
 
 - [AGENTS.md](AGENTS.md): リポジトリの規約。モジュール構成、検証コマンド、コーディング規約、コミット規約
-- [docs/ai-cli-release-pinning.md](docs/ai-cli-release-pinning.md): Claude Code と Codex を上流リリースへ固定する方針と更新手順
+- [docs/ai-cli-management.md](docs/ai-cli-management.md): Claude CodeとCodexの管理境界、導入、更新、復旧手順
 - [docs/cheatsheet.md](docs/cheatsheet.md): ターミナル操作のショートカット一覧（層横断・ユースケース起点）
 - [docs/herdr.md](docs/herdr.md): herdr の運用ガイドと設計判断、第2陣プラグイン候補
 - [docs/worktree.md](docs/worktree.md): gtr を主軸とした worktree ワークフローと運用ルール
@@ -124,6 +135,7 @@ Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトッ�
 - nix-darwin: macOSのシステム設定、ログインシェル、Nix、Homebrew
 - Home Manager: ユーザー単位のCLI、GUIアプリ、設定ファイル
 - Homebrew cask: Nixでの配布が適さないmacOSアプリ
+- 公式インストーラー: Claude CodeとCodexの本体、起動用リンク、更新
 - 手動設定: ライセンス、アカウント認証、macOSが保護する権限と内部状態
 
 端末固有の値は`nix/hosts/<hostname>/`、所有する端末で共通の設定は`nix/modules/`で管理します。

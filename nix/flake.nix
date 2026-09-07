@@ -71,13 +71,10 @@
         config.allowUnfreePredicate =
           package:
           builtins.elem (nixpkgs.lib.getName package) [
-            "claude-code"
             "teamwork-graph-cli"
           ];
       };
       apmCliWithWebsocketsRuntimeDependency = pkgs.callPackage ./packages/apm-cli.nix { };
-      claudeCodePinnedToUpstreamRelease = pkgs.callPackage ./packages/claude-code.nix { };
-      codexPinnedToUpstreamRelease = pkgs.callPackage ./packages/codex.nix { };
       darwinConfigurations = import ./hosts { inherit inputs; };
       teamworkGraphCli = pkgs.callPackage ./packages/teamwork-graph-cli.nix { };
 
@@ -88,6 +85,8 @@
         programs.nixfmt.enable = true;
         programs.shellcheck.enable = true;
         programs.shfmt.enable = true;
+        # 増分検査では source 先が入力一覧に含まれないため、明示した参照先も検査する。
+        settings.formatter.shellcheck.options = [ "-x" ];
       };
     in
     {
@@ -96,8 +95,6 @@
       formatter.${system} = treefmtEval.config.build.wrapper;
       packages.${system} = {
         inherit (pkgs) just oxfmt;
-        claude-code = claudeCodePinnedToUpstreamRelease;
-        codex = codexPinnedToUpstreamRelease;
         teamwork-graph-cli = teamworkGraphCli;
       };
 
@@ -106,9 +103,23 @@
           hostname: configuration: nixpkgs.lib.nameValuePair "darwin-${hostname}" configuration.system
         ) darwinConfigurations
         // {
+          ai-cli-installation =
+            pkgs.runCommand "ai-cli-installation-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.coreutils
+                  pkgs.curl
+                ];
+              }
+              ''
+                mkdir scripts
+                cp ${./scripts/ai-cli-installation.sh} scripts/ai-cli-installation.sh
+                cp -R ${./tests} tests
+                bash tests/ai-cli-installation-test.sh
+                touch "$out"
+              '';
           apm-cli = apmCliWithWebsocketsRuntimeDependency;
-          claude-code = claudeCodePinnedToUpstreamRelease;
-          codex = codexPinnedToUpstreamRelease;
           formatting = treefmtEval.config.build.check self;
           teamwork-graph-cli = teamworkGraphCli;
         };

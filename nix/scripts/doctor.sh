@@ -37,6 +37,12 @@ for command_name in betterleaks darwin-rebuild fish gh git git-credential-manage
   check_command "$command_name"
 done
 
+if bash "$flake_directory/scripts/ai-cli.sh" check; then
+  pass "Claude Code と Codex は公式インストーラーで管理されています"
+else
+  fail "AI CLI の導入先または PATH を確認してください"
+fi
+
 if [[ ! -e "$HOME/.local/bin/twg" && ! -L "$HOME/.local/bin/twg" ]]; then
   pass "Nix 管理外の twg が ~/.local/bin にありません"
 else

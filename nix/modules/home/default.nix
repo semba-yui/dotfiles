@@ -37,6 +37,8 @@
     ./programs/zoxide.nix
   ];
 
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
   home.packages = with pkgs; [
     ast-grep
     bun
