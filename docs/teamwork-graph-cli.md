@@ -6,7 +6,7 @@ Teamwork Graph CLI（`twg`）は、バイナリ、agent skills、認証情報を
 | 対象                    | 正本                                 | 更新方法                                        |
 | ----------------------- | ------------------------------------ | ----------------------------------------------- |
 | `twg` バイナリ          | Nix の release lock                  | `dotfiles teamwork-graph-cli-update`            |
-| TWG skills              | `apm/apm.yml` と `apm/apm.lock.yaml` | 他の APM 依存と同時に SHA を変更                |
+| TWG skills              | `nix/flake.nix` の `twg-cli` 入力    | CLI との互換性を確認して rev を変更             |
 | secret                  | `~/.config/twg/auth.conf`（`0600`）  | `twg login` / `twg auth refresh` / `twg logout` |
 | consent・非 secret 設定 | `~/.config/twg/`                     | `twg consent` などの対話コマンド                |
 
@@ -55,19 +55,21 @@ dotfiles switch LCDEV0215
 ## skills の更新
 
 TWG skills は root skill と sibling skills を同一 commit に固定します。
-TWG だけを自動更新せず、他の APM 依存を見直すときに、CLI との互換性を確認して `apm/apm.yml` の SHA を変更します。
+`nix/flake.nix` の `twg-cli` 入力は URL に rev を含めているため `dotfiles update` では動きません。
+CLI との互換性を確認して rev を書き換え、lock を更新してから反映します。
 
 ```sh
-apm install --global
-git diff -- apm/apm.yml apm/apm.lock.yaml
-dotfiles ai-check
+nix flake update twg-cli --flake ./nix
+git diff -- nix/flake.nix nix/flake.lock
+dotfiles build LCDEV0215
+dotfiles switch LCDEV0215
 ```
 
-lock の `virtual_path` と `deployed_files` を確認し、指定した `skills/<name>` の外側が展開されていたら更新を採用しません。
+配置される skill は `nix/modules/home/programs/agent-skills.nix` が `skills/` 直下の 1 段だけを探索して選びます。上流が skill を追加・改名した場合は `~/.claude/skills/` の差分で確認します。
 
 ## 所有権が競合するコマンド
 
-次のコマンドは Nix または APM の管理対象を書き換えるため使用しません。
+次のコマンドは Nix の管理対象を書き換えるため使用しません。
 
 - `twg setup`
 - `twg update`
@@ -80,5 +82,5 @@ lock の `virtual_path` と `deployed_files` を確認し、指定した `skills
 ## 削除
 
 完全に削除する場合は、最初に `twg logout` で `~/.config/twg/auth.conf` の認証情報を消します。
-続いて Nix の package・Home Manager module・更新タスクと、APM manifest の TWG skills を宣言から削除し、`apm install --global` と `dotfiles switch LCDEV0215` で各管理対象へ反映します。
+続いて Nix の package・Home Manager module・更新タスクと、`nix/flake.nix` の `twg-cli` 入力および `agent-skills.nix` の TWG skills を宣言から削除し、`dotfiles switch LCDEV0215` で反映します。
 `~/.config/twg/` に残る非 secret 設定は、内容を確認してから別途削除します。

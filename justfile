@@ -37,13 +37,6 @@ worktree-fish-test:
     fish -n fish/conf.d/*.fish fish/functions/*.fish fish/tests/*.fish
     fish fish/tests/fzf_create_worktree_from_base_branch_test.fish
 
-# グローバルAPMのmanifestとlockが一致し、再現可能かを変更せず検証する
-# APM 0.21.0のauditはグローバル配置先をproject相対として検査するため、対応するまで使用しない
-[group('整形・検証')]
-ai-check:
-    test -L "${HOME}/.apm"
-    apm install --global --frozen --dry-run
-
 # 端末が宣言した構成どおりにセットアップされているか診断する
 [group('整形・検証')]
 doctor:
@@ -70,20 +63,6 @@ switch host=current-host:
 [group('反映・更新')]
 hooks-install:
     lefthook install
-
-# lock済みの公開AI依存をグローバル環境へ再現する
-[group('反映・更新')]
-ai-install:
-    apm install --global --frozen
-
-# apm.ymlで書き換えたrefを、グローバル環境のlockと生成物へ反映する
-# apm updateは使わない。SHA固定の依存に対して上流のannotated tagを要求するが、依存先の
-# 上流はannotated tagを打っておらず、twg-cliとgh-stackのSHA固定はCLI版との結合として
-# 意図的に残すため、この検査を通過できる構成にはならない。
-# --frozenを外しても書き換えていない依存はlockのcommitへ固定されたままになる。
-[group('反映・更新')]
-ai-update:
-    apm install --global
 
 # Flake入力を更新し、検証、反映、commitまで順番に実行する
 [group('反映・更新')]

@@ -9,7 +9,7 @@ Claude CodeとCodexの本体は公式インストーラーで導入し、最新�
 | `~/.local/bin`のPATH登録                   | Home Manager                 |
 | `CLAUDE.md`・`AGENTS.md`・statusline       | GitとHome Manager            |
 | `settings.json`・`config.toml`・認証・履歴 | 各ツールとユーザー           |
-| APM管理の外部skills                        | APMのmanifestとlock          |
+| 外部配布のskills                           | Nix（flake入力とagent-skills-nix） |
 
 Codexのバックグラウンドサーバーは、公式インストーラーの管理先から起動・更新します。
 Nix storeへのリンクで公式の管理先を置き換えると、更新の所有権が競合します。
@@ -53,7 +53,7 @@ dotfiles ai-cli-update
 各ツールの案内に従って再起動してください。
 
 `dotfiles update`はNixのFlake入力を更新します。
-`dotfiles ai-update`はAPM管理の外部skillsに使い、本体の更新とは分離します。
+外部配布のskillsは`nix/flake.nix`でrev付きURLに固定しているため`dotfiles update`では動かず、revの書き換えで更新します。
 
 ## 診断と復旧
 

@@ -1,16 +1,11 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   apmCliWithWebsocketsRuntimeDependency = pkgs.callPackage ../../../packages/apm-cli.nix { };
-  repositoryDirectory = builtins.dirOf config.programs.nh.darwinFlake;
 in
 {
+  # CLI だけ入れる。グローバル scope（~/.apm）は使わない。apm は ~/.apm が symlink だと
+  # skill を配置できず、実ディレクトリにすると lock が flake.lock と 2 本になるため、
+  # 端末共通の skill は agent-skills.nix で扱い、apm はプロジェクト scope の用途に限る。
   home.packages = [ apmCliWithWebsocketsRuntimeDependency ];
-
-  # APM自身がmanifestとlockを更新するため、Nix storeへコピーせず作業ツリーを正本にする。
-  # ディレクトリ単位でリンクし、APMのatomic replaceで個別ファイルのリンクが壊れるのを避ける。
-  home.file.".apm" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${repositoryDirectory}/apm";
-    force = true;
-  };
 }

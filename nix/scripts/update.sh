@@ -19,7 +19,7 @@ fi
 echo "dotfiles の main ブランチを同期します。"
 git -C "$repository_root" pull --ff-only
 
-# TWG の release lock は APM skills の SHA と互換性を合わせる必要があるため、ここでは更新しない。
+# TWG の release lock は flake.nix の twg-cli 入力（skills）の rev と互換性を合わせる必要があるため、ここでは更新しない。
 lock_files=(
   "$flake_directory/flake.lock"
 )

@@ -113,11 +113,10 @@ Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトッ�
 - `claude/`: Claude Code専用の設定、agents、skills、hooks
 - `codex/`: Codex専用の設定、agents、hooks、plugins
 - `copilot/`: GitHub Copilot CLI専用の設定、agents、skills、hooks
-- `apm/`: 公開されている外部AI資産のグローバルmanifestとlock
 
 編集対象の設定はHome Managerからリポジトリへ直接リンクします。一方、認証、履歴、信頼状態、セッション、キャッシュなど、各ツールが生成する内部状態はGitで管理しません。
 
-公開可能な自作skillは`agents/`または各ツールのディレクトリで管理します。非公開で複数端末に共有するskillは別のprivate repository、端末限定や一時的なskillはホームディレクトリだけに置き、公開APM manifestには含めません。
+公開可能な自作skillは`agents/`または各ツールのディレクトリで管理します。非公開で複数端末に共有するskillは別のprivate repository、端末限定や一時的なskillはホームディレクトリだけに置きます。外部配布のskillは`nix/flake.nix`の入力でrevを固定し、`nix/modules/home/programs/agent-skills.nix`で選択して配置します。
 
 ## ドキュメント
 

@@ -6,4 +6,4 @@
 
 CodexとGitHub Copilot CLIは `~/.agents/skills/` を直接読みます。Claude CodeにはHome Managerで同じskillを `~/.claude/skills/` に配置します。
 
-外部配布のskillは`../apm/`、公開できないskillは別のprivate repositoryまたは端末上だけで管理します。APM生成物や非公開skillと名前が重複しないようにしてください。
+外部配布のskillは`../nix/modules/home/programs/agent-skills.nix`、公開できないskillは別のprivate repositoryまたは端末上だけで管理します。agent-skills-nixが配置するskillや非公開skillと名前が重複しないようにしてください。

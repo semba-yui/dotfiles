@@ -57,11 +57,11 @@ dotfiles herdr-doctor   # config 検証・連携フックの陳腐化・プラ�
 
 本命の用途です。素の Playwright や agent-browser は headless か、このセッションと無関係な Chrome ウィンドウで動くため、何が起きたかは事後のスクリーンショットからしか分かりません。herdr-browser の CDP ゲートウェイへ繋げば、エージェントの操作を作業中のレイアウトの中で見ながら、詰まった瞬間に自分のマウスとキーボードで介入できます。介入しても自動化クライアントの接続は切れません。
 
-手順は APM で導入した `herdr-browser` skill（`~/.claude/skills/herdr-browser/SKILL.md`）が正です。要点だけ書くと、`herdr plugin list --plugin official.browser --json` で `plugin_root` を引き、`bun run "<plugin_root>/src/cli.ts" connect --view <view_id>` が返す `cdp_http_url` を Playwright MCP の `--cdp-endpoint` や agent-browser へ渡します。プラグインはグローバルな実行ファイルを入れないため、パスは毎回この方法で解決します。
+手順は agent-skills-nix で配置した `herdr-browser` skill（`~/.claude/skills/herdr-browser/SKILL.md`）が正です。要点だけ書くと、`herdr plugin list --plugin official.browser --json` で `plugin_root` を引き、`bun run "<plugin_root>/src/cli.ts" connect --view <view_id>` が返す `cdp_http_url` を Playwright MCP の `--cdp-endpoint` や agent-browser へ渡します。プラグインはグローバルな実行ファイルを入れないため、パスは毎回この方法で解決します。
 
 Claude Code が headless 側へ流れないよう、`HERDR_ENV=1` のときは CDP ゲートウェイを使う旨を [CLAUDE.md](../claude/.claude/CLAUDE.md) に書いています。既存の Playwright 系 skill のほうがトリガー記述が広く、放っておくとそちらが先に発火するためです。
 
-skill は上流の CLI と一体なので自作せず、[apm.yml](../apm/apm.yml) からプラグイン本体のリポジトリを直接参照しています。ただし**プラグイン本体は最新追従、skill は SHA 固定**なのでずれ得ます。`dotfiles herdr-plugins` でプラグインを更新したら、`apm.yml` の SHA も合わせて更新してください。
+skill は上流の CLI と一体なので自作せず、[flake.nix](../nix/flake.nix) の `herdr-browser` 入力でプラグイン本体のリポジトリを直接参照しています。ただし**プラグイン本体は最新追従、skill は rev 固定**なのでずれ得ます。`dotfiles herdr-plugins` でプラグインを更新したら、`flake.nix` の rev も合わせて更新してください。
 
 ### 使わない場面
 

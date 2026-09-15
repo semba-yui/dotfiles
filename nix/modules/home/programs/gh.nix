@@ -2,7 +2,7 @@
 let
   ghStackVersion = "0.1.0";
 
-  # nixpkgs-unstable はまだ 0.0.4 で、apm.yml が取り込む skill が前提とする
+  # nixpkgs-unstable はまだ 0.0.4 で、flake.nix の gh-stack 入力が取り込む skill が前提とする
   # merge / trunk を持たない。master にマージ済みの定義を当てて先回りする。
   # チャンネルが 0.1.0 を拾ったらこの let ごと削除する。
   gh-stack = pkgs.gh-stack.overrideAttrs {
