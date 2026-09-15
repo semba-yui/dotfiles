@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789145426,
+        "narHash": "sha256-Wf+7Qzt8+nz4TXPCbWnMjOAdzbVM6blW9J6JP+YhSy8=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "5133c874553c6c295654d8de4e3f62c95736b9c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "5133c874553c6c295654d8de4e3f62c95736b9c6",
+        "type": "github"
+      }
+    },
     "brew-src": {
       "flake": false,
       "locked": {
@@ -17,6 +38,23 @@
         "type": "github"
       }
     },
+    "gh-stack": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785346327,
+        "narHash": "sha256-48JkOeqbvHlCZ2u3LnwJymw55xMQWLTPJLDbV44clGI=",
+        "owner": "github",
+        "repo": "gh-stack",
+        "rev": "a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "github",
+        "repo": "gh-stack",
+        "rev": "a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9",
+        "type": "github"
+      }
+    },
     "git-worktree-runner": {
       "flake": false,
       "locked": {
@@ -30,6 +68,23 @@
       "original": {
         "owner": "coderabbitai",
         "repo": "git-worktree-runner",
+        "type": "github"
+      }
+    },
+    "herdr-browser": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785246706,
+        "narHash": "sha256-4Dlo4YQpLPJKEPuXSS4EO5LMCmUn/tezEiIqlFXhCxo=",
+        "owner": "ogulcancelik",
+        "repo": "herdr-browser",
+        "rev": "be6888b71cf4eb5939ee79a746bd1a1c22ade046",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ogulcancelik",
+        "repo": "herdr-browser",
+        "rev": "be6888b71cf4eb5939ee79a746bd1a1c22ade046",
         "type": "github"
       }
     },
@@ -83,6 +138,23 @@
       "original": {
         "owner": "stablyai",
         "repo": "homebrew-orca",
+        "type": "github"
+      }
+    },
+    "mizchi-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784050221,
+        "narHash": "sha256-ayMrZJ+3OD+f4azULSfgFh84UIQSoi+fhSOYvwWq45A=",
+        "owner": "mizchi",
+        "repo": "skills",
+        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mizchi",
+        "repo": "skills",
+        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
         "type": "github"
       }
     },
@@ -143,17 +215,58 @@
         "type": "github"
       }
     },
+    "orca": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788156337,
+        "narHash": "sha256-fMZpbO+QE2vwL9w1aLboQBRrvejVuJeHZOF5SYEM7JY=",
+        "owner": "stablyai",
+        "repo": "orca",
+        "rev": "6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stablyai",
+        "repo": "orca",
+        "rev": "6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "agent-skills": "agent-skills",
         "brew-src": "brew-src",
+        "gh-stack": "gh-stack",
         "git-worktree-runner": "git-worktree-runner",
+        "herdr-browser": "herdr-browser",
         "home-manager": "home-manager",
         "homebrew-k1low-tap": "homebrew-k1low-tap",
         "homebrew-stablyai-orca-tap": "homebrew-stablyai-orca-tap",
+        "mizchi-skills": "mizchi-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",
-        "treefmt-nix": "treefmt-nix"
+        "orca": "orca",
+        "stop-ai-slop-jp": "stop-ai-slop-jp",
+        "treefmt-nix": "treefmt-nix",
+        "twg-cli": "twg-cli"
+      }
+    },
+    "stop-ai-slop-jp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1781179477,
+        "narHash": "sha256-LsCBtbaQwQkiYtObhTmyZOZlL2MmCRd4EM5PZuH8Is0=",
+        "owner": "iKora128",
+        "repo": "stop-ai-slop-jp",
+        "rev": "e09d32796f253a62693885757cea484c275d06f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "iKora128",
+        "repo": "stop-ai-slop-jp",
+        "rev": "e09d32796f253a62693885757cea484c275d06f2",
+        "type": "github"
       }
     },
     "treefmt-nix": {
@@ -173,6 +286,23 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "twg-cli": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1787543555,
+        "narHash": "sha256-sjJpIY/9o6gT80zU6GAXjXHlzbgb1W8mQiH2Z6UAEfo=",
+        "owner": "atlassian",
+        "repo": "twg-cli",
+        "rev": "81890e73d1169d28f400702a76f79fbbacc62414",
+        "type": "github"
+      },
+      "original": {
+        "owner": "atlassian",
+        "repo": "twg-cli",
+        "rev": "81890e73d1169d28f400702a76f79fbbacc62414",
         "type": "github"
       }
     }

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./programs/agent-skills.nix
     ./programs/alloy.nix
     ./programs/apm.nix
     ./programs/bat.nix

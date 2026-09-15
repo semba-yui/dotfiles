@@ -55,6 +55,53 @@
       url = "github:coderabbitai/git-worktree-runner";
       flake = false;
     };
+
+    # Agent skill の配置は agent-skills-nix の Home Manager モジュールに任せる。
+    # 上流は tag を打っていないため rev で固定する。
+    agent-skills = {
+      url = "github:Kyure-A/agent-skills-nix/5133c874553c6c295654d8de4e3f62c95736b9c6";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # 以下は skill の配布元。SHA で固定した上流を Nix store へ取り込み、選択と配置は
+    # modules/home/programs/agent-skills.nix で行う。URL に rev を含めているため
+    # `nix flake update` では動かず、更新は rev の書き換えで行う。
+
+    # skill が指示するサブコマンドは gh-stack の版で変わる。gh.nix の pkgs.gh-stack を
+    # 上げたら、この rev も対応する release へ合わせる。
+    gh-stack = {
+      url = "github:github/gh-stack/a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9";
+      flake = false;
+    };
+
+    # herdr-browser プラグインが同梱する skill。CDP ゲートウェイの起動手順は上流の
+    # src/cli.ts と一体なので、自作せず本体リポジトリからそのまま取り込む。
+    herdr-browser = {
+      url = "github:ogulcancelik/herdr-browser/be6888b71cf4eb5939ee79a746bd1a1c22ade046";
+      flake = false;
+    };
+
+    mizchi-skills = {
+      url = "github:mizchi/skills/7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4";
+      flake = false;
+    };
+
+    orca = {
+      url = "github:stablyai/orca/6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e";
+      flake = false;
+    };
+
+    stop-ai-slop-jp = {
+      url = "github:iKora128/stop-ai-slop-jp/e09d32796f253a62693885757cea484c275d06f2";
+      flake = false;
+    };
+
+    # root skill が参照する sibling skill を、packages/teamwork-graph-cli-release.json の
+    # CLI 版と互換な commit へ揃える。CLI を上げたらこの rev も合わせる。
+    twg-cli = {
+      url = "github:atlassian/twg-cli/81890e73d1169d28f400702a76f79fbbacc62414";
+      flake = false;
+    };
   };
 
   outputs =
