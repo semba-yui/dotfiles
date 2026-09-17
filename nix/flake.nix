@@ -82,7 +82,7 @@
     };
 
     mizchi-skills = {
-      url = "github:mizchi/skills/7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4";
+      url = "github:mizchi/skills/aa223d8c85ba4313e2ec6fb9251cc65d46ed3291";
       flake = false;
     };
 

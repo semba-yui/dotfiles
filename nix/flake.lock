@@ -144,17 +144,17 @@
     "mizchi-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1784050221,
-        "narHash": "sha256-ayMrZJ+3OD+f4azULSfgFh84UIQSoi+fhSOYvwWq45A=",
+        "lastModified": 1789581361,
+        "narHash": "sha256-ubk5JXgYS4JxNnJB4PQo++qITH1stTNHZqm3lX/0uwo=",
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
+        "rev": "aa223d8c85ba4313e2ec6fb9251cc65d46ed3291",
         "type": "github"
       },
       "original": {
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "7a0d72866a0bb3e9ac3e2768c328b09ba2bc40c4",
+        "rev": "aa223d8c85ba4313e2ec6fb9251cc65d46ed3291",
         "type": "github"
       }
     },

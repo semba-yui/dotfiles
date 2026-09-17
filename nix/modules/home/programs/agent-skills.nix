@@ -51,37 +51,40 @@
         filter.maxDepth = 1;
       };
 
-      # mizchi/skills は meta/ testing/ tooling/ の入れ子で、リポジトリごと拾うと ID が
-      # meta/extract-glossary のような階層付きになり、1 段しか探索しない Claude Code から
-      # 見えない。skill ごとに subdir を切って平坦化する。
+      # mizchi/skills の未選択の skill を取り込まないよう、skill ごとに subdir を指定する。
       ast-grep-practice = {
         path = inputs.mizchi-skills;
-        subdir = "tooling/ast-grep-practice";
+        subdir = "ast-grep-practice";
         filter.maxDepth = 0;
       };
       empirical-prompt-tuning = {
         path = inputs.mizchi-skills;
-        subdir = "meta/empirical-prompt-tuning";
+        subdir = "empirical-prompt-tuning";
         filter.maxDepth = 0;
       };
       extract-glossary = {
         path = inputs.mizchi-skills;
-        subdir = "meta/extract-glossary";
+        subdir = "extract-glossary";
+        filter.maxDepth = 0;
+      };
+      multi-agent-orchestration = {
+        path = inputs.mizchi-skills;
+        subdir = "multi-agent-orchestration";
         filter.maxDepth = 0;
       };
       optimizing-descriptions = {
         path = inputs.mizchi-skills;
-        subdir = "meta/optimizing-descriptions";
+        subdir = "optimizing-descriptions";
         filter.maxDepth = 0;
       };
       playwright-cli = {
         path = inputs.mizchi-skills;
-        subdir = "testing/playwright-cli";
+        subdir = "playwright-cli";
         filter.maxDepth = 0;
       };
       playwright-test = {
         path = inputs.mizchi-skills;
-        subdir = "testing/playwright-test";
+        subdir = "playwright-test";
         filter.maxDepth = 0;
       };
     };
@@ -93,6 +96,7 @@
         "extract-glossary"
         "gh-stack"
         "herdr-browser"
+        "multi-agent-orchestration"
         "optimizing-descriptions"
         "playwright-cli"
         "playwright-test"
