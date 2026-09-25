@@ -289,17 +289,17 @@
     "twg-cli": {
       "flake": false,
       "locked": {
-        "lastModified": 1787543555,
-        "narHash": "sha256-sjJpIY/9o6gT80zU6GAXjXHlzbgb1W8mQiH2Z6UAEfo=",
+        "lastModified": 1789074562,
+        "narHash": "sha256-pf6tuDILi1b5hCZO5CJ3nUcLXn7WKIEiE/KER8k3l9M=",
         "owner": "atlassian",
         "repo": "twg-cli",
-        "rev": "81890e73d1169d28f400702a76f79fbbacc62414",
+        "rev": "35710745f766fd19953d2a8a86e27cd193996598",
         "type": "github"
       },
       "original": {
         "owner": "atlassian",
         "repo": "twg-cli",
-        "rev": "81890e73d1169d28f400702a76f79fbbacc62414",
+        "rev": "35710745f766fd19953d2a8a86e27cd193996598",
         "type": "github"
       }
     }

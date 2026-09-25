@@ -84,7 +84,7 @@
     # root skill が参照する sibling skill を、packages/teamwork-graph-cli-release.json の
     # CLI 版と互換な commit へ揃える。CLI を上げたらこの rev も合わせる。
     twg-cli = {
-      url = "github:atlassian/twg-cli/81890e73d1169d28f400702a76f79fbbacc62414";
+      url = "github:atlassian/twg-cli/35710745f766fd19953d2a8a86e27cd193996598";
       flake = false;
     };
   };
