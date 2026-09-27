@@ -41,6 +41,7 @@
   home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.packages = with pkgs; [
+    android-tools
     ast-grep
     bun
     curl
