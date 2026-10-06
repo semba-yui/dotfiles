@@ -16,6 +16,7 @@
     ./programs/eza.nix
     ./programs/fd.nix
     ./programs/fish.nix
+    ./programs/fsautocomplete.nix
     ./programs/fzf.nix
     ./programs/gh.nix
     ./programs/glab.nix
