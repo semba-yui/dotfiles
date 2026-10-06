@@ -18,6 +18,7 @@
     ./programs/fish.nix
     ./programs/fzf.nix
     ./programs/gh.nix
+    ./programs/glab.nix
     ./programs/ghostty.nix
     ./programs/git-credential-manager.nix
     ./programs/git-worktree-runner.nix
