@@ -59,13 +59,6 @@
       flake = false;
     };
 
-    # herdr-browser プラグインが同梱する skill。CDP ゲートウェイの起動手順は上流の
-    # src/cli.ts と一体なので、自作せず本体リポジトリからそのまま取り込む。
-    herdr-browser = {
-      url = "github:ogulcancelik/herdr-browser/be6888b71cf4eb5939ee79a746bd1a1c22ade046";
-      flake = false;
-    };
-
     mizchi-skills = {
       url = "github:mizchi/skills/aa223d8c85ba4313e2ec6fb9251cc65d46ed3291";
       flake = false;

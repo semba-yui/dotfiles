@@ -31,11 +31,6 @@
         subdir = "skills";
         filter.maxDepth = 1;
       };
-      herdr-browser = {
-        path = inputs.herdr-browser;
-        subdir = "skills";
-        filter.maxDepth = 1;
-      };
       orca = {
         path = inputs.orca;
         subdir = "skills";
@@ -95,7 +90,6 @@
         "empirical-prompt-tuning"
         "extract-glossary"
         "gh-stack"
-        "herdr-browser"
         "multi-agent-orchestration"
         "optimizing-descriptions"
         "playwright-cli"

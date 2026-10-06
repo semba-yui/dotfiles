@@ -55,7 +55,7 @@ Jira または Confluence から情報を取得するときは、Atlassian CLI �
 
 ## ブラウザ自動化
 
-- herdr のペイン内（`HERDR_ENV=1`）でブラウザを操作するときは、headless や独立した Chrome ウィンドウではなく、herdr-browser の CDP ゲートウェイへ接続すること。操作の様子がペインに表示され、こちらが途中で介入しても接続は切れない。手順は `herdr-browser` skill を参照
+- herdr のペイン内（`HERDR_ENV=1`）でブラウザを操作するときは、headless や独立した Chrome ウィンドウではなく terminal-browser を使うこと。`terminal-browser open --split right <url>` で隣のペインに開き、`terminal-browser action` で操作する。操作の様子がペインに表示され、こちらが途中で介入できる。手順は `terminal-browser` skill を参照
 - herdr の外では従来どおり Playwright や agent-browser をそのまま使う
 
 ## 環境

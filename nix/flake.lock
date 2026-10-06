@@ -71,23 +71,6 @@
         "type": "github"
       }
     },
-    "herdr-browser": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1785246706,
-        "narHash": "sha256-4Dlo4YQpLPJKEPuXSS4EO5LMCmUn/tezEiIqlFXhCxo=",
-        "owner": "ogulcancelik",
-        "repo": "herdr-browser",
-        "rev": "be6888b71cf4eb5939ee79a746bd1a1c22ade046",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ogulcancelik",
-        "repo": "herdr-browser",
-        "rev": "be6888b71cf4eb5939ee79a746bd1a1c22ade046",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -235,7 +218,6 @@
         "agent-skills": "agent-skills",
         "gh-stack": "gh-stack",
         "git-worktree-runner": "git-worktree-runner",
-        "herdr-browser": "herdr-browser",
         "home-manager": "home-manager",
         "homebrew-k1low-tap": "homebrew-k1low-tap",
         "homebrew-stablyai-orca-tap": "homebrew-stablyai-orca-tap",

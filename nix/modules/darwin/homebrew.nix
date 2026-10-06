@@ -60,6 +60,7 @@
       "raycast"
       "slack"
       "stablyai/orca/orca"
+      "terminal-browser"
       "typora"
       "zoom"
     ];
