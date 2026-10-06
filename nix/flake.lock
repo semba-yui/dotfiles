@@ -7,17 +7,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1789145426,
-        "narHash": "sha256-Wf+7Qzt8+nz4TXPCbWnMjOAdzbVM6blW9J6JP+YhSy8=",
+        "lastModified": 1790154098,
+        "narHash": "sha256-SviEpvFefXCPOmQ2b41c4ujE7BzWYJ/h8p/HZNxD2B8=",
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "5133c874553c6c295654d8de4e3f62c95736b9c6",
+        "rev": "dc122af897ab9a685c20ae54c639021619dbbb52",
         "type": "github"
       },
       "original": {
         "owner": "Kyure-A",
         "repo": "agent-skills-nix",
-        "rev": "5133c874553c6c295654d8de4e3f62c95736b9c6",
+        "rev": "dc122af897ab9a685c20ae54c639021619dbbb52",
         "type": "github"
       }
     },
@@ -41,17 +41,17 @@
     "gh-stack": {
       "flake": false,
       "locked": {
-        "lastModified": 1785346327,
-        "narHash": "sha256-48JkOeqbvHlCZ2u3LnwJymw55xMQWLTPJLDbV44clGI=",
+        "lastModified": 1790972623,
+        "narHash": "sha256-70H1kOdvklTeB8OVFg7g6xQ4rn0gqv+zU7yjDYPd3vo=",
         "owner": "github",
         "repo": "gh-stack",
-        "rev": "a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9",
+        "rev": "d4ab7ab47e5b3e3708a27c8c42abcdf4bc321419",
         "type": "github"
       },
       "original": {
         "owner": "github",
         "repo": "gh-stack",
-        "rev": "a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9",
+        "rev": "d4ab7ab47e5b3e3708a27c8c42abcdf4bc321419",
         "type": "github"
       }
     },
@@ -127,17 +127,17 @@
     "mizchi-skills": {
       "flake": false,
       "locked": {
-        "lastModified": 1789581361,
-        "narHash": "sha256-ubk5JXgYS4JxNnJB4PQo++qITH1stTNHZqm3lX/0uwo=",
+        "lastModified": 1790927348,
+        "narHash": "sha256-td6husEnA0cqdgfyROdjFpVOhWv44EfJIvi+gGY13YU=",
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "aa223d8c85ba4313e2ec6fb9251cc65d46ed3291",
+        "rev": "62f580819410cb1d398e4d7f234bbd0aad1c1a15",
         "type": "github"
       },
       "original": {
         "owner": "mizchi",
         "repo": "skills",
-        "rev": "aa223d8c85ba4313e2ec6fb9251cc65d46ed3291",
+        "rev": "62f580819410cb1d398e4d7f234bbd0aad1c1a15",
         "type": "github"
       }
     },
@@ -199,17 +199,17 @@
     "orca": {
       "flake": false,
       "locked": {
-        "lastModified": 1788156337,
-        "narHash": "sha256-fMZpbO+QE2vwL9w1aLboQBRrvejVuJeHZOF5SYEM7JY=",
+        "lastModified": 1791296364,
+        "narHash": "sha256-gpkkk7cY25rW4+vYNduWs01ePpmF4ouAbB7KhFdMrYc=",
         "owner": "stablyai",
         "repo": "orca",
-        "rev": "6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e",
+        "rev": "7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb",
         "type": "github"
       },
       "original": {
         "owner": "stablyai",
         "repo": "orca",
-        "rev": "6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e",
+        "rev": "7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb",
         "type": "github"
       }
     },

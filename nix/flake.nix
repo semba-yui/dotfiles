@@ -44,7 +44,7 @@
     # Agent skill の配置は agent-skills-nix の Home Manager モジュールに任せる。
     # 上流は tag を打っていないため rev で固定する。
     agent-skills = {
-      url = "github:Kyure-A/agent-skills-nix/5133c874553c6c295654d8de4e3f62c95736b9c6";
+      url = "github:Kyure-A/agent-skills-nix/dc122af897ab9a685c20ae54c639021619dbbb52";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -55,17 +55,17 @@
     # skill が指示するサブコマンドは gh-stack の版で変わる。gh.nix の pkgs.gh-stack を
     # 上げたら、この rev も対応する release へ合わせる。
     gh-stack = {
-      url = "github:github/gh-stack/a1b4a3d4d0bcde9ec3a78ab99b2d63af121857a9";
+      url = "github:github/gh-stack/d4ab7ab47e5b3e3708a27c8c42abcdf4bc321419";
       flake = false;
     };
 
     mizchi-skills = {
-      url = "github:mizchi/skills/aa223d8c85ba4313e2ec6fb9251cc65d46ed3291";
+      url = "github:mizchi/skills/62f580819410cb1d398e4d7f234bbd0aad1c1a15";
       flake = false;
     };
 
     orca = {
-      url = "github:stablyai/orca/6a65d8406a0da7833c6eabbb2a4f2a149ebb5c2e";
+      url = "github:stablyai/orca/7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb";
       flake = false;
     };
 
