@@ -51,7 +51,9 @@ sessionizer の探索設定（`~/.config/herdr/plugins/config/sessionizer/config
 
 素の Playwright や agent-browser は headless か、このセッションと無関係な Chrome ウィンドウで動くため、何が起きたかは事後のスクリーンショットからしか分かりません。terminal-browser なら、エージェントが `terminal-browser open --split right <url>` で隣のペインに開き、agent-browser 互換の `terminal-browser action` で操作するので、作業中のレイアウトの中で様子を見ながら介入できます。
 
-手順は terminal-browser 本体が書き出す `terminal-browser` skill（`~/.claude/skills/terminal-browser`）が正です。agent-skills-nix では管理しません。上流の skill はテンプレートから生成する形式で取り込めず、本体の版と一体だからです。
+手順は `terminal-browser` skill が正です。新しい端末では cask の導入後に一度だけ `terminal-browser setup` を実行してください。cask 内の skill への symlink を `~/.claude/skills` などへ張り、以後は本体が起動時に版の変化を検知して張り直します。
+
+この skill は agent-skills-nix でも APM でも管理しません。完成版の SKILL.md は release tarball にしか含まれず（リポジトリ上はテンプレート）、cask のパスは版ごとに変わるためです。setup が作る symlink は Home Manager の管理外のエントリなので、`structure = "link"` の配置とも共存します。
 
 Claude Code が headless 側へ流れないよう、`HERDR_ENV=1` のときは terminal-browser を使う旨を [CLAUDE.md](../claude/.claude/CLAUDE.md) に書いています。既存の Playwright 系 skill のほうがトリガー記述が広く、放っておくとそちらが先に発火するためです。
 
