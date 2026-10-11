@@ -3,12 +3,12 @@
 Teamwork Graph CLI（`twg`）は、バイナリ、agent skills、認証情報を別の仕組みで管理します。
 公式の一括セットアップは、それらの所有者を混在させるため使用しません。
 
-| 対象                    | 正本                                 | 更新方法                                        |
-| ----------------------- | ------------------------------------ | ----------------------------------------------- |
-| `twg` バイナリ          | Nix の release lock                  | `dotfiles teamwork-graph-cli-update`            |
-| TWG skills              | `nix/flake.nix` の `twg-cli` 入力    | CLI との互換性を確認して rev を変更             |
-| secret                  | `~/.config/twg/auth.conf`（`0600`）  | `twg login` / `twg auth refresh` / `twg logout` |
-| consent・非 secret 設定 | `~/.config/twg/`                     | `twg consent` などの対話コマンド                |
+| 対象                    | 正本                                | 更新方法                                        |
+| ----------------------- | ----------------------------------- | ----------------------------------------------- |
+| `twg` バイナリ          | Nix の release lock                 | `dotfiles teamwork-graph-cli-update`            |
+| TWG skills              | `nix/flake.nix` の `twg-cli` 入力   | CLI との互換性を確認して rev を変更             |
+| secret                  | `~/.config/twg/auth.conf`（`0600`） | `twg login` / `twg auth refresh` / `twg logout` |
+| consent・非 secret 設定 | `~/.config/twg/`                    | `twg consent` などの対話コマンド                |
 
 ## 初回セットアップ
 

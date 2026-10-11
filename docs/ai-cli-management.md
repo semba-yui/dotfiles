@@ -3,12 +3,12 @@
 Claude CodeとCodexの本体は公式インストーラーで導入し、最新版を追います。
 公式の自動更新を許可し、バージョンはNixで固定しません。
 
-| 対象                                       | 管理主体                     |
-| ------------------------------------------ | ---------------------------- |
-| 本体と`~/.local/bin`の起動用リンク         | 各ツールの公式インストーラー |
-| `~/.local/bin`のPATH登録                   | Home Manager                 |
-| `CLAUDE.md`・`AGENTS.md`・statusline       | GitとHome Manager            |
-| `settings.json`・`config.toml`・認証・履歴 | 各ツールとユーザー           |
+| 対象                                       | 管理主体                           |
+| ------------------------------------------ | ---------------------------------- |
+| 本体と`~/.local/bin`の起動用リンク         | 各ツールの公式インストーラー       |
+| `~/.local/bin`のPATH登録                   | Home Manager                       |
+| `CLAUDE.md`・`AGENTS.md`・statusline       | GitとHome Manager                  |
+| `settings.json`・`config.toml`・認証・履歴 | 各ツールとユーザー                 |
 | 外部配布のskills                           | Nix（flake入力とagent-skills-nix） |
 
 Codexのバックグラウンドサーバーは、公式インストーラーの管理先から起動・更新します。
