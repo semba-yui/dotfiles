@@ -5,7 +5,7 @@
 }:
 
 {
-  networking.hostName = "SembaYui";
+  networking.hostName = "mba13-m3-2024-01";
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
