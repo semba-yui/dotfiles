@@ -16,7 +16,6 @@ check:
     just teamwork-graph-cli-launcher-test
     just teamwork-graph-cli-release-test
     cd nix && nix flake check
-    just worktree-fish-test
     lefthook validate
     just --justfile justfile --fmt --check
     oxfmt --check .
@@ -30,12 +29,6 @@ teamwork-graph-cli-launcher-test:
 [group('整形・検証')]
 teamwork-graph-cli-release-test:
     ./nix/tests/teamwork-graph-cli-release-test.sh
-
-# worktree 作成 UI の振る舞いと、リポジトリ管理下の Fish 構文を検証する
-[group('整形・検証')]
-worktree-fish-test:
-    fish -n fish/conf.d/*.fish fish/functions/*.fish fish/tests/*.fish
-    fish fish/tests/fzf_create_worktree_from_base_branch_test.fish
 
 # 端末が宣言した構成どおりにセットアップされているか診断する
 [group('整形・検証')]

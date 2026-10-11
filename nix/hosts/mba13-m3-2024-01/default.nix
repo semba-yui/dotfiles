@@ -1,4 +1,4 @@
-{ inputs }:
+{ hostname, inputs }:
 
 let
   homeDirectory = "/Users/semba";
@@ -6,7 +6,12 @@ let
 in
 inputs.nix-darwin.lib.darwinSystem {
   specialArgs = {
-    inherit homeDirectory inputs username;
+    inherit
+      homeDirectory
+      hostname
+      inputs
+      username
+      ;
   };
 
   modules = [
@@ -28,7 +33,12 @@ inputs.nix-darwin.lib.darwinSystem {
     {
       home-manager = {
         extraSpecialArgs = {
-          inherit homeDirectory inputs username;
+          inherit
+            homeDirectory
+            hostname
+            inputs
+            username
+            ;
         };
         useGlobalPkgs = true;
         useUserPackages = true;

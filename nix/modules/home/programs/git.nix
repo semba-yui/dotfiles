@@ -1,17 +1,20 @@
-{ ... }:
+{ hostname, lib, ... }:
 let
   fullName = "仙波 琉一朗 / Ryuichiro Semba";
+
+  # 秘密鍵は端末ごとに生成して持ち出さないため、鍵ファイル名に端末を含めて区別する。
+  signingKey = account: "~/.ssh/github-commit-signing-${account}-${lib.toLower hostname}-ed25519.pub";
 
   identities = {
     semba-yui = {
       name = fullName;
       email = "65758369+semba-yui@users.noreply.github.com";
-      signingKey = "~/.ssh/github-commit-signing-semba-yui-lcdev0215-ed25519.pub";
+      signingKey = signingKey "semba-yui";
     };
     lc-semba-ryuichiro = {
       name = fullName;
       email = "86405487+lc-semba-ryuichiro@users.noreply.github.com";
-      signingKey = "~/.ssh/github-commit-signing-lc-semba-ryuichiro-lcdev0215-ed25519.pub";
+      signingKey = signingKey "lc-semba-ryuichiro";
     };
   };
 

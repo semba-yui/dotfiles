@@ -145,6 +145,14 @@
                 touch "$out"
               '';
           apm-cli = apmCliWithWebsocketsRuntimeDependency;
+          # Fish を導入しないホストでも検証できるよう、実行系ごと Nix で用意する。
+          fish = pkgs.runCommand "fish-test" { nativeBuildInputs = [ pkgs.fish ]; } ''
+            export HOME="$TMPDIR"
+            cp -R ${../fish} fish
+            fish -n fish/conf.d/*.fish fish/functions/*.fish fish/tests/*.fish
+            fish fish/tests/fzf_create_worktree_from_base_branch_test.fish
+            touch "$out"
+          '';
           formatting = treefmtEval.config.build.check self;
           teamwork-graph-cli = teamworkGraphCli;
         };

@@ -31,7 +31,9 @@ cd ~/ghq/github.com/semba-yui/dotfiles
 - `pull`と`push`は行いません。Flakeは未追跡ファイルを読まないため、追加したファイルは`git add`してください（commitは不要です）。
 - 途中で失敗しても、同じコマンドを再実行すれば続きから進みます。
 
-ホスト設定がまだない端末では、`nix/hosts/<LocalHostName>/`を追加してから実行します。
+ホスト設定がまだない端末では、構成の近い既存ホストのディレクトリを`nix/hosts/<LocalHostName>/`へコピーし、導入するモジュールを書き換えて`git add`します。ディレクトリ名がそのままホスト名として登録されます。
+
+コミット署名に使うSSH公開鍵は、`~/.ssh/github-commit-signing-<アカウント>-<小文字のホスト名>-ed25519.pub`に置きます。秘密鍵は端末ごとに生成し、端末間で持ち出しません。
 
 ### 3. git hooksの導入
 

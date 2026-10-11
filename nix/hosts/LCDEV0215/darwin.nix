@@ -1,11 +1,12 @@
 {
   homeDirectory,
+  hostname,
   username,
   ...
 }:
 
 {
-  networking.hostName = "LCDEV0215";
+  networking.hostName = hostname;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
