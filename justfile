@@ -59,6 +59,16 @@ build host=current-host:
 switch host=current-host:
     cd nix && nh darwin switch . --hostname "{{ host }}" --ask --no-update-lock-file --show-activation-logs
 
+# 初回セットアップの検査を、システムを変更せずに行う
+[group('反映・更新')]
+plan:
+    bash ./nix/scripts/setup.sh plan
+
+# 初回セットアップ・修復として、確認を取りながらNixの導入とnix-darwinの適用を行う
+[group('反映・更新')]
+apply:
+    bash ./nix/scripts/setup.sh apply
+
 # lefthook.ymlのhookを.git/hooksへ導入する（clone直後の一度だけ。hook種別を増やしたら再実行）
 [group('反映・更新')]
 hooks-install:

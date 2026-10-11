@@ -14,24 +14,24 @@ xcode-select --install
 
 GUIの案内に従ってインストールを完了してください。この操作はAppleの確認を伴うため、自動化の対象外です。
 
-### 2. 自動セットアップ
+### 2. 構成の確認と適用
 
-次のコマンドは、Nixの導入、リポジトリのclone、Flakeの検証、現在のホストのビルド、nix-darwinの初回適用を順番に行います。
-
-```sh
-curl -fsSL https://raw.githubusercontent.com/semba-yui/dotfiles/main/nix/scripts/bootstrap.sh | bash
-```
-
-スクリプトは適用前に、macOS、ホスト名、ユーザー名、ホームディレクトリを検査します。既存のcheckoutに未コミットの変更がある場合や、対応するホスト設定がない場合は変更を加えず停止します。
-
-実行内容を先に確認したい場合は、ダウンロードしてから内容を確認してください。
+リポジトリをcloneし、初回セットアップの入口である`nix/scripts/setup.sh`を実行します。NixやHome Managerがなくても動きます。
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/semba-yui/dotfiles/main/nix/scripts/bootstrap.sh \
-  -o /tmp/dotfiles-bootstrap.sh
-less /tmp/dotfiles-bootstrap.sh
-bash /tmp/dotfiles-bootstrap.sh
+git clone https://semba-yui@github.com/semba-yui/dotfiles.git ~/ghq/github.com/semba-yui/dotfiles
+cd ~/ghq/github.com/semba-yui/dotfiles
+./nix/scripts/setup.sh plan    # システムを変更せずに現在のホストの構成をビルドする
+./nix/scripts/setup.sh apply   # Nixが未導入なら導入し、nix-darwinを適用する
 ```
+
+- Nixは本家の公式インストーラーで導入します。
+- 初回適用前はFlakesが無効なため、`setup.sh`が有効にして実行します。
+- Nixインストーラーが追記した`/etc/bashrc`と`/etc/zshrc`は、nix-darwinの適用を止めます。`apply`は内容を表示し、確認を取ってから`.before-nix-darwin`へ退避します。
+- `pull`と`push`は行いません。Flakeは未追跡ファイルを読まないため、追加したファイルは`git add`してください（commitは不要です）。
+- 途中で失敗しても、同じコマンドを再実行すれば続きから進みます。
+
+ホスト設定がまだない端末では、`nix/hosts/<LocalHostName>/`を追加してから実行します。
 
 ### 3. git hooksの導入
 
@@ -72,10 +72,10 @@ nix-darwinの反映後、macOSが保護する内部状態や秘密情報を手�
 dotfiles doctor
 ```
 
-初期セットアップ処理だけを再検証し、システムへ反映しない場合は次を実行します。
+システムへ反映せずに初期セットアップの検査だけをやり直す場合は、次を実行します。
 
 ```sh
-./nix/scripts/bootstrap.sh --check
+dotfiles plan
 ```
 
 ## 日常的な操作
@@ -94,6 +94,8 @@ dotfiles check     # Flake全体と設定ファイルの整形を検証する
 dotfiles doctor    # 現在のセットアップ状態を診断する
 dotfiles build     # 現在のホストを反映せずにビルドする
 dotfiles switch    # 現在のホストへ確認後に反映する
+dotfiles plan      # 初回セットアップの検査を、システムを変更せずに行う
+dotfiles apply     # 初回セットアップ・修復として、確認後に適用する
 dotfiles update    # Flake入力を更新し、検証、反映、commitまで行う
 dotfiles hooks-install # このリポジトリの秘密検出hookを.git/hooksへ導入する
 dotfiles ai-check   # AI依存のlockと生成物を検証する
@@ -148,4 +150,8 @@ dotfiles check
 dotfiles build
 ```
 
-Home Managerが既存ファイルとの競合を報告した場合は、対象を確認して退避してから再実行してください。bootstrapや更新処理は、未コミットの変更を自動で破棄しません。
+Home Managerが既存ファイルとの競合を報告した場合は、対象を確認して退避してから再実行してください。setupや更新処理は、未コミットの変更を自動で破棄しません。
+
+### `/etc`の競合で適用が止まる
+
+nix-darwinは、管理予定の`/etc`のファイルが未知の内容を持つと適用を中止します。エラーに列挙されたファイルの内容を確認し、`.before-nix-darwin`を付けた名前へ退避してから再実行してください。シェルの初期化を元に戻す場合は、退避したファイルを戻します。
