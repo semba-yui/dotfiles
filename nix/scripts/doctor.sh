@@ -143,7 +143,7 @@ if declares cask:cleanshot; then
 fi
 if declares cask:karabiner-elements; then
   check_installed Karabiner-Elements "/Applications/Karabiner-Elements.app"
-  manual "Karabiner-Elementsへ権限を許可し、Complex Modificationsでルールを有効にする"
+  manual "Karabiner-Elementsへ入力監視などの権限を許可する"
 fi
 if declares cask:raycast; then
   check_installed Raycast "/Applications/Raycast.app"

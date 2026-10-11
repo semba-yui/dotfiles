@@ -26,20 +26,32 @@ let
   };
 in
 {
-  xdg.configFile."karabiner/assets/complex_modifications/us-ansi.json".text = builtins.toJSON {
-    title = "US ANSI keyboard";
+  # ルールの有効化まで宣言するため、Karabiner の設定ファイルごと管理する。GUI からの変更は保存できなくなる。
+  # 初回は Karabiner が生成した既定の設定を置き換えるため force を指定する。
+  xdg.configFile."karabiner/karabiner.json" = {
+    force = true;
+    text = builtins.toJSON {
+      profiles = [
+        {
+          name = "Default profile";
+          selected = true;
+          virtual_hid_keyboard.keyboard_type_v2 = "ansi";
 
-    rules = [
-      {
-        description = "US keyboard: Command IME switching and modifier remapping";
+          # Karabiner は macOS の修飾キー設定を無視するため、Caps Lock の割り当てもここで行う。
+          complex_modifications.rules = [
+            {
+              description = "US keyboard: Command IME switching and modifier remapping";
 
-        manipulators = [
-          (commandTap "left_command" "japanese_eisuu")
-          (commandTap "right_command" "japanese_kana")
-          (remap "caps_lock" "left_control")
-          (remap "left_control" "left_command")
-        ];
-      }
-    ];
+              manipulators = [
+                (commandTap "left_command" "japanese_eisuu")
+                (commandTap "right_command" "japanese_kana")
+                (remap "caps_lock" "left_control")
+                (remap "left_control" "left_command")
+              ];
+            }
+          ];
+        }
+      ];
+    };
   };
 }
