@@ -68,6 +68,8 @@
     onActivation = {
       autoUpdate = false;
       cleanup = "uninstall";
+      # 大きなアプリの取得中も止まって見えないよう、段階ごとの進捗を表示する。
+      extraFlags = [ "--verbose" ];
       upgrade = true;
     };
   };
