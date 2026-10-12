@@ -63,7 +63,8 @@ Claude Code が headless 側へ流れないよう、`HERDR_ENV=1` のときは t
 
 - エージェントの done / blocked は macOS 通知センター（`ui.toast.delivery = "system"`）と音で届きます。herdr を見ていなくても気づけます
 - サイドバーは要対応（blocked / done）順に並びます（`agent_panel_sort = "priority"`）
-- Claude Code と Codex の状態報告フックは `herdr integration install` で導入済み。陳腐化は `dotfiles herdr-doctor` が検知します
+- Claude Code と Codex のセッション報告フックは、各端末で一度だけ `herdr integration install claude` / `codex` を実行して入れます。`~/.claude/settings.json` や `~/.codex/config.toml` を herdr 自身が書き換えるため Nix では管理せず、陳腐化は `dotfiles herdr-doctor` が検知します。zoetrope はこのフックが報告するセッション ID を使います
+- エージェントが herdr を操作するための skill は、ビルド時に `herdr --skill` で生成して agent-skills で配ります。手元の herdr と必ず同じ版になります
 
 ## 日本語 IME 対策
 

@@ -1,4 +1,29 @@
-_: {
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+
+let
+  # 公式の `npx skills add` は GitHub の master を取るため、手元の herdr と版がずれる。
+  # `herdr --skill` はそのバイナリに同梱された版の合った skill を出力するので、ビルド時に生成する。
+  herdrSkill = pkgs.runCommand "herdr-skill" { } ''
+    mkdir -p "$out"
+    ${lib.getExe config.programs.herdr.package} --skill > "$out/SKILL.md"
+  '';
+in
+{
+  imports = [ ./agent-skills.nix ];
+
+  programs.agent-skills = {
+    sources.herdr = {
+      path = herdrSkill;
+      filter.maxDepth = 0;
+    };
+    skills.enableAll = [ "herdr" ];
+  };
+
   # 複数のコーディングエージェントを、ターミナル内の一貫した操作で管理できるようにする。
   programs.herdr = {
     enable = true;
