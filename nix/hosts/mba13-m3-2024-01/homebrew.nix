@@ -30,8 +30,8 @@
     };
 
     onActivation = {
-      cleanup = "none";
-      upgrade = false;
+      cleanup = "uninstall";
+      upgrade = true;
     };
   };
 }

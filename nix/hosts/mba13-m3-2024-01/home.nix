@@ -1,13 +1,17 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ../../modules/home/programs/agent-skills.nix
     ../../modules/home/programs/alloy.nix
     ../../modules/home/programs/apm.nix
     ../../modules/home/programs/bat.nix
+    ../../modules/home/programs/bottom.nix
+    ../../modules/home/programs/bun.nix
     ../../modules/home/programs/claude-code.nix
     ../../modules/home/programs/codex.nix
     ../../modules/home/programs/delta.nix
+    ../../modules/home/programs/direnv.nix
     ../../modules/home/programs/eza.nix
     ../../modules/home/programs/fd.nix
     ../../modules/home/programs/fish.nix
@@ -26,7 +30,20 @@
     ../../modules/home/programs/zoxide.nix
   ];
 
-  home.stateVersion = "26.05";
+  home = {
+    stateVersion = "26.05";
+
+    packages = with pkgs; [
+      curl
+      ffmpeg
+      hyperfine
+      mermaid-cli
+      nerd-fonts.jetbrains-mono
+      python3
+      tree
+      yq
+    ];
+  };
 
   programs.zed-editor.extensions = [ "nix" ];
 
