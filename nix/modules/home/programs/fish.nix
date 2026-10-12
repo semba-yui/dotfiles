@@ -71,6 +71,9 @@ in
     # 同名キーを再定義して上書きする(alias を足しても abbr が先に展開して効かない)。
     # --icons は値省略時に直後の位置引数を WHEN として食うため =auto を明示する。
     shellAbbrs = {
+      # zoxide の --cmd cd は zsh と bash の cd も置き換え、Claude Code の Bash ツール（zsh）を壊すため、
+      # fish の対話シェルだけで展開する abbr にする。z は実在するパスなら通常の cd と同じに動く。
+      cd = "z";
       la = "eza -a --icons=auto --group-directories-first";
       ll = "eza -la --icons=auto --group-directories-first --git";
       lla = "eza -la --icons=auto --group-directories-first";
