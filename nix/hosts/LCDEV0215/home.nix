@@ -27,6 +27,7 @@
     ../../modules/home/programs/jujutsu.nix
     ../../modules/home/programs/lazygit.nix
     ../../modules/home/programs/neovim.nix
+    ../../modules/home/programs/nix-index.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/teamwork-graph-cli.nix
     ../../modules/home/programs/uv.nix

@@ -19,6 +19,12 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    # nixpkgs のファイル索引を毎週配布するもの。手元で索引を作ると数十分かかるため、配布版を使う。
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     homebrew-k1low-tap = {
       url = "github:k1LoW/homebrew-tap";
       flake = false;

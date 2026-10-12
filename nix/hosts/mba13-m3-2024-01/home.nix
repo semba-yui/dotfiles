@@ -18,6 +18,7 @@
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/karabiner-us.nix
     ../../modules/home/programs/neovim.nix
+    ../../modules/home/programs/nix-index.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix
