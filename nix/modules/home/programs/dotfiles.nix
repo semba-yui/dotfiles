@@ -13,7 +13,9 @@ let
     name = "dotfiles";
 
     runtimeInputs = [
+      pkgs.curl
       pkgs.git
+      pkgs.jq
       pkgs.just
       pkgs.lefthook
       pkgs.nh

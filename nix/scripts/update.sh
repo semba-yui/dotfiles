@@ -47,8 +47,8 @@ trap cleanup EXIT
 
 cd "$flake_directory"
 
-echo "すべての Flake 入力を更新します。"
-nix flake update
+echo "Flake 入力を更新します。"
+"$script_directory/update-flake-inputs.sh" "$flake_directory"
 
 if git -C "$repository_root" diff --quiet -- "${lock_files[@]}"; then
   echo "Flake 入力はすでに最新です。"
