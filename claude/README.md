@@ -7,6 +7,6 @@
 - `.claude/skills/`: Claude Code専用のskill
 - `.claude/hooks/`: Claude Code専用のhook設定とスクリプト
 
-`~/.claude/settings.json` は、ローカルで有効化したプラグインやMarketplaceの識別子が混在し、Claude Code自身も更新するため管理しません。
+`~/.claude/settings.json` は、ローカルで有効化したプラグインやMarketplaceの識別子が混在し、Claude Code自身も更新するため、ファイルごとは管理しません。statusline など端末間で揃える項目だけを `nix/modules/home/programs/claude-code.nix` で宣言し、適用時に既存の設定へ重ねます。
 認証、履歴、キャッシュ、プロジェクト状態など、Claude Codeが実行中に生成するファイルも管理しません。
 複数ツールで使うskillは `../agents/.agents/skills/` に置きます。
