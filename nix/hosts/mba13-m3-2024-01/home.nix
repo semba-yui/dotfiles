@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 
 {
   imports = [
@@ -20,6 +20,7 @@
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/nix-index.nix
     ../../modules/home/programs/ripgrep.nix
+    ../../modules/home/programs/secure-enclave-signing.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix
   ];
@@ -29,7 +30,4 @@
   programs.zed-editor.extensions = [ "nix" ];
 
   programs.zsh.enable = true;
-
-  # 新MacにはまだSSH署名鍵が存在しない。
-  programs.git.settings.commit.gpgsign = lib.mkForce false;
 }

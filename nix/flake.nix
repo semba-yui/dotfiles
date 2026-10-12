@@ -19,6 +19,12 @@
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
+    # コミット署名の秘密鍵を Secure Enclave の中に作り、端末の外へ持ち出せないようにする。
+    nix-secure-enclave-key = {
+      url = "github:ryoppippi/nix-secure-enclave-key";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # nixpkgs のファイル索引を毎週配布するもの。手元で索引を作ると数十分かかるため、配布版を使う。
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

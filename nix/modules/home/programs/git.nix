@@ -1,9 +1,13 @@
-{ hostname, lib, ... }:
+{
+  config,
+  hostname,
+  lib,
+  ...
+}:
 let
   fullName = "仙波 琉一朗 / Ryuichiro Semba";
 
-  # 秘密鍵は端末ごとに生成して持ち出さないため、鍵ファイル名に端末を含めて区別する。
-  signingKey = account: "~/.ssh/github-commit-signing-${account}-${lib.toLower hostname}-ed25519.pub";
+  signingKey = config.dotfiles.git.signingKeyFile;
 
   identities = {
     semba-yui = {
@@ -36,7 +40,15 @@ let
   ];
 in
 {
-  programs.git = {
+  # 鍵の作り方（ssh-keygen か Secure Enclave か）は端末ごとに違うため、鍵ファイルの場所だけをホストが差し替えられるようにする。
+  options.dotfiles.git.signingKeyFile = lib.mkOption {
+    type = lib.types.functionTo lib.types.str;
+    # 秘密鍵は端末ごとに生成して持ち出さないため、鍵ファイル名に端末を含めて区別する。
+    default = account: "~/.ssh/github-commit-signing-${account}-${lib.toLower hostname}-ed25519.pub";
+    description = "GitHub アカウント名から、コミット署名に使う鍵ファイルのパスを返す関数。";
+  };
+
+  config.programs.git = {
     enable = true;
     ignores = [
       # macOS が作成するメタデータは、プロジェクトの種類にかかわらず追跡しない。
