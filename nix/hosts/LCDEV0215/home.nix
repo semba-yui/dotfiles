@@ -7,6 +7,7 @@
     ../../modules/home/programs/apm.nix
     ../../modules/home/programs/bat.nix
     ../../modules/home/programs/bottom.nix
+    ../../modules/home/programs/bun.nix
     ../../modules/home/programs/claude-code.nix
     ../../modules/home/programs/codex.nix
     ../../modules/home/programs/delta.nix
@@ -21,6 +22,7 @@
     ../../modules/home/programs/github-copilot-cli.nix
     ../../modules/home/programs/glab.nix
     ../../modules/home/programs/herdr.nix
+    ../../modules/home/programs/java.nix
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/jujutsu.nix
     ../../modules/home/programs/lazygit.nix
@@ -28,6 +30,7 @@
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/teamwork-graph-cli.nix
+    ../../modules/home/programs/uv.nix
     ../../modules/home/programs/xcodes.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix
@@ -39,14 +42,12 @@
     packages = with pkgs; [
       android-tools
       ast-grep
-      bun
       curl
       deadnix
       dust
       ffmpeg
       hunk
       hyperfine
-      jdk25
       just
       mermaid-cli
       nerd-fonts.jetbrains-mono
@@ -64,7 +65,6 @@
       typescript
       typescript-language-server
       unzip
-      uv
       wget
       yq
     ];
