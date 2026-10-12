@@ -19,6 +19,7 @@
     ../../modules/home/programs/karabiner-us.nix
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/nix-index.nix
+    ../../modules/home/programs/orbstack.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/secure-enclave-signing.nix
     ../../modules/home/programs/zed-editor.nix
