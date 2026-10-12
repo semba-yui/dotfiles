@@ -31,19 +31,9 @@
         subdir = "skills";
         filter.maxDepth = 1;
       };
-      orca = {
-        path = inputs.orca;
-        subdir = "skills";
-        filter.maxDepth = 1;
-      };
       stop-ai-slop-jp = {
         path = inputs.stop-ai-slop-jp;
         filter.maxDepth = 0;
-      };
-      twg-cli = {
-        path = inputs.twg-cli;
-        subdir = "skills";
-        filter.maxDepth = 1;
       };
 
       # mizchi/skills の未選択の skill を取り込まないよう、skill ごとに subdir を指定する。
@@ -95,17 +85,6 @@
         "playwright-cli"
         "playwright-test"
         "stop-ai-slop-jp"
-        "twg-cli"
-      ];
-      # Orca は Linear 連携の skill (linear-tickets, orca-linear) を同梱するが使わないため、
-      # リポジトリ全体ではなく個別に選ぶ。
-      enable = [
-        "computer-use"
-        "orca-cli"
-        "orca-emulator"
-        "orca-emulator-android"
-        "orca-per-workspace-env"
-        "orchestration"
       ];
     };
   };

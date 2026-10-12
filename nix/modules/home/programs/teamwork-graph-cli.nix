@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   teamworkGraphCliBinary = pkgs.callPackage ../../../packages/teamwork-graph-cli.nix { };
@@ -12,5 +17,17 @@ let
   };
 in
 {
+  imports = [ ./agent-skills.nix ];
+
   home.packages = [ teamworkGraphCliLauncher ];
+
+  # skill が指示するサブコマンドは CLI の版で変わるため、CLI と同じモジュールで配る。
+  programs.agent-skills = {
+    sources.twg-cli = {
+      path = inputs.twg-cli;
+      subdir = "skills";
+      filter.maxDepth = 1;
+    };
+    skills.enableAll = [ "twg-cli" ];
+  };
 }
