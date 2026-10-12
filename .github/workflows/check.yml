@@ -29,7 +29,3 @@ jobs:
 
       - name: Check Justfile formatting
         run: nix run ./nix#just -- --justfile justfile --fmt --check
-
-      - name: Build LCDEV0215
-        working-directory: nix
-        run: nix build .#darwinConfigurations.LCDEV0215.system --no-link

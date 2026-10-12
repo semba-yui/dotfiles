@@ -5,15 +5,17 @@
 このリポジトリは、Nix Flakes、nix-darwin、Home Manager を使って macOS の開発環境を管理します。設定はすべて `nix/` 以下にあります。
 
 - `nix/flake.nix`: Flake 入力、ホスト構成の読み込み、フォーマッター、検証を定義します。ホスト固有の値は持たせません。
-- `nix/hosts/default.nix`: 利用可能なホストと nix-darwin 構成の対応を定義します。
-- `nix/hosts/<hostname>/`: ユーザー名、ホームディレクトリ、プラットフォームなど、端末固有の設定を管理します。
-- `nix/modules/darwin/`: 所有する Mac で共有するシステム設定を、機能単位で管理します。
-- `nix/modules/home/default.nix`: 共通の Home Manager モジュールとパッケージを集約します。
+- `nix/hosts/default.nix`: `nix/hosts/` のディレクトリをホストとして登録し、共通セットと各ホストの設定を組み立てます。ディレクトリ名がホスト名になります。
+- `nix/hosts/<hostname>/`: 端末ごとの選択です。`darwin.nix`（システム）、`home.nix`（ユーザー環境）、`homebrew.nix`（アプリ）に、共通セットへの差分だけを書きます。
+- `nix/profiles/base/`: 全ホストで使う最小限の共通セットです。この dotfiles の保守に必要なものと、どの Mac でも揃える macOS 設定だけを置きます。
+- `nix/modules/darwin/`: システム設定の部品です。機能単位で、何を選ぶかは持ちません。
 - `nix/modules/home/programs/*.nix`: アプリケーションや CLI ツールごとの Home Manager モジュールです。
+- `nix/scripts/`: `dotfiles` コマンドと初回セットアップから呼ぶスクリプトです。フォーマット検査の対象に含めるため `nix/` 以下に置きます。
+- `nix/tests/`: スクリプトの仕様を定め、デグレを検知するテストです。
 - `nix/flake.lock`: 依存関係を固定します。入力を更新した場合は、変更内容を確認して一緒にコミットしてください。
 - `docs/`: 複数ファイル・複数ツールにまたがるワークフローガイドと設計判断を置きます。単一ファイル内で完結する判断は、そのファイルの「なぜ」コメントに書きます。
 
-プログラムを追加するときは、`zed-editor.nix` のような小文字のケバブケースで専用モジュールを作り、共通 Home Manager モジュールからインポートしてください。端末固有の制約がある場合のみ、ホスト設定に差分を置きます。
+プログラムを追加するときは、Home Manager に `programs.<name>` モジュールがあるツールは、設定がなくても `zed-editor.nix` のような小文字のケバブケースの専用モジュールにし、設定を持てることが見て分かるようにします。モジュールがないツールは、使うホストまたは共通セットの `home.packages` に並べます。どのホストで使うかは `nix/hosts/<hostname>/` でインポートして決め、全ホストで必要なものだけを `nix/profiles/base/` に置きます。
 
 ## ビルド・テスト・開発コマンド
 
@@ -23,8 +25,8 @@
 cd nix
 nix fmt                         # treefmt/nixfmt で Nix ファイルを整形
 nix flake check                 # Flake の評価とフォーマットを検証
-nix build .#darwinConfigurations.LCDEV0215.system --no-link
-sudo darwin-rebuild switch --flake .#LCDEV0215
+nix build '.#darwinConfigurations."<hostname>".system' --no-link
+sudo darwin-rebuild switch --flake '.#<hostname>'
 ```
 
 構成を適用せず検証する場合は `build` を使います。`switch` は現在のユーザー環境を変更するため、ビルド結果を確認してから実行してください。依存関係は `nix flake update` で更新し、`flake.lock` の差分を確認します。
@@ -47,7 +49,11 @@ sudo darwin-rebuild switch --flake .#LCDEV0215
 
 ## テスト方針
 
-独立したテストフレームワークやカバレッジ基準はありません。`nix flake check` と `nix build .#darwinConfigurations.LCDEV0215.system --no-link` を必須の検証として扱います。構成を適用する場合は、ビルド成功後に `darwin-rebuild switch` を実行し、対象のコマンド、サービス、アプリが期待どおり動作することを手動で確認してください。
+独立したテストフレームワークやカバレッジ基準はありません。`nix flake check` を必須の検証として扱います。全ホストの構成のビルドとテストを含みます。
+
+テストは、スクリプトの仕様を明確にするものとデグレを検知するものだけを残し、`nix flake check` から実行します。実装の文字列を固定するだけのテストや、一時的な作業のために書いた TDD 用のテストは、作業が終わったら残しません。
+
+構成を適用する場合は、ビルド成功後に `darwin-rebuild switch` を実行し、対象のコマンド、サービス、アプリが期待どおり動作することを手動で確認してください。
 
 ## コミットとプルリクエスト
 

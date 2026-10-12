@@ -31,7 +31,7 @@ cd ~/ghq/github.com/semba-yui/dotfiles
 - `pull`と`push`は行いません。Flakeは未追跡ファイルを読まないため、追加したファイルは`git add`してください（commitは不要です）。
 - 途中で失敗しても、同じコマンドを再実行すれば続きから進みます。
 
-ホスト設定がまだない端末では、構成の近い既存ホストのディレクトリを`nix/hosts/<LocalHostName>/`へコピーし、導入するモジュールを書き換えて`git add`します。ディレクトリ名がそのままホスト名として登録されます。
+ホスト設定がまだない端末では、構成の近い既存ホストのディレクトリを`nix/hosts/<LocalHostName>/`へコピーし、`home.nix`と`homebrew.nix`で導入するものを書き換えて`git add`します。ディレクトリ名がそのままホスト名として登録され、`nix/profiles/base/`の共通セットは自動で含まれます。
 
 コミット署名に使うSSH公開鍵は、`~/.ssh/github-commit-signing-<アカウント>-<小文字のホスト名>-ed25519.pub`に置きます。秘密鍵は端末ごとに生成し、端末間で持ち出しません。
 
@@ -141,7 +141,7 @@ Claude Code、Codex、GitHub Copilot CLIの設定は、ツールごとのトッ�
 - 公式インストーラー: Claude CodeとCodexの本体、起動用リンク、更新
 - 手動設定: ライセンス、アカウント認証、macOSが保護する権限と内部状態
 
-端末固有の値は`nix/hosts/<hostname>/`、所有する端末で共通の設定は`nix/modules/`で管理します。
+端末ごとの選択は`nix/hosts/<hostname>/`、全端末で使う最小限の共通セットは`nix/profiles/base/`、選択の部品となる設定は`nix/modules/`で管理します。
 
 ## トラブルシューティング
 
