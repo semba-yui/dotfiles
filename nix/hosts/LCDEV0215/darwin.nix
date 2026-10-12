@@ -1,22 +1,12 @@
-{
-  homeDirectory,
-  hostname,
-  username,
-  ...
-}:
+{ username, ... }:
 
 {
-  networking.hostName = hostname;
+  imports = [
+    ../../modules/darwin/fish.nix
+    ./homebrew.nix
+  ];
 
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  system.stateVersion = 6;
 
-  system = {
-    primaryUser = username;
-    stateVersion = 6;
-  };
-
-  users.users.${username} = {
-    home = homeDirectory;
-    uid = 501;
-  };
+  users.users.${username}.uid = 501;
 }

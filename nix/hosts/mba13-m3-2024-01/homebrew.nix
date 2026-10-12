@@ -1,16 +1,5 @@
-{ username, ... }:
-
 {
-  nix-homebrew = {
-    enable = true;
-    enableRosetta = false;
-    user = username;
-    mutableTaps = false;
-  };
-
   homebrew = {
-    enable = true;
-
     casks = [
       "chatgpt"
       "claude"
@@ -41,11 +30,8 @@
     };
 
     onActivation = {
-      autoUpdate = false;
-      # 大きなアプリの取得中も止まって見えないよう、段階ごとの進捗を表示する。
-      extraFlags = [ "--verbose" ];
-      upgrade = false;
       cleanup = "none";
+      upgrade = false;
     };
   };
 }
