@@ -30,6 +30,10 @@ in
   # 初回は Karabiner が生成した既定の設定を置き換えるため force を指定する。
   xdg.configFile."karabiner/karabiner.json" = {
     force = true;
+    # 設定ファイルがリンク先ごと差し替わると Karabiner が変更を検知しないことがあるため、再起動して読み直させる。
+    onChange = ''
+      /bin/launchctl kickstart -k "gui/$(/usr/bin/id -u)/org.pqrs.service.agent.Karabiner-Console-User-Server" || true
+    '';
     text = builtins.toJSON {
       profiles = [
         {
