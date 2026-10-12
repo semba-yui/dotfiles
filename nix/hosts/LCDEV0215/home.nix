@@ -44,7 +44,6 @@
       android-tools
       ast-grep
       curl
-      deadnix
       dust
       ffmpeg
       hunk
@@ -52,7 +51,6 @@
       just
       mermaid-cli
       nerd-fonts.jetbrains-mono
-      nil
       nix-output-monitor
       nodejs
       oxfmt
@@ -60,7 +58,6 @@
       python3
       pyright
       sd
-      statix
       tokei
       tree
       typescript
