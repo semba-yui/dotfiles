@@ -106,12 +106,20 @@
       # nix fmt 用の treefmt 設定。programs.nixfmt は RFC 準拠の nixfmt を使う。
       treefmtEval = treefmt-nix.lib.evalModule pkgs {
         projectRootFile = "flake.nix";
+        programs.deadnix.enable = true;
         programs.just.enable = true;
         programs.nixfmt.enable = true;
+        programs.statix = {
+          enable = true;
+          # 関連する設定でも、理由のコメントごとに分けて書くほうが読みやすいため、キーの重複は許す。
+          disabled-lints = [ "repeated_keys" ];
+        };
         programs.shellcheck.enable = true;
         programs.shfmt.enable = true;
         # 増分検査では source 先が入力一覧に含まれないため、明示した参照先も検査する。
         settings.formatter.shellcheck.options = [ "-x" ];
+        # statix と deadnix の書き換え結果を最終的なレイアウトに揃えるため、nixfmt を最後に実行する。
+        settings.formatter.nixfmt.priority = 1;
       };
     in
     {

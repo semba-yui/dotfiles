@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # home.packages 直置きだと shell init が走らず z/zi が使えないため、モジュール管理にする。
