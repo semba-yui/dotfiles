@@ -6,8 +6,6 @@ git worktree の作成・削除・移動と、herdr ワークスペースとの�
 
 worktree の作成は必ず gtr（[git-worktree-runner](../nix/packages/git-worktree-runner.nix)）を経由します。gtr はリポジトリごとの設定に従って、作成時にファイルコピー（`gtr.copy.include` / `.worktreeinclude`）と依存セットアップ（`gtr.hooks.postCreate`）を自動実行します。herdr のネイティブ worktree 作成にはこのフック機構がなく、経路が混ざるとセットアップ漏れの worktree ができるため、herdr 側の作成バインドは意図的に無効化しています（理由は [herdr.nix](../nix/modules/home/programs/herdr.nix) の `new_worktree` コメントを参照）。
 
-同じ理由で、herdr プラグイン sessionizer の worktree-open アクションにもキーを割り当てていません。
-
 ## 日常操作
 
 | 操作                         | 入口                                                                                                            | 説明                                                                                       |
@@ -29,4 +27,3 @@ worktree の作成は必ず gtr（[git-worktree-runner](../nix/packages/git-work
 
 - **herdr と gtr の責務分担**（2026-07 の herdr 導入時に決定）: 「作成・削除 = gtr、ワークスペース化・閲覧 = herdr」。gtr は `git worktree add` を素直に使うため、gtr が作った checkout は herdr の `worktree open` がそのまま採用できます。逆方向（herdr が作って gtr のフックを走らせる）は成立しません。
 - **base branch からの新規作成**: `fzf_create_worktree_from_base_branch` は default remote を fetch してから base を選び、`gtr new <new> --from <base> --track none` を実行します。`--track none` は、同名の remote branch を追跡する挙動に変わらず、選択した base から必ず新規 branch を作るための制約です。
-- **sessionizer が gtr の worktree も一覧に載せる仕掛け**: gtr は `<repo>-worktrees/<branch>`（ghq root から深さ4）に checkout を置くため、sessionizer の探索設定を `depth = 4` にしています（[herdr.nix](../nix/modules/home/programs/herdr.nix) の sessionizer 設定コメントを参照）。

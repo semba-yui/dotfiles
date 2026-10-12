@@ -18,6 +18,7 @@
     ../../modules/home/programs/fzf.nix
     ../../modules/home/programs/ghostty.nix
     ../../modules/home/programs/git-worktree-runner.nix
+    ../../modules/home/programs/herdr-plugins.nix
     ../../modules/home/programs/herdr.nix
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/karabiner-us.nix
@@ -26,6 +27,7 @@
     ../../modules/home/programs/orbstack.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/secure-enclave-signing.nix
+    ../../modules/home/programs/terminal-code.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix
   ];

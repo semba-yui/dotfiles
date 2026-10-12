@@ -25,7 +25,6 @@
     ../../modules/home/programs/java.nix
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/jujutsu.nix
-    ../../modules/home/programs/lazygit.nix
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/nix-index.nix
     ../../modules/home/programs/orca.nix

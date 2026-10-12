@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
+_: {
   # 複数のコーディングエージェントを、ターミナル内の一貫した操作で管理できるようにする。
-  # プラグイン本体は Nix 化できない（git clone + ビルドの imperative 管理）ため、
-  # `dotfiles herdr-plugins` で最新へ揃える。版を固定しない理由は justfile を参照。
   programs.herdr = {
     enable = true;
 
@@ -53,25 +50,11 @@
         open_worktree = "prefix+shift+g";
 
         command = [
-          {
-            key = "prefix+alt+g";
-            type = "popup";
-            command = "lazygit";
-            width = "90%";
-            height = "90%";
-          }
           # diff レビュー用サイドバー（エージェントへ行コメントを送り返せる）。
           {
             key = "prefix+alt+r";
             type = "plugin_action";
             command = "persiyanov.reviewr.toggle";
-          }
-          # ghq プロジェクトを fzf で選んでワークスペース化する。
-          # worktree-open アクションは gtr のフックを迂回するため割り当てない。
-          {
-            key = "prefix+alt+s";
-            type = "plugin_action";
-            command = "sessionizer.open";
           }
           # 上流の herdr プラグインはこの 1 行を呼ぶだけで、導入時に curl | bash で本体を入れ直す。
           # 本体は Homebrew cask に一本化したいので、プラグインを介さず shell で直接呼ぶ。
@@ -85,18 +68,4 @@
       };
     };
   };
-
-  # herdr-sessionizer のビルド・実行に必要。
-  home.packages = [ pkgs.bun ];
-
-  # sessionizer のプロジェクト探索先を ghq 配下へ固定する。放置すると初回実行時に
-  # サンプル（nvim/copilot レイアウト）が自動生成されるため、先に宣言しておく。
-  # depth = 4 は ghq の <root>/github.com/<owner>/<repo>（深さ3）に加えて、
-  # gtr の <repo>-worktrees/<branch>（深さ4）の checkout も picker に載せるため。
-  xdg.configFile."herdr/plugins/config/sessionizer/config.toml".text = ''
-    [projects]
-    roots = ["~/ghq"]
-    git_only = true
-    depth = 4
-  '';
 }

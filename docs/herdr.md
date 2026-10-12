@@ -10,40 +10,40 @@ herdr に任せるのは「ワークスペース・タブ・ペインの管理�
 
 prefix はデフォルトの `Ctrl+B` で、**順番押し**です（`Ctrl+B` を押して離してから次のキー）。prefix はペイン内のアプリより先に herdr が横取りするため、Claude Code などのエージェントにフォーカスがあっても効きます。
 
-カスタム定義は次の5つです（一覧は [cheatsheet.md](cheatsheet.md)、デフォルトキーは `prefix+?` のヘルプ）。
+カスタム定義は次のとおりです（一覧は [cheatsheet.md](cheatsheet.md)、デフォルトキーは `prefix+?` のヘルプ）。
 
-| キー             | 動作                                                         |
-| ---------------- | ------------------------------------------------------------ |
-| `prefix+alt+g`   | lazygit をポップアップ（90%）で開く                          |
-| `prefix+alt+r`   | reviewr の diff レビューサイドバーをトグル                   |
-| `prefix+alt+s`   | sessionizer — ghq 配下のプロジェクトを選んでワークスペース化 |
-| `prefix+alt+b`   | terminal-browser を右スプリットで開く                        |
-| `prefix+shift+g` | 既存 worktree をワークスペースとして開く（作成は無効化済み） |
+| キー             | 動作                                                         | ホスト   |
+| ---------------- | ------------------------------------------------------------ | -------- |
+| `prefix+alt+r`   | reviewr の diff レビューサイドバーをトグル                   | 全ホスト |
+| `prefix+alt+b`   | terminal-browser を右スプリットで開く                        | 全ホスト |
+| `prefix+shift+g` | 既存 worktree をワークスペースとして開く（作成は無効化済み） | 全ホスト |
+| `prefix+alt+z`   | zoetrope でエージェントのセッションをフローグラフ表示        | 個人Mac  |
+| `prefix+alt+c`   | terminal-code（VS Code）を右スプリットで開く                 | 個人Mac  |
 
-lazygit は「サッと全体を眺める」用、reviewr は「エージェントの成果物をレビューして行コメントを入力へ送り返す」用と使い分けます。
+reviewr は、エージェントの成果物をレビューして、行コメントを入力へ送り返すために使います。
 
 ブラウザに `prefix+b` を使わないのは、これが herdr デフォルトのサイドバートグルだからです。
 
 ## プラグイン管理
 
-プラグインは git clone + ビルドの imperative な仕組みで Nix 化できないため、justfile で導入対象を固定して再現します。
+[herdr-plugins.nix](../nix/modules/home/programs/herdr-plugins.nix) を読み込むホストでは、プラグインを Nix でビルドし、switch のたびに `herdr plugin link <store のパス>` で登録します。`link` はビルドを実行せず、プラグインのディレクトリにも書き込まない（設定と状態は `~/.config/herdr/plugins/config/<id>` などに置かれる）ため、読み取り専用の store から登録できます。上流の `[[build]]` がしているリリースのバイナリの取得は、[nix/packages](../nix/packages/) の各パッケージが `fetchurl` で置き換えます。
 
-```sh
-dotfiles herdr-plugins  # 2プラグイン（reviewr / sessionizer）を最新へ揃える
-dotfiles herdr-doctor   # config 検証・連携フックの陳腐化・プラグイン一覧を検査
-```
+| プラグイン                                                   | 中身                                                           |
+| ------------------------------------------------------------ | -------------------------------------------------------------- |
+| [herdr-reviewr](https://github.com/persiyanov/herdr-reviewr) | エージェントの diff を隣のペインでレビューし、行コメントを返す |
+| [zoetrope](https://github.com/furkankly/zoetrope)            | フォーカス中のエージェントのセッションをフローグラフで表示する |
 
-**バージョンは固定しません。** herdr 本体もプラグインも更新が速く、tag を一度も打たないプラグインもあるため、tag ピン留めという前提が成立しないためです。代わりに、更新して壊れたときは `herdr plugin list --json` の `resolved_commit` を `--ref` へ渡して個別に戻します。`dotfiles herdr-plugins` は switch では走らない手動レシピなので、更新のタイミングは自分で選べます。
+版は rev とハッシュで固定し、更新はパッケージの `version` と `hash` を書き換えて行います。herdr 本体と同じく Nix で固定されるため、プラグインの `min_herdr_version` が手元の herdr を追い越していれば、switch の `link` が失敗して気づけます。
 
-引き換えに受け入れるリスクが1つあります。herdr 本体は Nix でピン留めされている一方でプラグインは追従するため、プラグインの `min_herdr_version` が手元の herdr を追い越し得ます（実際 reviewr は 0.26.2 時点で 0.7.5 を要求し、herdr 0.7.5 とちょうど同じ高さです）。`nix flake check` はこれを検出しないので、`dotfiles herdr-doctor` が出す `herdr plugin list` の warnings が唯一の signal です。
+`unlink` は herdr のサーバーが動いていないと失敗するため、自動では行いません。宣言から外したプラグインは `herdr plugin unlink <id>` で手動で外します。
 
-sessionizer の探索設定（`~/.config/herdr/plugins/config/sessionizer/config.toml`）は herdr.nix から宣言管理します。放置すると初回実行時にサンプルが自動生成されてしまうためです。
+herdr-plugins.nix を読み込まないホストは、従来どおり `dotfiles herdr-plugins` で reviewr を GitHub から入れます。`dotfiles herdr-doctor` は config の検証、連携フックの陳腐化、プラグインの一覧を検査します。
+
+上流が herdr プラグインを用意していても、中身がコマンドを1行呼ぶだけのもの（terminal-browser、terminal-code）はプラグインとして入れず、本体を入れて `type = "shell"` のキーで直接呼びます。上流のプラグインは導入時に `curl | bash` で本体を入れ直すため、入手経路が二重になります。
 
 ## ブラウザペイン
 
 [terminal-browser](https://github.com/zenbu-labs/terminal-browser) は Electron のオフスクリーン描画で Chromium のフレームを Kitty graphics protocol でペインへ描きます。本体は Homebrew cask で入れ、herdr からは `prefix+alt+b`（`terminal-browser open --split right`）で開きます。
-
-上流の herdr プラグインは使いません。中身は同じ1行を呼ぶだけで、導入時に `curl | bash` で本体を入れ直すため、cask と入手経路が二重になります。
 
 描画には `experimental.kitty_graphics` が必要で、Ghostty が Kitty graphics protocol を解釈できることが前提です。ターミナルを乗り換えるとブラウザペインだけ映らなくなります。
 

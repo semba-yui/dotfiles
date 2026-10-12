@@ -75,12 +75,8 @@ ai-cli-update:
 teamwork-graph-cli-update:
     ./nix/scripts/update-teamwork-graph-cli.sh
 
-# herdr プラグインを最新へ揃える（Nix 化できないため just で導入対象を固定する）
-# 版は固定しない。herdr 本体もプラグインも更新が速く、tag を一度も打たないプラグインも
-# あるため、tag ピン留めは前提が成立しない。壊れたときは
-# `herdr plugin list --json` の resolved_commit を --ref に渡して個別に戻す。
+# herdr-plugins.nix を使わないホストで、herdr プラグインを最新へ揃える
 [group('反映・更新')]
 herdr-plugins:
     herdr plugin install persiyanov/herdr-reviewr --yes
-    herdr plugin install andrewchng/herdr-sessionizer --yes
     herdr plugin list
