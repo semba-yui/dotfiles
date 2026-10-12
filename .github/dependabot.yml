@@ -1,0 +1,10 @@
+version: 2
+updates:
+  # actions は SHA で固定しているため、更新は Dependabot の PR で版と SHA をまとめて上げる。
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    # 公開直後に取り下げられる版や、乗っ取られた版を取り込まないよう、公開から 1 週間待つ。
+    cooldown:
+      default-days: 7

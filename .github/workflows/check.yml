@@ -18,10 +18,14 @@ jobs:
   nix:
     name: Nix configuration
     runs-on: macos-15
+    # キャッシュがない状態でも全ホストのビルドが収まり、止まったときは早めに打ち切れる長さにする。
+    timeout-minutes: 60
     # タグは後から付け替えられるため、actions はコミット SHA で固定し、版はコメントに残す。
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Install Nix
         uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
@@ -35,3 +39,20 @@ jobs:
 
       - name: Check Justfile formatting
         run: nix run ./nix#just -- --justfile justfile --fmt --check
+
+  workflows:
+    name: GitHub Actions workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # jactionlint の版とチェックサムは mise.toml と mise.lock で固定する。
+      - name: Install tools
+        uses: jdx/mise-action@2d8d4cafcbd33be2ea37d2b6f5ad595363d1f1ca # v5.1.1
+
+      - name: Check workflows
+        run: jactionlint

@@ -26,7 +26,6 @@
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/jujutsu.nix
     ../../modules/home/programs/lazygit.nix
-    ../../modules/home/programs/mise.nix
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/teamwork-graph-cli.nix

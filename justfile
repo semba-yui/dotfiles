@@ -14,6 +14,7 @@ fmt:
 check:
     cd nix && nix flake check
     lefthook validate
+    mise exec -- jactionlint
     just --justfile justfile --fmt --check
     oxfmt --check .
 

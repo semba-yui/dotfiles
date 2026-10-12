@@ -35,7 +35,16 @@ cd ~/ghq/github.com/semba-yui/dotfiles
 
 コミット署名に使うSSH公開鍵は、`~/.ssh/github-commit-signing-<アカウント>-<小文字のホスト名>-ed25519.pub`に置きます。秘密鍵は端末ごとに生成し、端末間で持ち出しません。
 
-### 3. git hooksの導入
+### 3. リポジトリ固有ツールの導入
+
+GitHub Actionsの検査に使うjactionlintなど、このリポジトリだけで使うツールは`mise.toml`と`mise.lock`で版とチェックサムを固定し、miseで導入します。clone直後に一度だけ設定ファイルを信頼させてから導入します。
+
+```sh
+mise trust
+mise install
+```
+
+### 4. git hooksの導入
 
 このリポジトリの秘密検出hookは、リポジトリの`.git/hooks`へ導入して初めて有効になります。clone直後に一度だけ実行してください。
 
@@ -45,7 +54,7 @@ dotfiles hooks-install
 
 hookは`lefthook.yml`が定義し、Betterleaksでcommitとpush対象を検査します。端末全体には効かせないため、他のリポジトリのhook運用には干渉しません。`lefthook.yml`の内容を変えるだけなら再実行は不要で、hookの種別を増やしたときだけ再実行します。
 
-### 4. AI CLIの導入
+### 5. AI CLIの導入
 
 新しいシェルを開き、Claude CodeとCodexを公式インストーラーで導入します。
 本体は最新版へ自動更新し、指示ファイルとPATHはHome Managerで管理します。
@@ -56,7 +65,7 @@ dotfiles ai-cli-install
 
 導入済みのツールは再インストールせず、起動だけ確認します。認証は各ツールで行ってください。
 
-### 5. 手動セットアップ
+### 6. 手動セットアップ
 
 nix-darwinの反映後、macOSが保護する内部状態や秘密情報を手動で設定します。
 
@@ -66,7 +75,7 @@ nix-darwinの反映後、macOSが保護する内部状態や秘密情報を手�
 - CleanShot Xへ画面収録など必要な権限を許可する
 - 利用するGitHubアカウントをGit Credential Managerで認証する
 
-### 6. 動作確認
+### 7. 動作確認
 
 新しいシェルを開き、セットアップ状態を診断します。
 

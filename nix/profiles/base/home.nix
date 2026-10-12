@@ -6,6 +6,7 @@
 }:
 
 # この dotfiles を clone して編集・検証・適用し、GitHub へ安全に push するのに必要なものだけを置く。
+# mise はリポジトリ固有の検査ツール（mise.toml）を入れるために使う。
 {
   imports = [
     ../../modules/home/programs/betterleaks.nix
@@ -14,6 +15,7 @@
     ../../modules/home/programs/git-credential-manager.nix
     ../../modules/home/programs/git.nix
     ../../modules/home/programs/lefthook.nix
+    ../../modules/home/programs/mise.nix
     ../../modules/home/programs/nh.nix
   ];
 

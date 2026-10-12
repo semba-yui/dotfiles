@@ -17,7 +17,6 @@
     ../../modules/home/programs/herdr.nix
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/karabiner-us.nix
-    ../../modules/home/programs/mise.nix
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/zed-editor.nix
