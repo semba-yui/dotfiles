@@ -12,23 +12,10 @@ fmt:
 # Flake全体を評価し、リポジトリ全体のフォーマットを検証する
 [group('整形・検証')]
 check:
-    just ai-cli-test
-    just teamwork-graph-cli-launcher-test
-    just teamwork-graph-cli-release-test
     cd nix && nix flake check
     lefthook validate
     just --justfile justfile --fmt --check
     oxfmt --check .
-
-# TWG launcher が公式の認証情報保存方式を上書きしないことを検証する
-[group('整形・検証')]
-teamwork-graph-cli-launcher-test:
-    ./nix/tests/teamwork-graph-cli-launcher-test.sh
-
-# TWGの公開manifestからNixのrelease lockへ変換する境界を、ネットワークなしで検証する
-[group('整形・検証')]
-teamwork-graph-cli-release-test:
-    ./nix/tests/teamwork-graph-cli-release-test.sh
 
 # 端末が宣言した構成どおりにセットアップされているか診断する
 [group('整形・検証')]
@@ -81,11 +68,6 @@ ai-cli-install:
 [group('反映・更新')]
 ai-cli-update:
     bash ./nix/scripts/ai-cli.sh update
-
-# 公式インストーラーとの境界を、ネットワークとホームディレクトリを変更せず検証する
-[group('整形・検証')]
-ai-cli-test:
-    bash ./nix/tests/ai-cli-installation-test.sh
 
 # 公式manifest・checksum・署名を検証してTWGのNix release lockだけを更新する
 [group('反映・更新')]

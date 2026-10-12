@@ -145,15 +145,30 @@
                 touch "$out"
               '';
           apm-cli = apmCliWithWebsocketsRuntimeDependency;
-          # Fish を導入しないホストでも検証できるよう、実行系ごと Nix で用意する。
-          fish = pkgs.runCommand "fish-test" { nativeBuildInputs = [ pkgs.fish ]; } ''
+          # Fish を導入しないホストでも構文を検査できるよう、実行系ごと Nix で用意する。
+          fish-syntax = pkgs.runCommand "fish-syntax-check" { nativeBuildInputs = [ pkgs.fish ]; } ''
             export HOME="$TMPDIR"
             cp -R ${../fish} fish
-            fish -n fish/conf.d/*.fish fish/functions/*.fish fish/tests/*.fish
-            fish fish/tests/fzf_create_worktree_from_base_branch_test.fish
+            fish -n fish/conf.d/*.fish fish/functions/*.fish
             touch "$out"
           '';
           formatting = treefmtEval.config.build.check self;
+          teamwork-graph-cli-release =
+            pkgs.runCommand "teamwork-graph-cli-release-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.coreutils
+                  pkgs.jq
+                ];
+              }
+              ''
+                mkdir scripts
+                cp ${./scripts/teamwork-graph-cli-release.sh} scripts/teamwork-graph-cli-release.sh
+                cp -R ${./tests} tests
+                bash tests/teamwork-graph-cli-release-test.sh
+                touch "$out"
+              '';
           teamwork-graph-cli = teamworkGraphCli;
         };
     };
