@@ -20,6 +20,15 @@
     remapCapsLockToControl = true;
   };
 
+  # ⌘Space を Raycast へ譲るため、Spotlight を開くショートカット（ID 64）だけを無効にする。
+  # system.defaults で宣言すると AppleSymbolicHotKeys 全体が置き換わり、他のショートカットの変更を失うため、
+  # この項目だけを -dict-add で書き換える。反映には再ログインが必要。
+  system.activationScripts.postActivation.text = ''
+    launchctl asuser "$(id -u -- ${config.system.primaryUser})" sudo --user=${config.system.primaryUser} -- \
+      defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 \
+      '<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>1048576</integer></array><key>type</key><string>standard</string></dict></dict>'
+  '';
+
   # hidutil の割り当ては再起動で消え、nix-darwin は switch 時にしか設定しないため、ログイン時に再適用する。
   launchd.user.agents.caps-lock-control.serviceConfig = {
     ProgramArguments = [
