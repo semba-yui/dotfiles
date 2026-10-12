@@ -1,0 +1,42 @@
+name: Build
+
+# macOS ランナーは消費が大きいため、構成に影響しない文書だけの変更では全ホストのビルドを省く。
+on:
+  pull_request:
+    paths-ignore:
+      - "**/README.md"
+      - "docs/**"
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/README.md"
+      - "docs/**"
+
+permissions:
+  contents: read
+
+# 同じブランチへ続けて push したとき、結果を待つ必要のない古い実行を止める。
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nix:
+    name: Nix configuration
+    runs-on: macos-15
+    # キャッシュがない状態でも全ホストのビルドが収まり、止まったときは早めに打ち切れる長さにする。
+    timeout-minutes: 60
+    # タグは後から付け替えられるため、actions はコミット SHA で固定し、版はコメントに残す。
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
+
+      - name: Check flake
+        working-directory: nix
+        run: nix flake check
