@@ -83,10 +83,13 @@ in
           }
           # 上流の herdr プラグインはこの 1 行を呼ぶだけで、導入時に curl | bash で本体を入れ直す。
           # 本体は Homebrew cask に一本化したいので、プラグインを介さず shell で直接呼ぶ。
+          # shell のコマンドはペインの外で切り離して動き、HERDR_ENV と HERDR_PANE_ID を受け取らない。
+          # それがないと分割するペインを herdr に問い合わせず Ghostty から探して失敗するため、
+          # フォーカス中のペインを渡す。
           {
             key = "prefix+alt+b";
             type = "shell";
-            command = "terminal-browser open --split right";
+            command = ''HERDR_ENV=1 HERDR_PANE_ID="$HERDR_ACTIVE_PANE_ID" terminal-browser open --split right'';
             description = "ブラウザを右スプリットで開く";
           }
         ];

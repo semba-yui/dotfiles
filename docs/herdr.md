@@ -18,7 +18,7 @@ prefix はデフォルトの `Ctrl+B` で、**順番押し**です（`Ctrl+B` �
 | `prefix+alt+b`   | terminal-browser を右スプリットで開く                        | 全ホスト |
 | `prefix+shift+g` | 既存 worktree をワークスペースとして開く（作成は無効化済み） | 全ホスト |
 | `prefix+alt+z`   | zoetrope でエージェントのセッションをフローグラフ表示        | 個人Mac  |
-| `prefix+alt+c`   | terminal-code（VS Code）を右スプリットで開く                 | 個人Mac  |
+| `prefix+alt+f`   | file-viewer で、差分や Markdown つきでファイルを読む         | 個人Mac  |
 
 reviewr は、エージェントの成果物をレビューして、行コメントを入力へ送り返すために使います。
 
@@ -28,10 +28,11 @@ reviewr は、エージェントの成果物をレビューして、行コメン
 
 [herdr-plugins.nix](../nix/modules/home/programs/herdr-plugins.nix) を読み込むホストでは、プラグインを Nix でビルドし、switch のたびに `herdr plugin link <store のパス>` で登録します。`link` はビルドを実行せず、プラグインのディレクトリにも書き込まない（設定と状態は `~/.config/herdr/plugins/config/<id>` などに置かれる）ため、読み取り専用の store から登録できます。上流の `[[build]]` がしているリリースのバイナリの取得は、[nix/packages](../nix/packages/) の各パッケージが `fetchurl` で置き換えます。
 
-| プラグイン                                                   | 中身                                                           |
-| ------------------------------------------------------------ | -------------------------------------------------------------- |
-| [herdr-reviewr](https://github.com/persiyanov/herdr-reviewr) | エージェントの diff を隣のペインでレビューし、行コメントを返す |
-| [zoetrope](https://github.com/furkankly/zoetrope)            | フォーカス中のエージェントのセッションをフローグラフで表示する |
+| プラグイン                                                         | 中身                                                                         |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| [herdr-reviewr](https://github.com/persiyanov/herdr-reviewr)       | エージェントの diff を隣のペインでレビューし、行コメントを返す               |
+| [zoetrope](https://github.com/furkankly/zoetrope)                  | フォーカス中のエージェントのセッションをフローグラフで表示する               |
+| [herdr-file-viewer](https://github.com/smarzban/herdr-file-viewer) | 読み取り専用のファイルビューア。git の差分、Markdown、構文の色分けを表示する |
 
 版は rev とハッシュで固定し、更新はパッケージの `version` と `hash` を書き換えて行います。herdr 本体と同じく Nix で固定されるため、プラグインの `min_herdr_version` が手元の herdr を追い越していれば、switch の `link` が失敗して気づけます。
 
@@ -39,7 +40,7 @@ reviewr は、エージェントの成果物をレビューして、行コメン
 
 herdr-plugins.nix を読み込まないホストは、従来どおり `dotfiles herdr-plugins` で reviewr を GitHub から入れます。`dotfiles herdr-doctor` は config の検証、連携フックの陳腐化、プラグインの一覧を検査します。
 
-上流が herdr プラグインを用意していても、中身がコマンドを1行呼ぶだけのもの（terminal-browser、terminal-code）はプラグインとして入れず、本体を入れて `type = "shell"` のキーで直接呼びます。上流のプラグインは導入時に `curl | bash` で本体を入れ直すため、入手経路が二重になります。
+上流が herdr プラグインを用意していても、中身がコマンドを1行呼ぶだけのもの（terminal-browser）はプラグインとして入れず、本体を入れて `type = "shell"` のキーで直接呼びます。上流のプラグインは導入時に `curl | bash` で本体を入れ直すため、入手経路が二重になります。
 
 ## ブラウザペイン
 

@@ -27,7 +27,6 @@
     ../../modules/home/programs/orbstack.nix
     ../../modules/home/programs/ripgrep.nix
     ../../modules/home/programs/secure-enclave-signing.nix
-    ../../modules/home/programs/terminal-code.nix
     ../../modules/home/programs/zed-editor.nix
     ../../modules/home/programs/zoxide.nix
   ];
