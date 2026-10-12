@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR/nix\" && out=\"$(nix fmt 2>&1)\" || { printf '%s\\n' \"$out\" | tail -n 30 >&2; exit 2; }",
+            "timeout": 120,
+            "statusMessage": "nix fmt で整形・検査しています"
+          }
+        ]
+      }
+    ]
+  }
+}
