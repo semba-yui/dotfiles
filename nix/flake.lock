@@ -126,22 +126,6 @@
         "type": "github"
       }
     },
-    "homebrew-stablyai-orca-tap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791606662,
-        "narHash": "sha256-cGoqvv78Z5Xs6w/DLtCLSmlncQObQVGZAgZhPWqy68Q=",
-        "owner": "stablyai",
-        "repo": "homebrew-orca",
-        "rev": "4c6045762aaa9a677b992bf4eb88dfe3807e100f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stablyai",
-        "repo": "homebrew-orca",
-        "type": "github"
-      }
-    },
     "mizchi-skills": {
       "flake": false,
       "locked": {
@@ -270,23 +254,6 @@
         "type": "github"
       }
     },
-    "orca": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1791296364,
-        "narHash": "sha256-gpkkk7cY25rW4+vYNduWs01ePpmF4ouAbB7KhFdMrYc=",
-        "owner": "stablyai",
-        "repo": "orca",
-        "rev": "7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stablyai",
-        "repo": "orca",
-        "rev": "7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agent-skills": "agent-skills",
@@ -294,14 +261,12 @@
         "git-worktree-runner": "git-worktree-runner",
         "home-manager": "home-manager",
         "homebrew-k1low-tap": "homebrew-k1low-tap",
-        "homebrew-stablyai-orca-tap": "homebrew-stablyai-orca-tap",
         "mizchi-skills": "mizchi-skills",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nix-index-database": "nix-index-database",
         "nix-secure-enclave-key": "nix-secure-enclave-key",
         "nixpkgs": "nixpkgs",
-        "orca": "orca",
         "stop-ai-slop-jp": "stop-ai-slop-jp",
         "treefmt-nix": "treefmt-nix",
         "twg-cli": "twg-cli"

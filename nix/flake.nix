@@ -36,11 +36,6 @@
       flake = false;
     };
 
-    homebrew-stablyai-orca-tap = {
-      url = "github:stablyai/homebrew-orca";
-      flake = false;
-    };
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,11 +68,6 @@
 
     mizchi-skills = {
       url = "github:mizchi/skills/62f580819410cb1d398e4d7f234bbd0aad1c1a15";
-      flake = false;
-    };
-
-    orca = {
-      url = "github:stablyai/orca/7faa9f7cd3bda68189646b1e9def6cc8aae3b1cb";
       flake = false;
     };
 
