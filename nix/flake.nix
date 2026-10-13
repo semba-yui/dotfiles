@@ -163,6 +163,22 @@
             touch "$out"
           '';
           formatting = treefmtEval.config.build.check self;
+          merge-claude-settings =
+            pkgs.runCommand "merge-claude-settings-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.coreutils
+                  pkgs.jq
+                ];
+              }
+              ''
+                mkdir scripts
+                cp ${./scripts/merge-claude-settings.jq} scripts/merge-claude-settings.jq
+                cp -R ${./tests} tests
+                bash tests/merge-claude-settings-test.sh
+                touch "$out"
+              '';
           teamwork-graph-cli-release =
             pkgs.runCommand "teamwork-graph-cli-release-test"
               {

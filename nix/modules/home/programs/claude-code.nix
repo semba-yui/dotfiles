@@ -121,14 +121,13 @@ in
   home.file.".claude/CLAUDE.md".source = ../../../../claude/.claude/CLAUDE.md;
 
   # settings.json はプラグインや画面上の変更で Claude Code 自身も書き換えるため、ファイルごと置き換えず、
-  # 宣言した項目だけを既存の設定へ重ねる。jq の `*` はオブジェクトを再帰的に合わせ、配列は宣言側で
-  # 置き換える。そのため hooks は宣言したイベントだけが置き換わり、herdr が足す SessionStart は残る。
+  # 宣言した項目だけを既存の設定へ重ねる。重ね方は merge-claude-settings.jq とそのテストを参照。
   home.activation.mergeClaudeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     settings_file="$HOME/.claude/settings.json"
     run mkdir -p "$HOME/.claude"
     if [[ -f $settings_file ]]; then
       merged_file="$(mktemp "$HOME/.claude/.settings.json.XXXXXX")"
-      ${lib.getExe pkgs.jq} -s '.[0] * .[1]' "$settings_file" ${declaredSettings} >"$merged_file"
+      ${lib.getExe pkgs.jq} -s -f ${../../../scripts/merge-claude-settings.jq} "$settings_file" ${declaredSettings} >"$merged_file"
       run mv "$merged_file" "$settings_file"
     else
       run install -m 0644 ${declaredSettings} "$settings_file"
