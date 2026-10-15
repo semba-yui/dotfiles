@@ -74,9 +74,3 @@ ai-cli-update:
 [group('反映・更新')]
 teamwork-graph-cli-update:
     ./nix/scripts/update-teamwork-graph-cli.sh
-
-# herdr-plugins.nix を使わないホストで、herdr プラグインを最新へ揃える
-[group('反映・更新')]
-herdr-plugins:
-    herdr plugin install persiyanov/herdr-reviewr --yes
-    herdr plugin list

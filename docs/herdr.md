@@ -12,13 +12,13 @@ prefix はデフォルトの `Ctrl+B` で、**順番押し**です（`Ctrl+B` �
 
 カスタム定義は次のとおりです（一覧は [cheatsheet.md](cheatsheet.md)、デフォルトキーは `prefix+?` のヘルプ）。
 
-| キー             | 動作                                                         | ホスト   |
-| ---------------- | ------------------------------------------------------------ | -------- |
-| `prefix+alt+r`   | reviewr の diff レビューサイドバーをトグル                   | 全ホスト |
-| `prefix+alt+b`   | terminal-browser を右スプリットで開く                        | 全ホスト |
-| `prefix+shift+g` | 既存 worktree をワークスペースとして開く（作成は無効化済み） | 全ホスト |
-| `prefix+alt+z`   | zoetrope でエージェントのセッションをフローグラフ表示        | 個人Mac  |
-| `prefix+alt+f`   | file-viewer で、差分や Markdown つきでファイルを読む         | 個人Mac  |
+| キー             | 動作                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| `prefix+alt+r`   | reviewr の diff レビューサイドバーをトグル                   |
+| `prefix+alt+b`   | terminal-browser を右スプリットで開く                        |
+| `prefix+shift+g` | 既存 worktree をワークスペースとして開く（作成は無効化済み） |
+| `prefix+alt+z`   | zoetrope でエージェントのセッションをフローグラフ表示        |
+| `prefix+alt+f`   | file-viewer で、差分や Markdown つきでファイルを読む         |
 
 reviewr は、エージェントの成果物をレビューして、行コメントを入力へ送り返すために使います。
 
@@ -26,7 +26,7 @@ reviewr は、エージェントの成果物をレビューして、行コメン
 
 ## プラグイン管理
 
-[herdr-plugins.nix](../nix/modules/home/programs/herdr-plugins.nix) を読み込むホストでは、プラグインを Nix でビルドし、switch のたびに `herdr plugin link <store のパス>` で登録します。`link` はビルドを実行せず、プラグインのディレクトリにも書き込まない（設定と状態は `~/.config/herdr/plugins/config/<id>` などに置かれる）ため、読み取り専用の store から登録できます。上流の `[[build]]` がしているリリースのバイナリの取得は、[nix/packages](../nix/packages/) の各パッケージが `fetchurl` で置き換えます。
+プラグインは [herdr-plugins.nix](../nix/modules/home/programs/herdr-plugins.nix) が Nix でビルドし、switch のたびに `herdr plugin link <store のパス>` で登録します。`link` はビルドを実行せず、プラグインのディレクトリにも書き込まない（設定と状態は `~/.config/herdr/plugins/config/<id>` などに置かれる）ため、読み取り専用の store から登録できます。上流の `[[build]]` がしているリリースのバイナリの取得は、[nix/packages](../nix/packages/) の各パッケージが `fetchurl` で置き換えます。
 
 | プラグイン                                                         | 中身                                                                         |
 | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
@@ -38,7 +38,7 @@ reviewr は、エージェントの成果物をレビューして、行コメン
 
 `unlink` は herdr のサーバーが動いていないと失敗するため、自動では行いません。宣言から外したプラグインは `herdr plugin unlink <id>` で手動で外します。
 
-herdr-plugins.nix を読み込まないホストは、従来どおり `dotfiles herdr-plugins` で reviewr を GitHub から入れます。`dotfiles herdr-doctor` は config の検証、連携フックの陳腐化、プラグインの一覧を検査します。
+`dotfiles herdr-doctor` は config の検証、連携フックの陳腐化、プラグインの一覧を検査します。
 
 上流が herdr プラグインを用意していても、中身がコマンドを1行呼ぶだけのもの（terminal-browser）はプラグインとして入れず、本体を入れて `type = "shell"` のキーで直接呼びます。上流のプラグインは導入時に `curl | bash` で本体を入れ直すため、入手経路が二重になります。
 

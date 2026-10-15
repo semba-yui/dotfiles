@@ -21,6 +21,7 @@
     ../../modules/home/programs/git-worktree-runner.nix
     ../../modules/home/programs/github-copilot-cli.nix
     ../../modules/home/programs/glab.nix
+    ../../modules/home/programs/herdr-plugins.nix
     ../../modules/home/programs/herdr.nix
     ../../modules/home/programs/java.nix
     ../../modules/home/programs/jq.nix
