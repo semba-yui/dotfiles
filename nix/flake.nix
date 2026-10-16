@@ -163,6 +163,22 @@
             touch "$out"
           '';
           formatting = treefmtEval.config.build.check self;
+          list-source-builds =
+            pkgs.runCommand "list-source-builds-test"
+              {
+                nativeBuildInputs = [
+                  pkgs.bash
+                  pkgs.coreutils
+                  pkgs.jq
+                ];
+              }
+              ''
+                mkdir scripts
+                cp ${./scripts/list-source-builds.jq} scripts/list-source-builds.jq
+                cp -R ${./tests} tests
+                bash tests/list-source-builds-test.sh
+                touch "$out"
+              '';
           merge-claude-settings =
             pkgs.runCommand "merge-claude-settings-test"
               {

@@ -56,6 +56,35 @@ else
   git -C "$repository_root" diff --stat -- "${lock_files[@]}"
 fi
 
+# キャッシュにない版が降りてくると、検証の途中でソースからのビルドが始まり 1 時間近くかかることがある。
+# flake check は現在のホストに限らず全ホストの構成と自作パッケージをビルドするため、checks 全体を見る。
+# 自作パッケージは入力が動くたびにソースからビルドされ、そのまま進めてよいことが多いため、中断ではなく確認にする。
+echo "ローカルでソースからビルドするパッケージを確認します。"
+system="$(nix config show system)"
+check_names="$(nix eval --json ".#checks.$system" --apply builtins.attrNames | jq -r '.[]')"
+check_installables=()
+while IFS= read -r check_name; do
+  check_installables+=(".#checks.$system.$check_name")
+done <<<"$check_names"
+# 取得するだけのパスは出力パスで表示されるため、.drv で終わる行がビルド予定の derivation になる。
+dry_run_log="$(nix build --dry-run --no-link "${check_installables[@]}" 2>&1)"
+source_build_names="$(
+  sed -nE 's|^ +(/nix/store/[^ ]+\.drv)$|\1|p' <<<"$dry_run_log" |
+    nix derivation show --stdin |
+    jq -r -f "$script_directory/list-source-builds.jq"
+)"
+if [[ -n $source_build_names ]]; then
+  echo "次のパッケージはバイナリキャッシュになく、ローカルでソースからビルドします。"
+  while IFS= read -r source_build_name; do
+    echo "  $source_build_name"
+  done <<<"$source_build_names"
+  read -r -p "このまま検証と反映に進みますか？ [y/N] " local_build_consent
+  if [[ $local_build_consent != [yY] ]]; then
+    echo "dotfiles update: ローカルでのビルドを避けるため中断しました。" >&2
+    exit 1
+  fi
+fi
+
 echo "Flake 全体を検証します。"
 nix flake check
 
