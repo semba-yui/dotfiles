@@ -41,6 +41,7 @@
       "slack"
       "terminal-browser"
       "typora"
+      "zed"
       "zoom"
     ];
 

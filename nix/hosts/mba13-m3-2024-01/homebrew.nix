@@ -19,6 +19,7 @@
       "raycast"
       "slack"
       "terminal-browser"
+      "zed"
       "zoom"
     ];
 
