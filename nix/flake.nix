@@ -59,10 +59,10 @@
     # modules/home/programs/agent-skills.nix で行う。URL に rev を含めているため
     # `nix flake update` では動かず、更新は rev の書き換えで行う。
 
-    # skill が指示するサブコマンドは gh-stack の版で変わる。gh.nix の pkgs.gh-stack を
-    # 上げたら、この rev も対応する release へ合わせる。
+    # skill が指示するサブコマンドは gh-stack の版で変わる。nixpkgs の gh-stack の版が
+    # 上がったら、この rev も対応する release へ合わせる。
     gh-stack = {
-      url = "github:github/gh-stack/d4ab7ab47e5b3e3708a27c8c42abcdf4bc321419";
+      url = "github:github/gh-stack/29a36d314be664583705f18e41cebdf2b61ad514";
       flake = false;
     };
 
