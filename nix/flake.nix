@@ -101,7 +101,7 @@
             "teamwork-graph-cli"
           ];
       };
-      apmCliWithWebsocketsRuntimeDependency = pkgs.callPackage ./packages/apm-cli.nix { };
+      apmCliWithRelaxedWebsocketsBound = pkgs.callPackage ./packages/apm-cli.nix { };
       darwinConfigurations = import ./hosts { inherit inputs; };
       teamworkGraphCli = pkgs.callPackage ./packages/teamwork-graph-cli.nix { };
 
@@ -154,7 +154,7 @@
                 bash tests/ai-cli-installation-test.sh
                 touch "$out"
               '';
-          apm-cli = apmCliWithWebsocketsRuntimeDependency;
+          apm-cli = apmCliWithRelaxedWebsocketsBound;
           # Fish を導入しないホストでも構文を検査できるよう、実行系ごと Nix で用意する。
           fish-syntax = pkgs.runCommand "fish-syntax-check" { nativeBuildInputs = [ pkgs.fish ]; } ''
             export HOME="$TMPDIR"

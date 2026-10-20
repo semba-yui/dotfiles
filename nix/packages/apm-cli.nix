@@ -1,10 +1,7 @@
-{
-  apm-cli,
-  python3Packages,
-}:
+{ apm-cli }:
 
-# APM の必須 runtime dependency は、llm/openai の optional dependency から推移的に
-# 得られる保証がないため、APM package 自身へ直接追加する。
+# APM は websockets の上限を宣言しているが、使うのは sync.client.connect と send/recv だけで、
+# 上限の先にある非互換変更に当たらない。上限のせいで nixpkgs の websockets と組めず build が落ちるため外す。
 apm-cli.overridePythonAttrs (previousAttrs: {
-  dependencies = previousAttrs.dependencies ++ [ python3Packages.websockets ];
+  pythonRelaxDeps = (previousAttrs.pythonRelaxDeps or [ ]) ++ [ "websockets" ];
 })
