@@ -99,6 +99,17 @@ if declares package:twg; then
   fi
 fi
 
+# Nix のインストーラーが既定プロファイルに入れる CA 一覧は誰も更新しない。
+# NIX_SSL_CERT_FILE を持たないプロセスでは OpenSSL がこれを読むため、
+# 信頼を取り消されたルートが残り続ける。初回の darwin-rebuild までは
+# Nix 自身がこれでダウンロードするので、外すのは適用後にする。
+default_profile_ca_bundle=/nix/var/nix/profiles/default/etc/ssl/certs/ca-bundle.crt
+if [[ ! -e $default_profile_ca_bundle ]]; then
+  pass "Nix の既定プロファイルに CA 一覧がありません"
+else
+  fail "Nix の既定プロファイルに CA 一覧があります: sudo nix-env --profile /nix/var/nix/profiles/default --uninstall nss-cacert"
+fi
+
 if [[ $repository_root == "$expected_repository" ]]; then
   pass "dotfiles は想定した場所にあります"
 else
