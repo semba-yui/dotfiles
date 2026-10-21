@@ -45,7 +45,9 @@ manual() {
 
 printf 'dotfiles のセットアップ状態を診断します。\n\n'
 
-if [[ ! -f "$flake_directory/hosts/$hostname/default.nix" ]]; then
+# ホストの置き方は hosts/default.nix が決めるので、ファイルの有無ではなく Flake に登録されたホスト名で確かめる。
+registered_hosts="$(nix eval --raw "$flake_directory#darwinConfigurations" --apply 'hosts: builtins.concatStringsSep "\n" (builtins.attrNames hosts)')"
+if ! grep -Fqx "$hostname" <<<"$registered_hosts"; then
   fail "$hostname のホスト設定がありません"
   exit 1
 fi

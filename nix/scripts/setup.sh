@@ -43,7 +43,10 @@ plan() {
   untracked_files="$(git -C "$flake_directory" ls-files --others --exclude-standard -- .)"
   [[ -z $untracked_files ]] || fail "未追跡ファイルは Flake から見えません。git add してください:"$'\n'"$untracked_files"
 
-  [[ -f "$flake_directory/hosts/$hostname/default.nix" ]] ||
+  # ホストの置き方は hosts/default.nix が決めるので、ファイルの有無ではなく Flake に登録されたホスト名で確かめる。
+  local registered_hosts
+  registered_hosts="$(nix eval --raw "$flake_directory#darwinConfigurations" --apply 'hosts: builtins.concatStringsSep "\n" (builtins.attrNames hosts)')"
+  grep -Fqx "$hostname" <<<"$registered_hosts" ||
     fail "$hostname のホスト設定がありません: nix/hosts/$hostname/ を追加してください"
 
   echo "$hostname の構成をビルドします（反映しません）。"
