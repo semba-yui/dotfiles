@@ -23,7 +23,6 @@
     ../../modules/home/programs/glab.nix
     ../../modules/home/programs/herdr-plugins.nix
     ../../modules/home/programs/herdr.nix
-    ../../modules/home/programs/java.nix
     ../../modules/home/programs/jq.nix
     ../../modules/home/programs/neovim.nix
     ../../modules/home/programs/nix-index.nix
