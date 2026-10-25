@@ -19,16 +19,11 @@ in
   # ダウンロードしたアプリを Gatekeeper の検証対象として維持する。
   system.defaults.LaunchServices.LSQuarantine = true;
 
-  # eMudhra の中間 CA の秘密鍵が漏れたため、Mozilla は NSS 3.131.1 で emSign の 3 つのルートを外した。
-  # nixpkgs-unstable の cacert がその版に届くまで、Nix のツールが読む CA 一覧から先に外しておく。
-  # 届いたあとは元の一覧にこの名前がなくなり、何も外さなくなる。
-  # 漏れた中間 CA には Comodo AAA Services root からの相互署名もある。NSS はこのルートをメール用にしか
-  # 信頼しないが、メール用の信頼を TLS にも使う実装（LibreSSL）があるため、cacert が届いたあとも外したままにする。
+  # 秘密鍵が漏れた eMudhra の中間 CA には Comodo AAA Services root からの相互署名がある。NSS はこのルートを
+  # メール用にしか信頼しないが、メール用の信頼を TLS にも使う実装（LibreSSL）があるため外す。
+  # cacert は元の一覧にない名前があるとビルドを止めるので、NSS が既に外したルート（emSign など）は書かない。
   security.pki.caCertificateBlacklist = [
     "Comodo AAA Services root"
-    "emSign ECC Root CA - C3"
-    "emSign ECC Root CA - G3"
-    "emSign Root CA - C1"
   ];
 
   # ca-certificates.crt の信頼設定付きの証明書は、OpenSSL 以外では読み飛ばされる（rustls）か、
