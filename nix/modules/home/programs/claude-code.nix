@@ -28,6 +28,10 @@ let
 
     env = {
       CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
+
+      # 他の Node.js 向けの --use-openssl-ca で内蔵 CA が外れるため、Claude Code の標準の信頼先を明示する。
+      CLAUDE_CODE_CERT_STORE = "bundled,system";
+
       CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
       DISABLE_ERROR_REPORTING = "1";
       ENABLE_LSP_TOOL = "1";
