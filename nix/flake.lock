@@ -113,11 +113,11 @@
     "homebrew-k1low-tap": {
       "flake": false,
       "locked": {
-        "lastModified": 1792260518,
-        "narHash": "sha256-XI65KAIs4SvHKY9ZhpqX2Q2QB3CNKtbvo14BC/hgk0Q=",
+        "lastModified": 1792563202,
+        "narHash": "sha256-vqFAdTtPWNU5igLjP6CpTp9jE3PlH0j0Kq/KcoI85Us=",
         "owner": "k1LoW",
         "repo": "homebrew-tap",
-        "rev": "5b714e4391858d0b6c601d73fc3c44e9fc2b6e32",
+        "rev": "b5bb32b20683f2cd46361191d4c8749662f275c4",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1792842277,
-        "narHash": "sha256-pGPnZGi8y9d76xNeracniXO3dsYVROEmMkMc8jD0Ihc=",
+        "lastModified": 1793136825,
+        "narHash": "sha256-2pkE69JpFRInaARSczZytcfPw83IL82E2KdhbWGwdMs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d3b13ad75cc492690728f9307e443dec9ef9a20e",
+        "rev": "f05535a0efcb2134c478d1e88434fadf486d42b5",
         "type": "github"
       },
       "original": {
