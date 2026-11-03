@@ -30,6 +30,7 @@
       "github-copilot-app"
       "google-chrome"
       "google-japanese-ime"
+      "herdr-app"
       "jetbrains-toolbox"
       "logi-options+"
       "microsoft-excel"

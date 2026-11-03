@@ -9,6 +9,7 @@
       "fork"
       "google-chrome"
       "google-japanese-ime"
+      "herdr-app"
       "jetbrains-toolbox"
       "karabiner-elements"
       "microsoft-excel"
