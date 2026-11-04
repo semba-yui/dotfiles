@@ -14,6 +14,15 @@ let
     async = true;
   };
 
+  # 版は Nix で固定できず Claude Code のキャッシュが持つため、上流に追従させて端末間の差を残さない。
+  githubMarketplace = repo: {
+    autoUpdate = true;
+    source = {
+      source = "github";
+      inherit repo;
+    };
+  };
+
   declaredSettings = (pkgs.formats.json { }).generate "claude-settings.json" {
     "$schema" = "https://json.schemastore.org/claude-code-settings.json";
 
@@ -26,6 +35,21 @@ let
     switchModelsOnFlag = false;
     tui = "fullscreen";
 
+    # 未導入の端末では、起動後に Claude Code がマーケットプレイスを clone してプラグインを取得する。
+    # ここで true にしたものは /plugin で無効化しても switch のたびに戻る。
+    # 仕事用リポジトリを参照する swo-front-plugins は、その clone がない端末で読み込めないため宣言しない。
+    enabledPlugins = {
+      "code-review@claude-plugins-official" = true;
+      "codex@openai-codex" = true;
+      "figma@claude-plugins-official" = true;
+      "mattpocock-skills@mattpocock" = true;
+      "pr-review-toolkit@claude-plugins-official" = true;
+      "pstack@cursor-plugins" = true;
+      "quint-llm-kit@quint-llm-kit" = true;
+      "security-guidance@claude-plugins-official" = true;
+      "storybook@storybook" = true;
+    };
+
     env = {
       CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
 
@@ -35,6 +59,22 @@ let
       CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS = "1";
       DISABLE_ERROR_REPORTING = "1";
       ENABLE_LSP_TOOL = "1";
+    };
+
+    # claude-plugins-official は組み込みのため宣言しない。
+    # 有効なプラグインがないものも、どの端末でも /plugin から選べるように並べる。
+    # 名前は各リポジトリの marketplace.json の name に合わせる。Claude Code は宣言した名前ではなく、その name で登録する。
+    extraKnownMarketplaces = {
+      agent-browser = githubMarketplace "vercel-labs/agent-browser";
+      anthropic-agent-skills = githubMarketplace "anthropics/skills";
+      chrome-devtools-plugins = githubMarketplace "ChromeDevTools/chrome-devtools-mcp";
+      claude-community = githubMarketplace "anthropics/claude-plugins-community";
+      cursor-plugins = githubMarketplace "cursor/plugins";
+      knowledge-work-plugins = githubMarketplace "anthropics/knowledge-work-plugins";
+      mattpocock = githubMarketplace "mattpocock/skills";
+      openai-codex = githubMarketplace "openai/codex-plugin-cc";
+      quint-llm-kit = githubMarketplace "quint-co/quint-llm-kit";
+      storybook = githubMarketplace "storybookjs/mcp";
     };
 
     # 待ち状態の種類を音で聞き分けられるようにする。
@@ -118,6 +158,12 @@ in
 {
   home.file.".claude/scripts/statusline.sh" = {
     source = config.lib.file.mkOutOfStoreSymlink "${repositoryDirectory}/claude/.claude/scripts/statusline.sh";
+    force = true;
+  };
+
+  # /setup-pstack がこのファイルを丸ごと上書きするため、store ではなくリポジトリへ向け、再実行の結果を差分で残す。
+  home.file.".claude/rules/pstack-models.md" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${repositoryDirectory}/claude/.claude/rules/pstack-models.md";
     force = true;
   };
 
