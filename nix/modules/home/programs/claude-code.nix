@@ -31,6 +31,7 @@ let
     autoCompactEnabled = true;
     autoUpdatesChannel = "latest";
     editorMode = "normal";
+    language = "日本語";
     preferredNotifChannel = "ghostty";
     switchModelsOnFlag = false;
     tui = "fullscreen";
