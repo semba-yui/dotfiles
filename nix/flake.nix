@@ -76,15 +76,15 @@
       flake = false;
     };
 
-    stop-ai-slop-jp = {
-      url = "github:iKora128/stop-ai-slop-jp/e09d32796f253a62693885757cea484c275d06f2";
-      flake = false;
-    };
-
     # root skill が参照する sibling skill を、packages/teamwork-graph-cli-release.json の
     # CLI 版と互換な commit へ揃える。CLI を上げたらこの rev も合わせる。
     twg-cli = {
       url = "github:atlassian/twg-cli/35710745f766fd19953d2a8a86e27cd193996598";
+      flake = false;
+    };
+
+    yomiyasu = {
+      url = "github:nanaism/yomiyasu/29d67ccb05e370b5958d72920a9cd1aa829dee80";
       flake = false;
     };
   };

@@ -285,26 +285,9 @@
         "nix-index-database": "nix-index-database",
         "nix-secure-enclave-key": "nix-secure-enclave-key",
         "nixpkgs": "nixpkgs",
-        "stop-ai-slop-jp": "stop-ai-slop-jp",
         "treefmt-nix": "treefmt-nix",
-        "twg-cli": "twg-cli"
-      }
-    },
-    "stop-ai-slop-jp": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1781179477,
-        "narHash": "sha256-LsCBtbaQwQkiYtObhTmyZOZlL2MmCRd4EM5PZuH8Is0=",
-        "owner": "iKora128",
-        "repo": "stop-ai-slop-jp",
-        "rev": "e09d32796f253a62693885757cea484c275d06f2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "iKora128",
-        "repo": "stop-ai-slop-jp",
-        "rev": "e09d32796f253a62693885757cea484c275d06f2",
-        "type": "github"
+        "twg-cli": "twg-cli",
+        "yomiyasu": "yomiyasu"
       }
     },
     "treefmt-nix": {
@@ -341,6 +324,23 @@
         "owner": "atlassian",
         "repo": "twg-cli",
         "rev": "35710745f766fd19953d2a8a86e27cd193996598",
+        "type": "github"
+      }
+    },
+    "yomiyasu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793326902,
+        "narHash": "sha256-9cGUSvLgc1+996i3lWQuQm1aTWOxSY6fbS9+vn5aElw=",
+        "owner": "nanaism",
+        "repo": "yomiyasu",
+        "rev": "29d67ccb05e370b5958d72920a9cd1aa829dee80",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanaism",
+        "repo": "yomiyasu",
+        "rev": "29d67ccb05e370b5958d72920a9cd1aa829dee80",
         "type": "github"
       }
     }

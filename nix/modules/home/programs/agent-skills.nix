@@ -39,8 +39,10 @@ in
         subdir = "skills";
         filter.maxDepth = 1;
       };
-      stop-ai-slop-jp = {
-        path = inputs.stop-ai-slop-jp;
+      # 同梱の検査スクリプトは python3 で動く。python3 は各ホストの home.packages が入れている。
+      yomiyasu = {
+        path = inputs.yomiyasu;
+        subdir = "skills/yomiyasu";
         filter.maxDepth = 0;
       };
 
@@ -111,7 +113,7 @@ in
         "optimizing-descriptions"
         "playwright-cli"
         "playwright-test"
-        "stop-ai-slop-jp"
+        "yomiyasu"
       ];
 
       # Claude Code 組み込みの /code-review と名前がぶつかるため、code-review だけ explicit で配り分ける。
