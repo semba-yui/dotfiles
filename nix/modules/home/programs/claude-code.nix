@@ -43,7 +43,9 @@ let
       "code-review@claude-plugins-official" = true;
       "codex@openai-codex" = true;
       "figma@claude-plugins-official" = true;
-      "mattpocock-skills@mattpocock" = true;
+      # Codex と共用し、プラグインに含まれない in-progress も使うため agent-skills.nix から配る。
+      # キーを消すだけでは既存の settings.json に true が残り、同じ skill が二重に入る。
+      "mattpocock-skills@mattpocock" = false;
       "pr-review-toolkit@claude-plugins-official" = true;
       "pstack@cursor-plugins" = true;
       "quint-llm-kit@quint-llm-kit" = true;

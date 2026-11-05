@@ -66,6 +66,11 @@
       flake = false;
     };
 
+    mattpocock-skills = {
+      url = "github:mattpocock/skills/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d";
+      flake = false;
+    };
+
     mizchi-skills = {
       url = "github:mizchi/skills/62f580819410cb1d398e4d7f234bbd0aad1c1a15";
       flake = false;

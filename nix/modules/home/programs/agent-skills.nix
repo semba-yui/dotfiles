@@ -1,5 +1,13 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
+let
+  # 一覧を手で持つと、上流で in-progress から engineering へ移った skill が rev を上げたときに黙って抜ける。
+  mattpocockEngineeringSkills = lib.attrNames (
+    lib.filterAttrs (_: type: type == "directory") (
+      builtins.readDir "${inputs.mattpocock-skills}/skills/engineering"
+    )
+  );
+in
 {
   imports = [ inputs.agent-skills.homeManagerModules.default ];
 
@@ -34,6 +42,23 @@
       stop-ai-slop-jp = {
         path = inputs.stop-ai-slop-jp;
         filter.maxDepth = 0;
+      };
+
+      # mattpocock/skills の skills/misc は上流で凍結され保守されていないため取り込まない。
+      mattpocock-engineering = {
+        path = inputs.mattpocock-skills;
+        subdir = "skills/engineering";
+        filter.maxDepth = 1;
+      };
+      mattpocock-in-progress = {
+        path = inputs.mattpocock-skills;
+        subdir = "skills/in-progress";
+        filter.maxDepth = 1;
+      };
+      mattpocock-productivity = {
+        path = inputs.mattpocock-skills;
+        subdir = "skills/productivity";
+        filter.maxDepth = 1;
       };
 
       # mizchi/skills の未選択の skill を取り込まないよう、skill ごとに subdir を指定する。
@@ -80,12 +105,34 @@
         "empirical-prompt-tuning"
         "extract-glossary"
         "gh-stack"
+        "mattpocock-in-progress"
+        "mattpocock-productivity"
         "multi-agent-orchestration"
         "optimizing-descriptions"
         "playwright-cli"
         "playwright-test"
         "stop-ai-slop-jp"
       ];
+
+      # Claude Code 組み込みの /code-review と名前がぶつかるため、code-review だけ explicit で配り分ける。
+      enable = lib.remove "code-review" mattpocockEngineeringSkills;
+
+      explicit = {
+        code-review = {
+          from = "mattpocock-engineering";
+          path = "code-review";
+          agents = [ "agents" ];
+        };
+        # ディレクトリ名だけ変えても frontmatter の name: code-review が残るため、name も書き換える。
+        mattpocock-code-review = {
+          from = "mattpocock-engineering";
+          path = "code-review";
+          agents = [ "claude" ];
+          transform =
+            { original, ... }:
+            builtins.replaceStrings [ "\nname: code-review\n" ] [ "\nname: mattpocock-code-review\n" ] original;
+        };
+      };
     };
   };
 }
