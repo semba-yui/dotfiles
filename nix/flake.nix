@@ -121,7 +121,11 @@
           disabled-lints = [ "repeated_keys" ];
         };
         programs.shellcheck.enable = true;
-        programs.shfmt.enable = true;
+        programs.shfmt = {
+          enable = true;
+          indent_size = 2;
+          simplify = true;
+        };
         # 増分検査では source 先が入力一覧に含まれないため、明示した参照先も検査する。
         settings.formatter.shellcheck.options = [ "-x" ];
         # statix と deadnix の書き換え結果を最終的なレイアウトに揃えるため、nixfmt を最後に実行する。
