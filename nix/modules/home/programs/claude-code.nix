@@ -47,7 +47,7 @@ let
       # キーを消すだけでは既存の settings.json に true が残り、同じ skill が二重に入る。
       "mattpocock-skills@mattpocock" = false;
       "pr-review-toolkit@claude-plugins-official" = true;
-      "pstack@cursor-plugins" = true;
+      "pstack@pstack-claude-code-ja" = true;
       "quint-llm-kit@quint-llm-kit" = true;
       "security-guidance@claude-plugins-official" = true;
       "storybook@storybook" = true;
@@ -72,6 +72,7 @@ let
       knowledge-work-plugins = githubMarketplace "anthropics/knowledge-work-plugins";
       mattpocock = githubMarketplace "mattpocock/skills";
       openai-codex = githubMarketplace "openai/codex-plugin-cc";
+      pstack-claude-code-ja = githubMarketplace "lc-semba-ryuichiro/pstack-claude-code-ja";
       quint-llm-kit = githubMarketplace "quint-co/quint-llm-kit";
       storybook = githubMarketplace "storybookjs/mcp";
     };
