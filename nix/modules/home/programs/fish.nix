@@ -47,16 +47,6 @@ in
     # trueだとman pageからfish補完を生成しようとする。
     generateCompletions = false;
 
-    # gtr の wrapper 関数(cd / new --cd)と補完を有効化する。
-    # conf.d ではなく config.fish で source する理由: Home Manager の fzf 統合
-    # (mkOrder 200)より後に読み込み、`gtr cd` の fzf picker を確実に使えるようにする。
-    # 初回 switch 中など gtr 未導入のシェルでも起動を壊さないよう存在確認でガードする。
-    interactiveShellInit = ''
-      if command -q git-gtr
-          git gtr init fish | source
-      end
-    '';
-
     # pluginの取得元とバージョンをnixpkgsへ統一し、Fish内に別のpackage managerを持ち込まない。
     plugins = [
       {
