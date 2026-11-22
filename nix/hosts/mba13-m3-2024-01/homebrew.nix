@@ -1,6 +1,8 @@
 {
   homebrew = {
     casks = [
+      "antigravity"
+      "antigravity-cli"
       "chatgpt"
       "claude"
       "discord"

@@ -18,8 +18,8 @@
     };
 
     casks = [
-      "adobe-acrobat-pro"
-      "adobe-creative-cloud"
+      "antigravity"
+      "antigravity-cli"
       "chatgpt"
       "claude"
       "cleanshot"
